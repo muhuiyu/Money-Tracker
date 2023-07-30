@@ -1,0 +1,77 @@
+/* 
+  vi.strings
+  Why am I so poor
+
+  Created by Mu Yu on 6/25/22.
+  
+*/
+
+// MARK: - Generic
+"AppName" = "Why am I so poor";
+"Login" = "Đăng nhập";
+"Logout" = "Đăng xuất";
+"General.Edit" = "Edit";
+"General.Add" = "Add";
+"General.Save" = "Lưu";
+"General.Cancel" = "Cancel";
+"General.PullToRefresh" = "Pull to refresh";
+"General.Search" = "Search";
+
+// MARK: - Main Tab Bar
+"MainTab.Home" = "Home";
+"MainTab.Budget" = "Budget";
+"MainTab.Analysis" = "Analysis";
+"MainTab.Me" = "Me";
+
+// MARK: - Loading Screen
+"Loading.Title" = "Loading...";
+
+// MARK: - Language
+"Language.Title" = "ngôn ngữ";
+"Language.en" = "tiếng Anh";
+"Language.ja" = "tiếng Nhật";
+"Language.vi" = "Tiếng Việt";
+"Language.changeLanguage" = "Thay đổi ngôn ngữ";
+
+// MARK: - Home
+"Home.BalanceTitle" = "Current month";
+"Home.AddTransaction" = "Add";
+"Home.Accounts" = "accounts";
+"Home.Pocket" = "Pocket";
+
+// MARK: - Analysis
+"Analysis.TotalExpense" = "Total expense";
+
+// MARK: - Pocket
+"Pocket.Title" = "Pocket";
+
+// MARK: - Transaction
+"TransactionDetail.TransactionDetail" = "Transaction Detail";
+"TransactionDetail.AddTransaction" = "Add Transaction";
+"TransactionDetail.EditTransaction" = "Edit Transaction";
+"TransactionList.RecentTransactions" = "Recent Transactions";
+"TransactionList.SeeAll" = "See All";
+"TransactionDetail.Amount" = "Amount";
+"TransactionDetail.EnterAmount" = "Enter amount";
+"TransactionDetail.Date" = "Date";
+"TransactionDetail.Category" = "Category";
+"TransactionDetail.AddCategory" = "Add category";
+"TransactionDetail.Merchant" = "Merchant";
+"TransactionDetail.AddMerchant" = "Add merchant";
+"TransactionDetail.PaymentBy" = "Payment by";
+"TransactionDetail.AddPaymentMethod" = "Add payment method";
+"TransactionDetail.Tag" = "Tag";
+"TransactionDetail.AddTag" = "Add tag";
+"TransactionDetail.IsRecurring" = "Recurring";
+"TransactionDetail.Note" = "Note";
+"TransactionDetail.AddNote" = "Add note";
+
+// MARK: - Budget
+"Budget.Title" = "Budget";
+"Budget.ThisMonth" = "This month";
+"Budget.CategoryBudgets" = "Category budgets";
+"Budget.EditBudget" = "Edit";
+"Budget.EditBudgetTitle" = "Edit Budget";
+"Budget.UpcomingPayments" = "Upcoming payments";
+"Budget.Overspent" = "overspent";
+"Budget.SafeToSpend" = "safe to spend";

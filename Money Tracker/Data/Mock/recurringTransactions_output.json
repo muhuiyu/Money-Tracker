@@ -1,0 +1,434 @@
+[
+  {
+    "id": "1Uw48XC7ctTk5Uzyd2GJ",
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly",
+      "dates": [
+        1
+      ]
+    },
+    "isActive": true,
+    "transactionSettings": {
+      "tag": "bigBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "13-01",
+      "amount": 375,
+      "paymentBy": "amexTrueCashbackCard",
+      "note": "12 months for $4481, $375 per month, from Oct 2022 to Sep 2023",
+      "merchantID": "DrSsndk75RBJNECMVjM5"
+    }
+  },
+  {
+    "id": "4kRxfegZZ8rEAOanUbXm",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly",
+      "numberOfDays": 0,
+      "dates": [
+        1
+      ]
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "tag": "smallBill",
+      "type": "expense",
+      "amount": 15,
+      "currencyCode": "SGD",
+      "note": "Yearly plan (99 USD/year → 12 SGD/month), renew on Apr 15th, 2023",
+      "merchantID": "cRLvNWui87ojkrohxsV7",
+      "categoryID": "7-01",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "6AUcjE2inZKwujGTxD2N",
+    "rule": {
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfWeeks": 0,
+      "numberOfDays": 0,
+      "cycle": "monthly",
+      "monthAndDay": [],
+      "numberOfMonths": 1,
+      "dates": [
+        1
+      ]
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "note": "Yearly plan (99 SGD/year but 3.3 SGD/month for first 2 years), renew on Oct 23, 2023",
+      "amount": 3.3,
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "merchantID": "U8fJfRKeiP82s1OECCHF",
+      "categoryID": "7-01",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "DCG2ygnKh9RU4l5WeG6q",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "numberOfDays": 0,
+      "cycle": "monthly",
+      "dates": [
+        1
+      ]
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "paymentBy": "ocbcBankTransfer",
+      "tag": "bigBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "note": "Rent (on every 26th monthly)",
+      "categoryID": "1-01",
+      "merchantID": "2gQuOGeJBihbEg9w0QST",
+      "amount": 1455
+    }
+  },
+  {
+    "id": "LZ94BrnLhS3dnitdeqnw",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        1
+      ],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly",
+      "numberOfDays": 0
+    },
+    "transactionSettings": {
+      "note": "🎓 UIUC MCS monthly (total 21440 USD = 31000 SGD), 1410 SGD per month (Aug 2021 to May 2022)",
+      "amount": 1410,
+      "paymentBy": "ocbcBankTransfer",
+      "tag": "debt",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "merchantID": "CxmDnhPcpbxq9sICOh6J",
+      "categoryID": "8-01"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true
+  },
+  {
+    "id": "TO28PIFBhovu1fYvN02W",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        27
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": false,
+    "transactionSettings": {
+      "note": "NTD390 on 27th of the month",
+      "amount": 20,
+      "merchantID": "OmeqixDURPJBHU31TlbZ",
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "12-02",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "WKaPzAD5cy4gTtf9pyHb",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        3
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "note": "",
+      "amount": 5,
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "3-04",
+      "merchantID": "JfK68pcztIKX8Ne8eO0X",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "WyqNwgFMd71HW6doCdtM",
+    "transactionSettings": {
+      "note": "Investment (monthly)",
+      "amount": 840,
+      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "paymentBy": "ocbcBankTransfer",
+      "tag": "bigBill",
+      "type": "saving",
+      "currencyCode": "SGD",
+      "categoryID": "15-01"
+    },
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        1
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true
+  },
+  {
+    "id": "cxPvIEctN4wJ47pKMYJt",
+    "isActive": true,
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly",
+      "dates": [
+        1
+      ]
+    },
+    "transactionSettings": {
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "8-02",
+      "tag": "smallBill",
+      "merchantID": "1n43OGUWaujqmneznE9j",
+      "amount": 20,
+      "note": "100 credits for $485, 0.5 credit per class, $2.5 per VN class (take 8 classes per month)",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "lTaIlRJ8b0qG0qlLxy98",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        1
+      ],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "numberOfDays": 0,
+      "cycle": "monthly"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "note": "Conceptive Pills, renew every 6 months (168 days), next one is on Jan 17, 2023",
+      "tag": "smallBill",
+      "type": "expense",
+      "amount": 35,
+      "currencyCode": "SGD",
+      "categoryID": "11-03",
+      "merchantID": "jEbCrLEdQFgEJyyqY80e",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "mkAzGz14FGfKyyQrxpfS",
+    "transactionSettings": {
+      "note": "Saving plan",
+      "amount": 1030,
+      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "paymentBy": "ocbcBankTransfer",
+      "tag": "bigBill",
+      "type": "saving",
+      "currencyCode": "SGD",
+      "categoryID": "15-02"
+    },
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        1
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true
+  },
+  {
+    "id": "n6GjxZ2hXLgELopZH9Ja",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        7
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "transactionSettings": {
+      "note": "",
+      "amount": 7000,
+      "paymentBy": "ocbcBankTransfer",
+      "tag": "income",
+      "type": "income",
+      "currencyCode": "SGD",
+      "categoryID": "0-01",
+      "merchantID": "WES6aubAdqDrhESQoXxT"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true
+  },
+  {
+    "id": "nDnl7c2FBYdLVeji9YN4",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "numberOfDays": 0,
+      "cycle": "monthly",
+      "dates": [
+        1
+      ]
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "tag": "bigBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "10-01",
+      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "paymentBy": "amazeCard",
+      "note": "Change to annual payment (3373.83 per year), next payment on July 25, 2023",
+      "amount": 281.2
+    }
+  },
+  {
+    "id": "nVepZaI6OXZAGx5xSmeS",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "numberOfDays": 0,
+      "cycle": "monthly",
+      "dates": [
+        1
+      ]
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": true,
+    "transactionSettings": {
+      "amount": 2.4,
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "note": "Yearly plan (28 SGD/year → 2.4 SGD/month), next payment on Dec 28th, 2022",
+      "merchantID": "cMh2a7kuw5VIaLEYO95t",
+      "categoryID": "7-01",
+      "paymentBy": "amazeCard"
+    }
+  },
+  {
+    "id": "wojMIrnn7La0l9oQvZIR",
+    "transactionSettings": {
+      "note": "250 yen per month (550 yen for anime)",
+      "amount": 2.6,
+      "merchantID": "2eyMYYQVwOqLkqhFYblm",
+      "paymentBy": "amazeCard",
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "categoryID": "12-02"
+    },
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        1
+      ],
+      "numberOfDays": 0,
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "cycle": "monthly"
+    },
+    "isActive": true,
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2"
+  },
+  {
+    "id": "zhpqcL7bsTrIzxtNJM4S",
+    "rule": {
+      "monthAndDay": [],
+      "numberOfYears": 0,
+      "weekdays": [],
+      "dates": [
+        26
+      ],
+      "numberOfWeeks": 0,
+      "numberOfMonths": 1,
+      "numberOfDays": 0,
+      "cycle": "monthly"
+    },
+    "transactionSettings": {
+      "amount": 3.01,
+      "paymentBy": "grabPayCard",
+      "tag": "smallBill",
+      "type": "expense",
+      "currencyCode": "SGD",
+      "note": "New York Times Crossword Game monthly subscription, every 26th",
+      "categoryID": "12-03",
+      "merchantID": "cRLvNWui87ojkrohxsV7"
+    },
+    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "isActive": false
+  }
+]

@@ -1,0 +1,77 @@
+/* 
+  ja.strings
+  Why am I so poor
+
+  Created by Mu Yu on 6/25/22.
+  
+*/
+
+// MARK: - Generic
+"AppName" = "Why am I so poor";
+"Login" = "ログイン";
+"Logout" = "ログアウト";
+"General.Add" = "追加";
+"General.Edit" = "編集";
+"General.Save" = "Save";
+"General.Cancel" = "キャンセル";
+"General.PullToRefresh" = "Pull to refresh";
+"General.Search" = "Search";
+
+// MARK: - Main Tab Bar
+"MainTab.Home" = "ホーム";
+"MainTab.Budget" = "予算";
+"MainTab.Analysis" = "Analysis";
+"MainTab.Me" = "Me";
+
+// MARK: - Loading Screen
+"Loading.Title" = "Loading...";
+
+// MARK: - Language
+"Language.Title" = "言語";
+"Language.en" = "英語";
+"Language.ja" = "日本語";
+"Language.vi" = "ベトナム語";
+"Language.changeLanguage" = "言語を変更する";
+
+// MARK: - Home
+"Home.BalanceTitle" = "今月";
+"Home.AddTransaction" = "追加";
+"Home.Accounts" = "アカウント";
+"Home.Pocket" = "ポケット";
+
+// MARK: - Analysis
+"Analysis.TotalExpense" = "総支出";
+
+// MARK: - Pocket
+"Pocket.Title" = "ポケット";
+
+// MARK: - Transaction Detail
+"TransactionDetail.TransactionDetail" = "Transaction Detail";
+"TransactionDetail.AddTransaction" = "Add Transaction";
+"TransactionDetail.EditTransaction" = "Edit Transaction";
+"TransactionList.RecentTransactions" = "最近のご利用";
+"TransactionList.SeeAll" = "全てを見る";
+"TransactionDetail.Amount" = "Amount";
+"TransactionDetail.EnterAmount" = "Enter amount";
+"TransactionDetail.Date" = "Date";
+"TransactionDetail.Category" = "カテゴリー";
+"TransactionDetail.AddCategory" = "カテゴリーを追加";
+"TransactionDetail.Merchant" = "Merchant";
+"TransactionDetail.AddMerchant" = "Add merchant";
+"TransactionDetail.PaymentBy" = "Payment by";
+"TransactionDetail.AddPaymentMethod" = "Add payment method";
+"TransactionDetail.Tag" = "タグ";
+"TransactionDetail.AddTag" = "タグを追加";
+"TransactionDetail.IsRecurring" = "定期支払い";
+"TransactionDetail.Note" = "メッセージ";
+"TransactionDetail.AddNote" = "メモを追加";
+
+// MARK: - Budget
+"Budget.Title" = "予算";
+"Budget.ThisMonth" = "今月";
+"Budget.CategoryBudgets" = "カテゴリー別予算";
+"Budget.EditBudget" = "管理";
+"Budget.EditBudgetTitle" = "予算管理";
+"Budget.UpcomingPayments" = "次回の支払い";
+"Budget.Overspent" = "支出オーバー";
+"Budget.SafeToSpend" = "支出可能額";
