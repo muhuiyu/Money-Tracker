@@ -40,7 +40,7 @@ class TransactionDetailCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -96,7 +96,7 @@ extension TransactionDetailCell {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapValue))
         valueLabel.addGestureRecognizer(tapRecognizer)
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

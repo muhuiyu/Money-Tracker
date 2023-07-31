@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  Tonari
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/1/21.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit

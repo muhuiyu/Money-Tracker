@@ -13,6 +13,8 @@ class BudgetCoordinator: BaseCoordinator {
         case viewBudgetDetail(BudgetID)
         case viewPocket
         case viewRecurringTransactionDetail(RecurringTransactionID)
+        case viewTransactionDetail(TransactionID)
+        case selectFromOptionList(Transaction.EditableField, TransactionViewModel)
     }
 }
 
@@ -21,13 +23,31 @@ extension BudgetCoordinator {
     private func makeViewController(for destination: Destination) -> ViewController? {
         switch destination {
         case .editBudgets:
-            let viewController = EditBudgetViewController(appCoordinator: self.parentCoordinator,
-                                                          coordinator: self)
+            let viewController = EditBudgetListViewController(appCoordinator: self.parentCoordinator,
+                                                              coordinator: self,
+                                                              viewModel: EditBudgetListViewModel(appCoordinator: self.parentCoordinator))
             return viewController
         case .viewBudgetDetail(let id):
+            let viewModel = BudgetViewModel(appCoordinator: self.parentCoordinator)
+            let budget = parentCoordinator?.dataProvider.getBudget(id)
+            viewModel.budget.accept(budget)
             let viewController = BudgetDetailViewController(appCoordinator: self.parentCoordinator,
-                                                            coordinator: self)
-            viewController.viewModel.budgetID.accept(id)
+                                                            coordinator: self,
+                                                            viewModel: viewModel)
+            return viewController
+        case .viewTransactionDetail(let transactionID):
+            let viewModel = TransactionViewModel(appCoordinator: self.parentCoordinator)
+            let transaction = parentCoordinator?.dataProvider.getTransaction(for: transactionID)
+            viewModel.transaction.accept(transaction)
+            let viewController = EditTransactionViewController(appCoordinator: self.parentCoordinator,
+                                                               coordinator: self,
+                                                               viewModel: viewModel,
+                                                               mode: .edit)
+            return viewController
+        case .selectFromOptionList(let field, let transactionViewModel):
+            let viewController = TransactionFieldOptionListViewController(appCoordinator: self.parentCoordinator,
+                                                                          coordinator: self,
+                                                                          viewModel: transactionViewModel, field: field)
             return viewController
         case .viewPocket:
             let viewController = PocketViewController(appCoordinator: self.parentCoordinator,
@@ -41,15 +61,24 @@ extension BudgetCoordinator {
 }
 
 // MARK: - Navigation
-extension BudgetCoordinator {
-    // MARK: - Budget
-    func showEditBudget() {
+extension BudgetCoordinator: TransactionCoordinator {
+    func showEditBudgets() {
         guard let viewController = makeViewController(for: .editBudgets) else { return }
-        self.navigate(to: viewController, presentModally: false)
+        let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: true)
+        self.navigate(to: viewController, presentModally: true, options: options)
     }
     func showBudgetDetail(_ id: BudgetID) {
         guard let viewController = makeViewController(for: .viewBudgetDetail(id)) else { return }
         self.navigate(to: viewController, presentModally: false)
+    }
+    func showTransactionDetail(_ id: TransactionID) {
+        guard let viewController = makeViewController(for: .viewTransactionDetail(id)) else { return }
+        self.navigate(to: viewController, presentModally: false)
+    }
+    func showOptionList(at field: Transaction.EditableField, transactionViewModel: TransactionViewModel) {
+        guard let viewController = makeViewController(for: .selectFromOptionList(field, transactionViewModel)) else { return }
+        let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: true)
+        self.navigate(to: viewController, presentModally: true, options: options)
     }
     // MARK: - Pocket (scheduled transactions)
     func showPocket() {

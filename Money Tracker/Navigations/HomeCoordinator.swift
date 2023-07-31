@@ -32,20 +32,24 @@ extension HomeCoordinator {
             return TransactionListViewController(appCoordinator: self.parentCoordinator,
                                                  coordinator: self)
         case .viewMonthlyAnalysis:
-            let viewController = AnalysisViewController(appCoordinator: self.parentCoordinator,
-                                                        coordinator: self)
-            viewController.viewModel.monthAndYear = YearMonth(date: Date.today)
-            return viewController
+            return BaseViewController()
+//            let viewController = AnalysisViewController(appCoordinator: self.parentCoordinator,
+//                                                        coordinator: self)
+//            viewController.viewModel.monthAndYear = YearMonth(date: Date.today)
+//            return viewController
         case .viewMonthlyAnalysisCategoryDetail(let transactions):
             let viewController = AnalysisCategoryDetailViewController(appCoordinator: self.parentCoordinator,
                                                                       coordinator: self)
             viewController.transacitons = transactions
             return viewController
         case .viewTransactionDetail(let transactionID):
+            let viewModel = TransactionViewModel(appCoordinator: self.parentCoordinator)
+            let transaction = parentCoordinator?.dataProvider.getTransaction(for: transactionID)
+            viewModel.transaction.accept(transaction)
             let viewController = EditTransactionViewController(appCoordinator: self.parentCoordinator,
                                                                coordinator: self,
+                                                               viewModel: viewModel,
                                                                mode: .edit)
-//            viewController.viewModel.transactionID.accept(transactionID)
             return viewController
         case .selectFromOptionList(let field, let transactionViewModel):
             let viewController = TransactionFieldOptionListViewController(appCoordinator: self.parentCoordinator,
@@ -55,13 +59,13 @@ extension HomeCoordinator {
         case .addTransaction(let transaction):
             let viewController = EditTransactionViewController(appCoordinator: self.parentCoordinator,
                                                                coordinator: self,
+                                                               viewModel: TransactionViewModel(appCoordinator: self.parentCoordinator),
                                                                mode: .add)
-//            if var transaction = transaction {
-//                transaction.id = UUID()
-//                viewController.viewModel.transaction.accept(transaction)
-//            } else {
-//                viewController.viewModel.transaction.accept(Transaction())
-//            }
+            if var transaction = transaction {
+                viewController.viewModel.transaction.accept(transaction)
+            } else {
+                viewController.viewModel.transaction.accept(Transaction())
+            }
             return viewController
         case .viewPocket:
             let viewController = PocketViewController(appCoordinator: self.parentCoordinator,
@@ -76,7 +80,7 @@ extension HomeCoordinator {
 }
 
 // MARK: - Navigation
-extension HomeCoordinator {
+extension HomeCoordinator: TransactionCoordinator {
     func showNotifications() {
         guard let viewController = makeViewController(for: .viewNotifications) else { return }
         let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: false)

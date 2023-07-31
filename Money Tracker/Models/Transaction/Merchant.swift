@@ -1,8 +1,8 @@
 //
 //  Merchant.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/2/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit

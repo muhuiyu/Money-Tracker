@@ -8,21 +8,18 @@
 import UIKit
 import RxSwift
 
-class BudgetDetailViewController: BaseViewController {
-    private let disposeBag = DisposeBag()
-    
+class BudgetDetailViewController: Base.MVVMViewController<BudgetViewModel> {
+
     // MARK: - Views
     private let headerView = DetailHeaderView()
     private let tableView = UITableView()
-    
-    var viewModel = BudgetViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
 }
 // MARK: - View Config
@@ -44,25 +41,13 @@ extension BudgetDetailViewController {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
-        viewModel.displayRemainingAmountString
-            .asObservable()
-            .subscribe { value in
-                self.headerView.title = value
-            }
-            .disposed(by: disposeBag)
-
-        viewModel.displayCategoryString
-            .asObservable()
-            .subscribe { value in
-                self.headerView.firstSubtitle = value
-            }
-            .disposed(by: disposeBag)
+    private func configureBindings() {
+        guard let coordinator = coordinator as? BudgetCoordinator else { return }
         
-        viewModel.displayMonthlyAverageString
+        viewModel.displayTransactions
             .asObservable()
-            .subscribe { value in
-                self.headerView.secondSubtitle = value
+            .subscribe { [weak self] _ in
+                self?.configureData()
             }
             .disposed(by: disposeBag)
         
@@ -70,15 +55,19 @@ extension BudgetDetailViewController {
             .asObservable()
             .bind(to: tableView.rx.items(dataSource: viewModel.transactionDataSource))
             .disposed(by: disposeBag)
-        
+
         Observable
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Transaction.self))
             .subscribe { indexPath, item in
-                // TODO: - 
-                print("will do")
-//                self.homeCoordinator?.showTransactionDetail(item.id)
+                coordinator.showTransactionDetail(item.id)
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func configureData() {
+        headerView.title = viewModel.displayRemainingAmountString
+        headerView.firstSubtitle = viewModel.displayCategoryString
+        headerView.secondSubtitle = viewModel.displayMonthlyAverageString
     }
 }

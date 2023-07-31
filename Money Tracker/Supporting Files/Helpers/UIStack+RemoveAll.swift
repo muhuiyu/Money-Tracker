@@ -1,8 +1,8 @@
 //
 //  UIStack+RemoveAll.swift
-//  Session Prototype
+//  Money Tracker
 //
-//  Created by Mu Yu on 6/3/21.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit

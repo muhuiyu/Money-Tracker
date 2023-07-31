@@ -49,7 +49,9 @@ extension MonthControlHeaderView {
     private func configureViews() {
         addSubview(previousButton)
         addSubview(nextButton)
-        monthLabel.text = yearMonth.value.getMonthString()
+        monthLabel.text = yearMonth.value.getMonthString().uppercased()
+        monthLabel.font = .bodyHeavy
+        monthLabel.textAlignment = .center
         addSubview(monthLabel)
     }
     private func configureConstraints() {
@@ -70,7 +72,7 @@ extension MonthControlHeaderView {
         yearMonth
             .asObservable()
             .subscribe { [weak self] value in
-                self?.monthLabel.text = value.getMonthString()
+                self?.monthLabel.text = value.getMonthString().uppercased()
             }
             .disposed(by: disposeBag)
     }

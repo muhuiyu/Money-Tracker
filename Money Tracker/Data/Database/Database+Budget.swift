@@ -1,59 +1,38 @@
 //
 //  Database+Budget.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/2/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 import UIKit
 
 // MARK: - Fetch budgets
-//extension Database {
-//    func getBudget(_ id: BudgetID) -> Budget? {
-//        return cachedBudgets[id]
-//    }
-//    /// Returns budgets
-//    func getBudgetList(shouldPull: Bool = false,
-//                       completion: @escaping(Result<BudgetList, Error>) -> Void) {
-//        if shouldPull {
-//            fetchBudgets { result in
-//                switch result {
-//                case .success:
-//                    return completion(.success(Array(self.cachedBudgets.values)))
-//                case .failure(let error):
-//                    return completion(.failure(error))
-//                }
-//            }
-//        } else {
-//            return completion(.success(Array(cachedBudgets.values)))
-//        }
-//    }
-//}
-//// MARK: - Private functions
-//extension Database {
-//    /// Fetch recurring transactions
-//    private func fetchBudgets(completion: @escaping(VoidResult) -> Void) {
-//
-//        budgetRef.getDocuments { snapshot, error in
-//            if let error = error {
-//                return completion(.failure(error))
-//            }
-//            guard let snapshot = snapshot else {
-//                return completion(.failure(FirebaseError.snapshotMissing))
-//            }
-//            let entries: [Budget] = snapshot
-//                .documentChanges
-//                .filter { $0.type == .added }
-//                .compactMap { try? Budget(snapshot: $0.document) }
-//
-//            self.updateCachedBudgets(entries)
-//            return completion(.success)
-//        }
-//    }
-//    private func updateCachedBudgets(_ newData: [Budget]) {
-//        cachedBudgets.removeAll()
-//        for entry in newData {
-//            cachedBudgets[entry.id] = entry
-//        }
-//    }
-//}
+extension Database {
+    /// Returns all budgets
+    func getAllBudgets() -> [Budget] {
+        let budgets = realm.objects(BudgetObject.self)
+            .map { Budget(managedObject: $0) }
+        return Array(budgets)
+    }
+    
+    /// Returns budget of given id
+    func getBudget(_ id: BudgetID) -> Budget? {
+        return realm.objects(BudgetObject.self)
+            .first(where: { $0.id == id })
+            .map { Budget(managedObject: $0) }
+    }
+    
+    func updateData(of budgets: [Budget], completion: @escaping (VoidResult) -> Void) {
+        do {
+            try realm.write({
+                budgets.forEach { budget in
+                    realm.add(budget.managedObject(), update: .modified)
+                }
+            })
+            completion(.success)
+        } catch {
+            completion(.failure(error))
+        }
+    }
+}

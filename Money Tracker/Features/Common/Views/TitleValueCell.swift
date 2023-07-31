@@ -9,7 +9,8 @@ import UIKit
 import RxSwift
 
 /// UITableViewCell with title and value
-open class TitleValueCell: UITableViewCell {
+open class TitleValueCell: UITableViewCell, BaseCell {
+    static var reuseID: String = NSStringFromClass(TitleValueCell.self)
     internal let disposeBag = DisposeBag()
     
     internal let titleLabel = UILabel()
@@ -30,7 +31,7 @@ open class TitleValueCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     
     required public init?(coder: NSCoder) {
@@ -64,7 +65,7 @@ open class TitleValueCell: UITableViewCell {
     internal func configureGestures() {
         
     }
-    internal func configureSignals() {
+    internal func configureBindings() {
         
     }
 }

@@ -38,7 +38,7 @@ class TransactionDateCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -80,7 +80,7 @@ extension TransactionDateCell {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

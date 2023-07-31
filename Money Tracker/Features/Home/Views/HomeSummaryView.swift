@@ -45,16 +45,16 @@ extension HomeSummaryView {
         addSubview(stackView)
         
         stackView.addArrangedSubview(incomeStack)
-        leftSeparator.backgroundColor = .gray
+        leftSeparator.backgroundColor = .systemGray
         stackView.addArrangedSubview(leftSeparator)
         stackView.addArrangedSubview(expenseStack)
-        rightSeparator.backgroundColor = .gray
+        rightSeparator.backgroundColor = .systemGray
         stackView.addArrangedSubview(rightSeparator)
         stackView.addArrangedSubview(balanceStack)
         
-        topSeparator.backgroundColor = .gray
+        topSeparator.backgroundColor = .systemGray
         addSubview(topSeparator)
-        bottomSeparator.backgroundColor = .gray
+        bottomSeparator.backgroundColor = .systemGray
         addSubview(bottomSeparator)
     }
     private func configureConstraints() {
@@ -70,23 +70,12 @@ extension HomeSummaryView {
         }
         incomeStack.snp.remakeConstraints { make in
             make.width.equalTo(100)
-//            make.top.equalTo(topSeparator.snp.bottom)
-//            make.leading.equalToSuperview()
-//            make.bottom.equalTo(bottomSeparator.snp.top)
-//            make.trailing.equalTo(leftSeparator.snp.leading)
         }
         expenseStack.snp.remakeConstraints { make in
             make.width.equalTo(100)
-//            make.top.bottom.equalToSuperview()
-//            make.centerX.equalToSuperview()
-//            make.leading.equalTo(leftSeparator.snp.trailing)
-//            make.trailing.equalTo(rightSeparator.snp.leading)
         }
         balanceStack.snp.remakeConstraints { make in
             make.width.equalTo(100)
-//            make.trailing.equalToSuperview()
-//            make.top.bottom.equalToSuperview()
-//            make.leading.equalTo(rightSeparator.snp.trailing)
         }
         bottomSeparator.snp.remakeConstraints { make in
             make.bottom.equalToSuperview()
@@ -137,8 +126,8 @@ class HomeSummaryStackView: UIView {
         
         var color: UIColor {
             switch self {
-            case .income: return .green
-            case .expense: return .red
+            case .income: return .systemGreen
+            case .expense: return .systemRed
             case .balance: return .black
             }
         }
@@ -152,8 +141,7 @@ class HomeSummaryStackView: UIView {
     
     var value: Double? {
         didSet {
-            // TODO: - Change to decimal format
-            valueLabel.text = "$" + (value?.toStringTwoDigits() ?? "")
+            valueLabel.text = value?.toCurrencyString() ?? ""
         }
     }
     
@@ -161,22 +149,24 @@ class HomeSummaryStackView: UIView {
         self.type = type
         super.init(frame: .zero)
         
+        titleLabel.textColor = .secondaryLabel
         titleLabel.textAlignment = .center
         titleLabel.text = type.rawValue
         titleLabel.font = .small
         addSubview(titleLabel)
         valueLabel.textAlignment = .center
         valueLabel.textColor = type.color
+        valueLabel.font = .smallBold
         addSubview(valueLabel)
         
         titleLabel.snp.remakeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(Constants.Spacing.slight)
             make.centerX.equalToSuperview()
             make.leading.trailing.lessThanOrEqualToSuperview()
         }
         valueLabel.snp.remakeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(Constants.Spacing.small)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(Constants.Spacing.slight)
+            make.bottom.equalToSuperview().inset(Constants.Spacing.slight)
             make.centerX.equalToSuperview()
             make.leading.trailing.lessThanOrEqualToSuperview()
         }

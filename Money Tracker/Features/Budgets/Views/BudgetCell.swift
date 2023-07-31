@@ -11,43 +11,35 @@ import RxSwift
 
 class BudgetCell: DoubleTitlesValuesCell, BaseCell {
     static let reuseID: String = NSStringFromClass(BudgetCell.self)
-    var viewModel = BudgetViewModel()
+    private var viewModel: BudgetViewModel
     
-    override func configureSignals() {
-        viewModel.displayIcon
+    init(appCoordinator: AppCoordinator? = nil, budget: Budget) {
+        viewModel = BudgetViewModel(appCoordinator: appCoordinator)
+        super.init(style: .default, reuseIdentifier: nil)
+        viewModel.budget.accept(budget)
+        configureBindings()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configureBindings() {
+        viewModel.displayTransactions
             .asObservable()
-            .subscribe { image in
-                self.iconView.image = image
+            .subscribe { [weak self] _ in
+                self?.configureData()
             }
             .disposed(by: disposeBag)
-        
-        viewModel.displayCategoryString
-            .asObservable()
-            .subscribe { value in
-                self.titleLabel.text = value
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.displayDailyAmountString
-            .asObservable()
-            .subscribe(onNext: { value in
-                self.subtitleLabel.text = value
-                self.subtitleLabel.textColor = self.viewModel.isOverSpent ? .red : .secondaryLabel
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.displayRemainingAmountString
-            .asObservable()
-            .subscribe { value in
-                self.valueLabel.text = value
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.displayTotalAmountString
-            .asObservable()
-            .subscribe { value in
-                self.subvalueLabel.text = value
-            }
-            .disposed(by: disposeBag)
+    }
+    
+    
+    private func configureData() {
+        iconView.image = viewModel.displayIcon
+        titleLabel.text = viewModel.displayCategoryString
+        subtitleLabel.textColor = viewModel.getStatus() == .over ? .red : .secondaryLabel
+        subtitleLabel.text = viewModel.displayDailyAmountString
+        valueLabel.text = viewModel.displayRemainingAmountString
+        subvalueLabel.text = viewModel.displayTotalAmountString
     }
 }

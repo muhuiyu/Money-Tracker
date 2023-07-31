@@ -26,7 +26,7 @@ class TransactionListViewModel: BaseViewModel {
 //
 //    override init() {
 //        super.init()
-//        configureSignals()
+//        configureBindings()
 //    }
 }
 // MARK: - Setup
@@ -77,7 +77,7 @@ class TransactionListViewModel: BaseViewModel {
 //            }
 //        }
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        self.transactions
 //            .asObservable()
 //            .subscribe { _ in

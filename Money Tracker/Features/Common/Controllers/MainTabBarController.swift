@@ -46,14 +46,14 @@ extension MainTabBarController {
 
 enum TabBarCategory: Int, CaseIterable {
     case home = 0
-//    case analysis
+    case analysis
     case budget
     case me
     
     var title: String {
         switch self {
         case .home: return Localized.MainTab.home
-//        case .analysis: return Localized.MainTab.analysis
+        case .analysis: return Localized.MainTab.analysis
         case .budget: return Localized.MainTab.budget
         case .me: return Localized.MainTab.me
         }
@@ -61,6 +61,7 @@ enum TabBarCategory: Int, CaseIterable {
     var inactiveImageValue: UIImage? {
         switch self {
         case .home: return UIImage(systemName: Icons.dollarsignCircle)
+        case .analysis: return UIImage(systemName: Icons.chartBar)
         case .budget: return UIImage(systemName: Icons.plusminus)
         case .me: return UIImage(systemName: Icons.person)
         }
@@ -68,6 +69,7 @@ enum TabBarCategory: Int, CaseIterable {
     var activeImageValue: UIImage? {
         switch self {
         case .home: return UIImage(systemName: Icons.dollarsignCircleFill)
+        case .analysis: return UIImage(systemName: Icons.chartBarFill)
         case .budget: return UIImage(systemName: Icons.plusminusFill)
         case .me: return UIImage(systemName: Icons.personFill)
         }
@@ -78,6 +80,8 @@ enum TabBarCategory: Int, CaseIterable {
         switch self {
         case .home:
             viewController = HomeViewController(viewModel: HomeViewModel(appCoordinator: appCoordinator))
+        case .analysis:
+            viewController = AnalysisViewController(viewModel: AnalysisViewModel(appCoordinator: appCoordinator))
         case .budget:
             viewController = BudgetListViewController(viewModel: BudgetListViewModel(appCoordinator: appCoordinator))
         case .me:

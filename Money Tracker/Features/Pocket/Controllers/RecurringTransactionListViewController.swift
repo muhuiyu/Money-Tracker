@@ -42,7 +42,7 @@ class RecurringTransactionListViewController: BaseViewController {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +75,7 @@ extension RecurringTransactionListViewController {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

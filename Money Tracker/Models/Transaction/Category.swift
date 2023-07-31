@@ -1,8 +1,8 @@
 //
 //  Category.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 7/3/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation
@@ -45,7 +45,7 @@ extension Category {
     static func getAllCategoryIDs() -> [CategoryID] {
         return Array(all.keys)
     }
-    static func getAllCategoryIDs(under mainCategoryID: CategoryID) -> [CategoryID] {
+    static func getAllCategoryIDs(under mainCategoryID: MainCategoryID) -> [CategoryID] {
         return Array(all.filter { $0.value.mainCategoryID == mainCategoryID }.keys)
     }
 }

@@ -1,8 +1,8 @@
 //
 //  PaymentMethod.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 12/29/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation

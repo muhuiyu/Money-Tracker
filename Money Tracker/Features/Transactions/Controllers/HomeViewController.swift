@@ -78,6 +78,8 @@ extension HomeViewController {
                             target: self,
                             action: #selector(didTapOnNotification(_ :)))
         ]
+        
+        view.backgroundColor = .systemBackground
 
         monthControlView.previousButtonTapHandler = { [weak self] in
             if let previousMonth = self?.viewModel.currentYearMonth.value.previousMonth {
@@ -147,8 +149,7 @@ extension HomeViewController {
         Observable
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Transaction.self))
             .subscribe { indexPath, item in
-                print("did select", indexPath)
-                 coordinator.showTransactionDetail(item.id)
+                coordinator.showTransactionDetail(item.id)
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }
             .disposed(by: disposeBag)

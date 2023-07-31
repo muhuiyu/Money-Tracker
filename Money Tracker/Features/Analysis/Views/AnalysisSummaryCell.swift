@@ -20,7 +20,7 @@ class AnalysisSummaryCell: UICollectionViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -52,7 +52,7 @@ extension AnalysisSummaryCell {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

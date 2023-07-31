@@ -25,7 +25,7 @@ class RecurringTransactionCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,7 +77,7 @@ extension RecurringTransactionCell {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         viewModel.displayIcon
             .asObservable()
             .subscribe { image in

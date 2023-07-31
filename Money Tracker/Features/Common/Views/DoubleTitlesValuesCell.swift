@@ -25,7 +25,7 @@ open class DoubleTitlesValuesCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     
     required public init?(coder: NSCoder) {
@@ -87,7 +87,7 @@ open class DoubleTitlesValuesCell: UITableViewCell {
     internal func configureGestures() {
         
     }
-    internal func configureSignals() {
+    internal func configureBindings() {
         
     }
 }

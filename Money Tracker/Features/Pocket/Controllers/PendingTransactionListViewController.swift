@@ -21,7 +21,7 @@ class PendingTransactionListViewController: BaseViewController {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +44,7 @@ extension PendingTransactionListViewController {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

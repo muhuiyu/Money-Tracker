@@ -20,30 +20,28 @@ class TransactionCellViewModel {
     
     // MARK: - Reactive properties
     var transaction: BehaviorRelay<Transaction?> = BehaviorRelay(value: nil)
-    var displayIcon: BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
-    var displayMerchantString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayCategoryString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayDateString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
+    
+    var displayIcon: UIImage? {
+        return transaction.value?.icon
+    }
+    var displayMerchantString: String? {
+        if let merchantID = transaction.value?.merchantID, let merchantName = merchantList[merchantID]?.value {
+            return merchantName
+        }
+        return nil
+    }
+    var displayCategoryString: String? {
+        if let categoryID = transaction.value?.categoryID, let categoryName = Category.getCategoryName(of: categoryID) {
+            return categoryName
+        }
+        return nil
+    }
+    var displayDateString: String? {
+        return transaction.value?.dateStringInLocalDateFormat
+    }
+    var displayAmountString: String? {
+        return transaction.value?.signedAmount.toCurrencyString(for: transaction.value?.currencyCode ?? "SGD")
+    }
     
     var merchantList: [MerchantID: Merchant] = [:]
-    
-    init() {
-        transaction
-            .asObservable()
-            .subscribe(onNext: { value in
-                if let value = value {
-                    self.displayIcon.accept(value.icon)
-                    self.displayDateString.accept(value.dateStringInLocalDateFormat)
-                    if let merchantName = self.merchantList[value.merchantID]?.value {
-                        self.displayMerchantString.accept(merchantName)
-                    }
-                    if let categoryName = Category.getCategoryName(of: value.categoryID) {
-                        self.displayCategoryString.accept(categoryName)
-                    }
-                    self.displayAmountString.accept(value.signedAmount.toCurrencyString(for: value.currencyCode))
-                }
-            })
-            .disposed(by: disposeBag)
-    }
 }

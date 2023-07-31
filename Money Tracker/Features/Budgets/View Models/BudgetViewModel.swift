@@ -13,82 +13,114 @@ class BudgetViewModel: BaseViewModel {
     lazy var transactionDataSource = TransactionDataSource.dataSource(appCoordinator)
     
     // MARK: - Reactive properties
-    var budgetID: BehaviorRelay<BudgetID> = BehaviorRelay(value: "")
-    private var budget: BehaviorRelay<Budget?> = BehaviorRelay(value: nil)
-    
+    let budget: BehaviorRelay<Budget?> = BehaviorRelay(value: nil)
+
     // MARK: - For BudgetDetailViewController
-    var displayTransactions: BehaviorRelay<[TransactionSection]> = BehaviorRelay(value: [])
-    
-    // MARK: - For BudgetCell
-    var displayIcon: BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
-    var displayCategoryString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayNumberOfTransactionsString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayDailyAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayMonthlyAverageString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayRemainingAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayUsedPercentageString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayTotalAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayTotalAmountDouble: BehaviorRelay<Double> = BehaviorRelay(value: 0)
+    private var transactions: [Transaction] = []
+    private(set) var displayTransactions: BehaviorRelay<[TransactionSection]> = BehaviorRelay(value: [])
     
     override init(appCoordinator: AppCoordinator? = nil) {
         super.init(appCoordinator: appCoordinator)
-        configureSignals()
+        configureBindings()
     }
 }
 extension BudgetViewModel {
-    var isOverSpent: Bool {
-        guard let budget = budget.value else { return false }
-        return budget.remainingAmount < 0
-    }
-}
-extension BudgetViewModel {
-    private func configureSignals() {
-        self.budgetID
-            .asObservable()
-            .subscribe(onNext: { value in
-//                if let data = Database.shared.getBudget(value) {
-//                    self.budget.accept(data)
-//                }
-            })
-            .disposed(by: disposeBag)
-        
-        self.budget
-            .asObservable()
-            .subscribe(onNext: { value in
-                if let value = value {
-                    self.displayIcon.accept(value.icon)
-                    self.displayMonthlyAverageString.accept("Monthly average: \(value.monthlyAverageExpense.toCurrencyString())")
-                    self.displayTotalAmountString.accept("of \(value.amount.toCurrencyString())")
-                    self.displayTotalAmountDouble.accept(value.amount)
-                    
-                    if value.remainingAmount < 0 {
-                        self.displayDailyAmountString.accept("\((-value.remainingAmount).toCurrencyString()) \(Localized.Budget.overspent)")
-                        let zeroLeft: Double = 0
-                        self.displayRemainingAmountString.accept("\(zeroLeft.toCurrencyString()) left")
-                    } else {
-                        let remainingDailyAmount: Double = value.remainingAmount / Double(Date.today.numberOfDaysRemainingToEndOfMonth)
-                        self.displayDailyAmountString.accept("\(remainingDailyAmount.toCurrencyString()) / day")
-                        self.displayRemainingAmountString.accept("\(value.remainingAmount.toCurrencyString()) left")
-                    }
-                    
-                    if let mainCategoryName = MainCategory.getName(of: value.mainCategoryID)?.capitalizingFirstLetter() {
-                        self.displayCategoryString.accept(mainCategoryName)
-                    }
-                    self.displayUsedPercentageString.accept(value.usedPercentageString)
-                    self.updateTransactionCells()
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        
-    }
-    private func updateTransactionCells() {
-        guard let budget = budget.value else { return }
-        budget.getExpenses { transactions in
-            let sections: [TransactionSection] = transactions.groupedByDay()
-                .map { TransactionSection(header: $0, items: $1) }
-                .sortedByDate()
-            self.displayTransactions.accept(sections)
+    func getStatus() -> BudgetState {
+        if remainingAmount > 0 {
+            return .under
+        } else if remainingAmount == 0 {
+            return .budget
+        } else {
+            return .over
         }
+    }
+    
+    // MARK: - For BudgetCell
+    var displayIcon: UIImage? { return budget.value?.icon }
+    var displayCategoryString: String? {
+        guard let mainCategoryID = budget.value?.mainCategoryID else {
+            return nil
+        }
+        return MainCategory.getName(of: mainCategoryID)?.capitalizingFirstLetter()
+    }
+    var displayNumberOfTransactionsString: String? {
+        return nil
+    }
+    var displayDailyAmountString: String? {
+        if remainingAmount < 0 {
+            return "\((-remainingAmount).toCurrencyString()) \(Localized.Budget.overspent)"
+        } else {
+            let remainingDailyAmount: Double = remainingAmount / Double(Date.today.numberOfDaysRemainingToEndOfMonth)
+            return "\(remainingDailyAmount.toCurrencyString()) / day"
+        }
+    }
+    var displayMonthlyAverageString: String? {
+        return "Monthly average: " + getMonthlyAverageExpense().toCurrencyString()
+    }
+    var displayRemainingAmountString: String {
+        if remainingAmount < 0 {
+            let zeroLeft: Double = 0
+            return "\(zeroLeft.toCurrencyString()) left"
+        } else {
+            return "\(remainingAmount.toCurrencyString()) left"
+        }
+    }
+    var displayUsedPercentageString: String? {
+        let usedPercentage = (1 - (remainingAmount / (budget.value?.amount ?? 1))) * 100
+        return "\(String(usedPercentage.rounded()))%"
+    }
+    var displayTotalAmountString: String? {
+        return "of " + (budget.value?.amount.toCurrencyString() ?? "")
+    }
+    var displayTotalAmountDouble: Double {
+        return budget.value?.amount ?? 0
+    }
+    
+    private var remainingAmount: Double {
+        return (budget.value?.amount ?? 0) - totalExpenseAmount
+    }
+    
+    private var totalExpenseAmount: Double {
+        return transactions.reduce(into: 0, { $0 += $1.amount })
+    }
+    
+    func updateAmount(to value: Double) {
+        guard var budgetData = budget.value else { return }
+        budgetData.amount = value
+        print("new value", value)
+        budget.accept(budgetData)
+    }
+}
+extension BudgetViewModel {
+    private func configureBindings() {
+        budget
+            .asObservable()
+            .subscribe { [weak self] _ in
+                self?.getMonthlyTransactions()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func getMonthlyTransactions() {
+        guard let dataProvider = appCoordinator?.dataProvider, let mainCategoryID = budget.value?.mainCategoryID else {
+            return
+        }
+        transactions = dataProvider.getMonthlyTransactions(year: Date.today.year,
+                                                           month: Date.today.month,
+                                                           of: mainCategoryID,
+                                                           calculateExpenseOnly: true,
+                                                           shouldIncludePending: false)
+        
+        // Update transactionCells
+        let sections: [TransactionSection] = transactions.groupedByDay()
+            .map { TransactionSection(header: $0, items: $1) }
+            .sortedByDate()
+        displayTransactions.accept(sections)
+    }
+    
+    
+    private func getMonthlyAverageExpense() -> Double {
+        guard let dataProvider = appCoordinator?.dataProvider else { return 0 }
+        return dataProvider.getMonthlyAverageExpense(of: budget.value?.mainCategoryID)
     }
 }

@@ -30,10 +30,10 @@ extension Double {
             stringPrefix = "\(symbol)"
             amount = self
         }
-        return shouldRoundOffToInt ? stringPrefix + String(Int(amount)) : stringPrefix + String(amount.roundedToTwoDigits())
+        return shouldRoundOffToInt ? stringPrefix + String(Int(amount)) : stringPrefix + amount.toStringTwoDigits()
     }
     func toStringTwoDigits() -> String {
-        return self.formatted(.number)
+        return String(self.roundedToTwoDigits())
     }
 }
 

@@ -26,7 +26,7 @@ class PocketViewController: BaseViewController {
 //        configureViews()
 //        configureConstraints()
 //        configureGestures()
-//        configureSignals()
+//        configureBindings()
 //
 //        transactionListViewModel.reloadTransactions(reloadOption, shouldPull: true)
 //        pocketViewModel.reloadRecurringTransactions(shouldPull: true)
@@ -86,7 +86,7 @@ class PocketViewController: BaseViewController {
 //    private func configureGestures() {
 //
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        guard let coordinator = coordinator as? HomeCoordinator else { return }
 //
 //        transactionListViewModel.displayTransactions

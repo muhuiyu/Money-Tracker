@@ -2,7 +2,7 @@
 //  AppCoordinator.swift
 //  Money Tracker
 //
-//  Created by Grace, Mu-Hui Yu on 7/30/23.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit
@@ -27,7 +27,7 @@ class AppCoordinator: Coordinator {
 
 
     func start() {
-        configureSignals()
+        configureBindings()
         showLoadingScreen()
         configureCoordinators()
         setupMainTabBar()
@@ -36,7 +36,7 @@ class AppCoordinator: Coordinator {
         window.makeKeyAndVisible()
     }
     
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 

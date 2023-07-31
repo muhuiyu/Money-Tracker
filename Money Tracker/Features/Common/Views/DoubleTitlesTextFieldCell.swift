@@ -25,7 +25,7 @@ open class DoubleTitlesTextFieldCell: UITableViewCell {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     
     required public init?(coder: NSCoder) {
@@ -83,11 +83,14 @@ open class DoubleTitlesTextFieldCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalTo(stackView.snp.trailing)
         }
+        textField.snp.remakeConstraints { make in
+            make.width.greaterThanOrEqualTo(100)
+        }
     }
     internal func configureGestures() {
         
     }
-    internal func configureSignals() {
+    internal func configureBindings() {
         
     }
 }

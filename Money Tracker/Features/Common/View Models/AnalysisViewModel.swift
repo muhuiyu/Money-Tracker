@@ -26,7 +26,7 @@ class AnalysisViewModel: BaseViewModel {
         }
     }
 //    init() {
-//        configureSignals()
+//        configureBindings()
 //    }
 }
 
@@ -93,7 +93,7 @@ class AnalysisViewModel: BaseViewModel {
 //}
 //
 //extension AnalysisViewModel {
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        self.expenses
 //            .asObservable()
 //            .subscribe { _ in

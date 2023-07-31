@@ -138,7 +138,7 @@
 		E42287422A764A3D00E9CD5E /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B12A764A3D00E9CD5E /* Budget.swift */; };
 		E42287432A764A3D00E9CD5E /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B32A764A3D00E9CD5E /* BudgetDetailViewController.swift */; };
 		E42287442A764A3D00E9CD5E /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B42A764A3D00E9CD5E /* BudgetListViewController.swift */; };
-		E42287452A764A3D00E9CD5E /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B52A764A3D00E9CD5E /* EditBudgetViewController.swift */; };
+		E42287452A764A3D00E9CD5E /* EditBudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B52A764A3D00E9CD5E /* EditBudgetListViewController.swift */; };
 		E42287462A764A3D00E9CD5E /* BudgetEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B72A764A3D00E9CD5E /* BudgetEditCell.swift */; };
 		E42287472A764A3D00E9CD5E /* BudgetStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B82A764A3D00E9CD5E /* BudgetStatusCell.swift */; };
 		E42287482A764A3D00E9CD5E /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B92A764A3D00E9CD5E /* BudgetCell.swift */; };
@@ -163,7 +163,6 @@
 		E42287862A76A9C800E9CD5E /* YearMonthDayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */; };
 		E422878B2A76A9C800E9CD5E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422877B2A76A9C800E9CD5E /* Database.swift */; };
 		E422878E2A76AA0400E9CD5E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E422878D2A76AA0400E9CD5E /* Lottie */; };
-		E42287912A76AA7900E9CD5E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287902A76AA7900E9CD5E /* DataProvider.swift */; };
 		E42287942A76AA8400E9CD5E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287932A76AA8400E9CD5E /* loading.json */; };
 		E422879C2A76AEC100E9CD5E /* accounts_output.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287962A76AEC000E9CD5E /* accounts_output.json */; };
 		E422879D2A76AEC100E9CD5E /* budgets_output.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287972A76AEC000E9CD5E /* budgets_output.json */; };
@@ -177,6 +176,11 @@
 		E42287AE2A77445A00E9CD5E /* HomeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */; };
 		E42287B02A77542900E9CD5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287AF2A77542900E9CD5E /* User.swift */; };
 		E42287B22A776A8D00E9CD5E /* MerchantObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B12A776A8D00E9CD5E /* MerchantObject.swift */; };
+		E42287B42A7777D600E9CD5E /* BudgetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B32A7777D600E9CD5E /* BudgetObject.swift */; };
+		E42287B62A77794800E9CD5E /* BudgetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B52A77794800E9CD5E /* BudgetState.swift */; };
+		E42287B82A777B5D00E9CD5E /* Database+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B72A777B5D00E9CD5E /* Database+Migration.swift */; };
+		E42287BA2A77C1B200E9CD5E /* TransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */; };
+		E42287BE2A77D23C00E9CD5E /* EditBudgetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */; };
 		E4A002F92A764963008B2D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002F82A764963008B2D1E /* AppDelegate.swift */; };
 		E4A002FB2A764963008B2D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002FA2A764963008B2D1E /* SceneDelegate.swift */; };
 		E4A003022A764964008B2D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A003012A764964008B2D1E /* Assets.xcassets */; };
@@ -315,7 +319,7 @@
 		E42286B12A764A3D00E9CD5E /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		E42286B32A764A3D00E9CD5E /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		E42286B42A764A3D00E9CD5E /* BudgetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
-		E42286B52A764A3D00E9CD5E /* EditBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
+		E42286B52A764A3D00E9CD5E /* EditBudgetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBudgetListViewController.swift; sourceTree = "<group>"; };
 		E42286B72A764A3D00E9CD5E /* BudgetEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetEditCell.swift; sourceTree = "<group>"; };
 		E42286B82A764A3D00E9CD5E /* BudgetStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetStatusCell.swift; sourceTree = "<group>"; };
 		E42286B92A764A3D00E9CD5E /* BudgetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -329,7 +333,6 @@
 		E42287732A76A9C800E9CD5E /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearMonthDayObject.swift; sourceTree = "<group>"; };
 		E422877B2A76A9C800E9CD5E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		E42287902A76AA7900E9CD5E /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		E42287932A76AA8400E9CD5E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		E42287962A76AEC000E9CD5E /* accounts_output.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = accounts_output.json; sourceTree = "<group>"; };
 		E42287972A76AEC000E9CD5E /* budgets_output.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = budgets_output.json; sourceTree = "<group>"; };
@@ -344,6 +347,11 @@
 		E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryView.swift; sourceTree = "<group>"; };
 		E42287AF2A77542900E9CD5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E42287B12A776A8D00E9CD5E /* MerchantObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantObject.swift; sourceTree = "<group>"; };
+		E42287B32A7777D600E9CD5E /* BudgetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetObject.swift; sourceTree = "<group>"; };
+		E42287B52A77794800E9CD5E /* BudgetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetState.swift; sourceTree = "<group>"; };
+		E42287B72A777B5D00E9CD5E /* Database+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Migration.swift"; sourceTree = "<group>"; };
+		E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCoordinator.swift; sourceTree = "<group>"; };
+		E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetListViewModel.swift; sourceTree = "<group>"; };
 		E4A002F52A764963008B2D1E /* Money Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A002F82A764963008B2D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A002FA2A764963008B2D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -472,6 +480,7 @@
 				E422862C2A764A3C00E9CD5E /* HomeCoordinator.swift */,
 				E422862D2A764A3C00E9CD5E /* BaseCoordinator.swift */,
 				E422862E2A764A3C00E9CD5E /* Coordinator.swift */,
+				E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */,
 			);
 			path = Navigations;
 			sourceTree = "<group>";
@@ -784,6 +793,7 @@
 			children = (
 				E42286AA2A764A3D00E9CD5E /* BudgetViewModel.swift */,
 				E42286AB2A764A3D00E9CD5E /* BudgetListViewModel.swift */,
+				E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -802,6 +812,7 @@
 			children = (
 				E42286B02A764A3D00E9CD5E /* BudgetList.swift */,
 				E42286B12A764A3D00E9CD5E /* Budget.swift */,
+				E42287B52A77794800E9CD5E /* BudgetState.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -811,7 +822,7 @@
 			children = (
 				E42286B32A764A3D00E9CD5E /* BudgetDetailViewController.swift */,
 				E42286B42A764A3D00E9CD5E /* BudgetListViewController.swift */,
-				E42286B52A764A3D00E9CD5E /* EditBudgetViewController.swift */,
+				E42286B52A764A3D00E9CD5E /* EditBudgetListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -835,6 +846,7 @@
 				E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */,
 				E42287A62A76B80900E9CD5E /* AccountObject.swift */,
 				E42287B12A776A8D00E9CD5E /* MerchantObject.swift */,
+				E42287B32A7777D600E9CD5E /* BudgetObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -846,7 +858,6 @@
 				E42287952A76AE9B00E9CD5E /* Mock */,
 				E422876D2A76A9C800E9CD5E /* Objects */,
 				E422876B2A76A9C800E9CD5E /* PersistableProtocol.swift */,
-				E42287902A76AA7900E9CD5E /* DataProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -899,6 +910,7 @@
 				E42286BE2A764A3D00E9CD5E /* Database+Account.swift */,
 				E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */,
 				E42286C12A764A3D00E9CD5E /* Database+Currency.swift */,
+				E42287B72A777B5D00E9CD5E /* Database+Migration.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1050,6 +1062,7 @@
 				E42286E62A764A3D00E9CD5E /* ProgressBarView.swift in Sources */,
 				E422873C2A764A3D00E9CD5E /* MeViewController.swift in Sources */,
 				E42286E92A764A3D00E9CD5E /* UserManager.swift in Sources */,
+				E42287BA2A77C1B200E9CD5E /* TransactionCoordinator.swift in Sources */,
 				E4A002F92A764963008B2D1E /* AppDelegate.swift in Sources */,
 				E42286F42A764A3D00E9CD5E /* Text.swift in Sources */,
 				E42287042A764A3D00E9CD5E /* TimeInterval+Extensions.swift in Sources */,
@@ -1096,6 +1109,8 @@
 				E422872D2A764A3D00E9CD5E /* HomeViewController.swift in Sources */,
 				E42287062A764A3D00E9CD5E /* Date+Extensions.swift in Sources */,
 				E42287432A764A3D00E9CD5E /* BudgetDetailViewController.swift in Sources */,
+				E42287B42A7777D600E9CD5E /* BudgetObject.swift in Sources */,
+				E42287B62A77794800E9CD5E /* BudgetState.swift in Sources */,
 				E42286D22A764A3D00E9CD5E /* DoubleTitlesTextFieldCell.swift in Sources */,
 				E422870B2A764A3D00E9CD5E /* EditRecurringTransactionViewController.swift in Sources */,
 				E42287012A764A3D00E9CD5E /* Calendar+Extensions.swift in Sources */,
@@ -1110,20 +1125,21 @@
 				E422871D2A764A3D00E9CD5E /* TransactionListViewModel.swift in Sources */,
 				E42287092A764A3D00E9CD5E /* RecurringTransactionCellViewModel.swift in Sources */,
 				E42287222A764A3D00E9CD5E /* TransactionSettings.swift in Sources */,
+				E42287BE2A77D23C00E9CD5E /* EditBudgetListViewModel.swift in Sources */,
 				E422873B2A764A3D00E9CD5E /* MeViewModel.swift in Sources */,
 				E42287262A764A3D00E9CD5E /* MainCategory.swift in Sources */,
 				E42287242A764A3D00E9CD5E /* RecurringTransaction.swift in Sources */,
 				E42287402A764A3D00E9CD5E /* BudgetSection.swift in Sources */,
 				E4A002FB2A764963008B2D1E /* SceneDelegate.swift in Sources */,
 				E42286D92A764A3D00E9CD5E /* Base+Service.swift in Sources */,
-				E42287912A76AA7900E9CD5E /* DataProvider.swift in Sources */,
 				E42287422A764A3D00E9CD5E /* Budget.swift in Sources */,
 				E42287362A764A3D00E9CD5E /* TransactionTextFieldCell.swift in Sources */,
 				E42286EC2A764A3D00E9CD5E /* APIService.swift in Sources */,
 				E422874B2A764A3D00E9CD5E /* Database+Transaction.swift in Sources */,
 				E42287132A764A3D00E9CD5E /* AnalysisCategoryDetailViewController.swift in Sources */,
+				E42287B82A777B5D00E9CD5E /* Database+Migration.swift in Sources */,
 				E42286E22A764A3D00E9CD5E /* RoundButton.swift in Sources */,
-				E42287452A764A3D00E9CD5E /* EditBudgetViewController.swift in Sources */,
+				E42287452A764A3D00E9CD5E /* EditBudgetListViewController.swift in Sources */,
 				E42287172A764A3D00E9CD5E /* AnalysisCategoryDetailHeaderView.swift in Sources */,
 				E42286CC2A764A3D00E9CD5E /* BaseViewController.swift in Sources */,
 				E422871A2A764A3D00E9CD5E /* AnalysisSummaryCellViewModel.swift in Sources */,

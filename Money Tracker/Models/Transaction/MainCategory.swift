@@ -1,15 +1,17 @@
 //
 //  MainCategory.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 7/26/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation
 
+typealias MainCategoryID = String
+
 // MARK: - Main Category
 struct MainCategory: Codable {
-    let id: CategoryID
+    let id: MainCategoryID
     let name: String
     let iconName: String
 }

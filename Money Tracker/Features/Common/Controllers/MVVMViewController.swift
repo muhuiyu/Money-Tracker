@@ -15,9 +15,11 @@ extension Base {
         let viewModel: T
         let disposeBag = DisposeBag()
         
-        init(viewModel: T) {
+        init(appCoordinator: AppCoordinator? = nil,
+             coordinator: BaseCoordinator? = nil,
+             viewModel: T) {
             self.viewModel = viewModel
-            super.init()
+            super.init(appCoordinator: appCoordinator, coordinator: coordinator)
         }
     }
 

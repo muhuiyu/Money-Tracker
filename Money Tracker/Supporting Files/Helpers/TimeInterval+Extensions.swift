@@ -1,8 +1,8 @@
 //
 //  TimeInterval+Extensions.swift
-//  Fastiee
+//  Money Tracker
 //
-//  Created by Mu Yu on 6/27/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation

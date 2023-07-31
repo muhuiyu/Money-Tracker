@@ -1,8 +1,8 @@
 //
 //  Database+Merchant.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/2/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit
@@ -20,6 +20,12 @@ extension Database {
         var map = [MerchantID: Merchant]()
         getAllMerchants().forEach { map[$0.id] = $0 }
         return map
+    }
+    
+    func getMerchant(for id: MerchantID) -> Merchant? {
+        return realm.objects(MerchantObject.self)
+            .first(where: { $0.id == id })
+            .map { Merchant(managedObject: $0) }
     }
     
 //    /// Returns merchant string value of the given id

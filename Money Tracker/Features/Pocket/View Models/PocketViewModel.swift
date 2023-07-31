@@ -18,7 +18,7 @@ class PocketViewModel {
     private var pendingTranscationCells = [TransactionPreviewCell]()
     
     init() {
-//        configureSignals()
+//        configureBindings()
     }
 }
 //extension PocketViewModel {
@@ -43,7 +43,7 @@ extension PocketViewModel {
 
 // MARK: - Private functions
 //extension PocketViewModel {
-//    private func configureSignals() {
+//    private func configureBindings() {
 //
 //    }
 //    private func getRecurringTransactions(shouldPull: Bool, completion: @escaping(VoidResult) -> Void) {

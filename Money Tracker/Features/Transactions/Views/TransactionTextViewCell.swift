@@ -31,7 +31,7 @@ class TransactionTextViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureViews()
         configureConstraints()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,7 +71,7 @@ extension TransactionTextViewCell {
             make.top.equalTo(contentView.layoutMarginsGuide).inset(Constants.Spacing.small)
         }
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

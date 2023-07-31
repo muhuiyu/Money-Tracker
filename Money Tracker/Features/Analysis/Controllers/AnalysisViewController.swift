@@ -8,8 +8,7 @@
 import UIKit
 import RxSwift
 
-class AnalysisViewController: BaseViewController {
-    private let disposeBag = DisposeBag()
+class AnalysisViewController: Base.MVVMViewController<AnalysisViewModel> {
     
     // MARK: - View
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -17,7 +16,6 @@ class AnalysisViewController: BaseViewController {
     private let refreshControl = UIRefreshControl()
     
     // MARK: - View Models
-    var viewModel = AnalysisViewModel()
     var transactionListViewModel = TransactionListViewModel()
 //    let reloadOption: TransactionListViewModel.ReloadTransactionsOption = .inGivenMonth(Date.today.year, Date.today.month)
     
@@ -26,7 +24,7 @@ class AnalysisViewController: BaseViewController {
 //        viewModel.reloadMonthlyExpenses {
 //            self.configureViews()
 //            self.configureConstraints()
-//            self.configureSignals()
+//            self.configureBindings()
 //        }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +78,7 @@ class AnalysisViewController: BaseViewController {
 //            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
 //        }
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        viewModel.displayMonthString
 //            .asObservable()
 //            .subscribe(onNext: { value in

@@ -16,7 +16,7 @@ class LoadingScreenViewController: BaseViewController {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }    
 }
 // MARK: - View Config
@@ -34,7 +34,7 @@ extension LoadingScreenViewController {
     private func configureGestures() {
         
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

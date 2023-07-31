@@ -24,7 +24,7 @@ class InfoTextButton: UIView {
         configureViews()
         configureConstraints()
         configureGestures()
-        configureSignals()
+        configureBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,7 +55,7 @@ extension InfoTextButton {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapInView))
         addGestureRecognizer(tapRecognizer)
     }
-    private func configureSignals() {
+    private func configureBindings() {
         
     }
 }

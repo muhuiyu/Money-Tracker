@@ -36,13 +36,12 @@ struct Transaction: TransactionSettings, Identifiable, Codable {
         case day
         case merchantID
         case amount
-        case paymentBy
         case categoryID
         case note
         case tag
         
         static var stringFields: [EditableField] {
-            return [.userID, .currencyCode, .merchantID, .amount, .paymentBy, .categoryID, .note, .tag]
+            return [.userID, .currencyCode, .merchantID, .amount, .categoryID, .note, .tag]
         }
     }
 }

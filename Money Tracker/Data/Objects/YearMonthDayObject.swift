@@ -1,8 +1,8 @@
 //
 //  YearMonthDayObject.swift
-//  Get Fit
+//  Money Tracker
 //
-//  Created by Mu Yu on 4/4/23.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation

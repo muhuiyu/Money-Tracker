@@ -58,7 +58,7 @@ import Vision
 //        configureViews()
 //        configureConstraints()
 //        configureGestures()
-//        configureSignals()
+//        configureBindings()
 //
 //        NotificationCenter.default.addObserver(self,
 //                                               selector: #selector(keyboardHeightWillChange(note:)),
@@ -251,7 +251,7 @@ import Vision
 //        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapInView))
 //        view.addGestureRecognizer(tapRecognizer)
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        viewModel.displayIcon
 //            .asObservable()
 //            .subscribe { value in

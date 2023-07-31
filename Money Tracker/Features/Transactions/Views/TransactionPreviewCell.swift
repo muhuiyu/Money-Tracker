@@ -12,44 +12,34 @@ class TransactionPreviewCell: TitleSubtitleAmountCell, BaseCell {
     static let reuseID = NSStringFromClass(TransactionPreviewCell.self)
     
     let viewModel = TransactionCellViewModel()
-    override func configureSignals() {
-        viewModel.displayIcon
+    override func configureBindings() {
+        viewModel.transaction
             .asObservable()
-            .subscribe { image in
-                self.iconView.image = image
+            .subscribe { [weak self] _ in
+                self?.configureData()
             }
             .disposed(by: disposeBag)
-
-        viewModel.displayMerchantString
-            .asObservable()
-            .subscribe { value in
-                self.titleLabel.text = value
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.displayDateString
-            .asObservable()
-            .subscribe(onNext: { value in
-                if self.viewModel.subtitleAttribute == .date {
-                    self.subtitleLabel.text = value
-                }
-            })
-            .disposed(by: disposeBag)
+    }
     
-        viewModel.displayCategoryString
-            .asObservable()
-            .subscribe(onNext: { value in
-                if self.viewModel.subtitleAttribute == .category {
-                    self.subtitleLabel.text = value
-                }
-            })
-            .disposed(by: disposeBag)
+    private func configureData() {
+        iconView.image = viewModel.displayIcon
+        titleLabel.text = viewModel.displayMerchantString
+        signedAmountLabel.text = viewModel.displayAmountString
         
-        viewModel.displayAmountString
-            .asObservable()
-            .subscribe { value in
-                self.signedAmountLabel.text = value
-            }
-            .disposed(by: disposeBag)
+        switch viewModel.transaction.value?.type {
+        case .expense:
+            signedAmountLabel.textColor = .systemRed
+        case .income:
+            signedAmountLabel.textColor = .systemGreen
+        default:
+            signedAmountLabel.textColor = .black
+        }
+        
+        if viewModel.subtitleAttribute == .date {
+            subtitleLabel.text = viewModel.displayDateString
+        }
+        if viewModel.subtitleAttribute == .category {
+            subtitleLabel.text = viewModel.displayCategoryString
+        }
     }
 }

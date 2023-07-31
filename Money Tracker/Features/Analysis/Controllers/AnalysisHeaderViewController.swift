@@ -49,7 +49,7 @@ class AnalysisHeaderViewController: BaseViewController {
         super.viewDidLoad()
 //        configureViews()
 //        configureConstraints()
-//        configureSignals()
+//        configureBindings()
     }
 
 }
@@ -166,7 +166,7 @@ extension AnalysisHeaderViewController {
 //            make.edges.equalTo(view.layoutMarginsGuide)
 //        }
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        // TODO: - connect to viewModels
 //    }
 //}

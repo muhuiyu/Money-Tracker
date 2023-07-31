@@ -19,7 +19,7 @@ class TransactionListViewController: BaseViewController {
 //        configureViews()
 //        configureConstraints()
 //        configureGestures()
-//        configureSignals()
+//        configureBindings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class TransactionListViewController: BaseViewController {
 //    private func configureGestures() {
 //
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //        guard let coordinator = coordinator as? HomeCoordinator else { return }
 //
 //        transactionListViewModel.displayTransactions

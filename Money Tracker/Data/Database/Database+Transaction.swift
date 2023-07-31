@@ -1,8 +1,8 @@
 //
 //  Database+Transaction.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/2/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit
@@ -19,82 +19,73 @@ extension Database {
     /// Returns transactions in given year and month
     func getTransactions(year: Int, month: Int) -> [Transaction] {
         let transactions = realm.objects(TransactionObject.self)
-            .filter({ transaction in
-                transaction.date?.year == year && transaction.date?.month == month
-            })
+            .filter { $0.date?.year == year && $0.date?.month == month }
             .map { Transaction(managedObject: $0) }
         return Array(transactions)
     }
     
-//    func getMonthlyAverageExpense(of categoryIDs: [CategoryID] = []) -> Double {
-//        guard !cachedTransactions.isEmpty else { return 0 }
-//        var transactions = cachedTransactions.map { $0.value }
-//        if !categoryIDs.isEmpty {
-//            transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
-//        }
-//        let monthlyExpenses = TransactionGroup(grouping: transactions) { $0.monthYearString }
-//            .map { (_, transactions) in
-//            transactions.filter({ $0.type == .expense }).reduce(into: 0, { $0 += $1.amount })
-//        }
-//        return Double(monthlyExpenses.reduce(0, +)) / Double(monthlyExpenses.count)
-//    }
-//    func getMonthlyExpenseAmount(in month: Int,
-//                                 of year: Int,
-//                                 of categoryIDs: [CategoryID] = [],
-//                                 shouldIncludePending: Bool = false) -> Double {
-//
-//        var transactions = self.cachedTransactions
-//            .filter { $0.value.year == year && $0.value.month == month && $0.value.type == .expense }
-//            .map { $0.value }
-//        if !categoryIDs.isEmpty {
-//            transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
-//        }
-//        if !shouldIncludePending {
-//            transactions = transactions.filter { !$0.isPending }
-//        }
-//        return transactions.reduce(into: 0, { $0 += $1.amount })
-//    }
-//    /// Returns transactions in the given month
-//    func getMonthlyTransactions(year: Int,
-//                                month: Int,
-//                                of categoryIDs: [CategoryID] = [],
-//                                calculateExpenseOnly: Bool = false,
-//                                shouldIncludePending: Bool = false,
-//                                shouldPull: Bool,
-//                                completion: @escaping(Result<[Transaction], Error>) -> Void) {
-//
-//        func filterTransactions() -> TransactionList {
-//            var transactions = self.cachedTransactions
-//                .filter { $0.value.year == year && $0.value.month == month }
-//                .map { $0.value }
-//
-//            if !shouldIncludePending {
-//                transactions = transactions.filter { !$0.isPending }
-//            }
-//            if calculateExpenseOnly {
-//                transactions = transactions.filter { $0.type == .expense }
-//            }
-//            if !categoryIDs.isEmpty {
-//                transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
-//            }
-//            return transactions
-//        }
-//
-//        if shouldPull {
-//            fetchMonthlyTransactions(year: year, month: month, of: categoryIDs) { result in
-//                switch result {
-//                case .success:
-//                    let transactions = filterTransactions()
-//                    return completion(.success(transactions))
-//                case .failure(let error):
-//                    return completion(.failure(error))
-//                }
-//            }
-//        } else {
-//            let transactions = filterTransactions()
-//            return completion(.success(transactions))
-//        }
-//    }
+    func getTransaction(for id: TransactionID) -> Transaction? {
+        return realm.objects(TransactionObject.self)
+            .first(where: { $0.id == id })
+            .map { Transaction(managedObject: $0) }
+    }
+    
+    /// Returns sum of monthly average expense
+    func getMonthlyAverageExpense(of mainCategoryID: MainCategoryID?) -> Double {
+        var transactions = getAllTransactions()
+        if let mainCategoryID = mainCategoryID {
+            let categoryIDs = Category.getAllCategoryIDs(under: mainCategoryID)
+            transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
+        }
+        let monthlyExpenses = TransactionGroup(grouping: transactions) { $0.monthYearString }
+            .map { (_, transactions) in
+            transactions.filter({ $0.type == .expense }).reduce(into: 0, { $0 += $1.amount })
+        }
+        return Double(monthlyExpenses.reduce(0, +)) / Double(monthlyExpenses.count)
+    }
+    
+    func getMonthlyExpenseAmount(year: Int,
+                                 month: Int,
+                                 of categoryIDs: [CategoryID] = [],
+                                 shouldIncludePending: Bool = false) -> Double {
+
+        var transactions = getTransactions(year: year, month: month)
+            .filter { $0.type == .expense }
+        
+        if !categoryIDs.isEmpty {
+            transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
+        }
+        
+        if !shouldIncludePending {
+            transactions = transactions.filter { !$0.isPending }
+        }
+        return transactions.reduce(into: 0, { $0 += $1.amount })
+    }
+    
+    /// Returns transactions in the given month
+    func getMonthlyTransactions(year: Int,
+                                month: Int,
+                                of mainCategoryID: MainCategoryID?,
+                                calculateExpenseOnly: Bool = false,
+                                shouldIncludePending: Bool = false) -> [Transaction] {
+
+        var transactions = self.getAllTransactions()
+            .filter { $0.date.year == year && $0.date.month == month }
+        
+        if !shouldIncludePending {
+            transactions = transactions.filter { !$0.isPending }
+        }
+        if calculateExpenseOnly {
+            transactions = transactions.filter { $0.type == .expense }
+        }
+        
+        if let mainCategoryID = mainCategoryID {
+            let categoryIDs = Category.getAllCategoryIDs(under: mainCategoryID)
+            transactions = transactions.filter { categoryIDs.contains($0.categoryID) }
+        }
+        
+        return transactions
+    }
 //    /// Returns transactions in the given day
 //    func getDailyTransactions(on date: Date,
 //                              of categoryIDs: [CategoryID] = [],
@@ -293,42 +284,32 @@ extension Database {
 //            .reduce(into: 0) { $0 += $1.value.signedAmount }
 //        return sum
 //    }
-//}
-//
-//// MARK: - Update data
-//extension Database {
-//    /// Add new transaction
-//    func addData(of transaction: Transaction, completion: @escaping (VoidResult) -> Void) {
-//        do {
-//            let documentRef = try transactionRef.addDocument(from: transaction, completion: { error in
-//                if let error = error {
-//                    return completion(.failure(error))
-//                }
-//            })
-//            documentRef.setData(["id": documentRef.documentID], merge: true) { error in
-//                if let error = error {
-//                    return completion(.failure(error))
-//                }
-//                return completion(.success)
-//            }
-//        } catch {
-//            return completion(.failure(FirebaseError.setDataFailure))
-//        }
-//    }
-//    func updateData(of transaction: Transaction, merge: Bool = true, completion: @escaping (VoidResult) -> Void) {
-//        self.cachedTransactions[transaction.id] = transaction
-//        do {
-//            _ = try transactionRef.document(transaction.id).setData(from: transaction, merge: merge) { error in
-//                if let error = error {
-//                    return completion(.failure(error))
-//                }
-//                return completion(.success)
-//            }
-//        } catch {
-//            return completion(.failure(FirebaseError.setDataFailure))
-//        }
-//    }
-//    func updateData(of transaction: Transaction, _ data: [String: Any], merge: Bool = true, completion: @escaping (VoidResult) -> Void) {
+}
+
+// MARK: - Update data
+extension Database {
+    /// Add new transaction
+    func addData(of transaction: Transaction, completion: @escaping (VoidResult) -> Void) {
+        do {
+            try realm.write({
+                let _ = realm.create(TransactionObject.self, value: transaction.managedObject())
+            })
+            completion(.success)
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    func updateData(of transaction: Transaction, completion: @escaping (VoidResult) -> Void) {
+        do {
+            try realm.write({
+                realm.add(transaction.managedObject(), update: .modified)
+            })
+            completion(.success)
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    func updateData(of transaction: Transaction, _ data: [String: Any], merge: Bool = true, completion: @escaping (VoidResult) -> Void) {
 //        self.cachedTransactions[transaction.id] = transaction
 //        do {
 //            _ = try transactionRef.document(transaction.id).setData(data, merge: merge) { error in
@@ -340,19 +321,19 @@ extension Database {
 //        } catch {
 //            return completion(.failure(FirebaseError.setDataFailure))
 //        }
-//    }
-//    func deleteData(of id: TransactionID, completion: @escaping (VoidResult) -> Void) {
+    }
+    func deleteData(of id: TransactionID, completion: @escaping (VoidResult) -> Void) {
 //        transactionRef.document(id).delete { error in
 //            if let error = error {
 //                return completion(.failure(error))
 //            }
 //            return completion(.success)
 //        }
-//    }
-//}
-//
-//// MARK: - Fetch transactions
-//extension Database {
+    }
+}
+
+// MARK: - Fetch transactions
+extension Database {
 //    /// Fetch transactions in the given month and update to cachedTransactions
 //    private func fetchMonthlyTransactions(year: Int,
 //                                          month: Int,
@@ -478,19 +459,7 @@ extension Database {
 //            return completion(.success)
 //        }
 //    }
-//}
-//// MARK: - Private functions
-//extension Database {
-//    private func updateCachedTransactions(_ newData: [Transaction]) {
-//        cachedTransactions.removeAll()
-//        newData.forEach { cachedTransactions[$0.id] = $0 }
-//    }
-//    private func updateCachedRecurringTransactions(_ newData: [RecurringTransaction]) {
-//        cachedRecurringTransactions.removeAll()
-//        newData.forEach { cachedRecurringTransactions[$0.id] = $0 }
-//    }
 }
-
 
 
 //class Database {

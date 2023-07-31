@@ -100,4 +100,6 @@ class Icons {
     static var heartFill: String { "heart.fill" }
     static var chevronForward: String { "chevron.forward" }
     static var chevronBackward: String { "chevron.backward" }
+    static var chartBar: String { "chart.bar" }
+    static var chartBarFill: String { "chart.bar.fill" }
 }

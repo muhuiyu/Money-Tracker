@@ -1,8 +1,8 @@
 //
 //  TransactionTag.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 12/29/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import Foundation
@@ -15,4 +15,19 @@ enum TransactionTag: String, Codable, CaseIterable {
     case dailyLiving
     case debt
     case income
+    
+    var name: String {
+        switch self {
+        case .smallBill:
+            return "small bills"
+        case .bigBill:
+            return "big bills"
+        case .dailyLiving:
+            return "daily living"
+        case .debt:
+            return "debt"
+        case .income:
+            return "income"
+        }
+    }
 }

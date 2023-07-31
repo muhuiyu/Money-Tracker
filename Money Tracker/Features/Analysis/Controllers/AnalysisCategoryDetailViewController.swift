@@ -32,7 +32,7 @@ class AnalysisCategoryDetailViewController: BaseViewController {
         super.viewDidLoad()
 //        configureViews()
 //        configureConstraints()
-//        configureSignals()
+//        configureBindings()
     }
 }
 // MARK: - TapHandlers
@@ -78,7 +78,7 @@ extension AnalysisCategoryDetailViewController {
 //            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
 //        }
 //    }
-//    private func configureSignals() {
+//    private func configureBindings() {
 //
 //    }
 //}

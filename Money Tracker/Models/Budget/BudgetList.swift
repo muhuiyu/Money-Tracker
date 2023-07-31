@@ -1,8 +1,8 @@
 //
 //  BudgetList.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/9/22.
+//  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
 import UIKit
@@ -17,14 +17,14 @@ extension BudgetList {
         case remainingAmount
     }
     mutating func sort(by rule: SortingRule) {
-        self = self.sorted(by: rule)
+//        self = self.sorted(by: rule)
     }
-    func sorted(by rule: SortingRule) -> BudgetList {
-        switch rule {
-        case .mainCategoryID:
-            return self.sorted { $0.mainCategoryID.localizedStandardCompare($1.mainCategoryID) == .orderedAscending }
-        case .remainingAmount:
-            return self.sorted { $0.remainingAmount < $1.remainingAmount }
-        }
-    }
+//    func sorted(by rule: SortingRule) -> BudgetList {
+//        switch rule {
+//        case .mainCategoryID:
+//            return self.sorted { $0.mainCategoryID.localizedStandardCompare($1.mainCategoryID) == .orderedAscending }
+//        case .remainingAmount:
+//            return self.sorted { $0.remainingAmount < $1.remainingAmount }
+//        }
+//    }
 }
