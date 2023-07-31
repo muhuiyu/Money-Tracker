@@ -11,7 +11,7 @@ import RxSwift
 class TransactionPreviewCell: TitleSubtitleAmountCell, BaseCell {
     static let reuseID = NSStringFromClass(TransactionPreviewCell.self)
     
-    var viewModel = TransactionCellViewModel()
+    let viewModel = TransactionCellViewModel()
     override func configureSignals() {
         viewModel.displayIcon
             .asObservable()

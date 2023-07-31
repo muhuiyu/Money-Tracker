@@ -32,11 +32,11 @@ class AnalysisHeaderViewController: BaseViewController {
     
     // MARK: - Data
     // TODO: - Connect to database
-    let monthAndYear: MonthAndYear
+    let monthAndYear: YearMonth
     let averageExpense: Double
     let expenseData: [Double]
     
-    init(monthAndYear: MonthAndYear,
+    init(monthAndYear: YearMonth,
          averageExpense: Double,
          expenseData: [Double]) {
         self.monthAndYear = monthAndYear

@@ -1,7 +1,7 @@
 [
   {
-    "id": "1Uw48XC7ctTk5Uzyd2GJ",
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "id": "f1a781c8-0039-45f1-b0a2-9a27ee2f14b0",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -23,11 +23,11 @@
       "amount": 375,
       "paymentBy": "amexTrueCashbackCard",
       "note": "12 months for $4481, $375 per month, from Oct 2022 to Sep 2023",
-      "merchantID": "DrSsndk75RBJNECMVjM5"
+      "merchantID": "5fcee846-c340-470f-8e7e-853424f550d3"
     }
   },
   {
-    "id": "4kRxfegZZ8rEAOanUbXm",
+    "id": "d5fd5e56-8ec1-46bf-be6b-553361a3267c",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -40,7 +40,7 @@
         1
       ]
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "tag": "smallBill",
@@ -48,13 +48,13 @@
       "amount": 15,
       "currencyCode": "SGD",
       "note": "Yearly plan (99 USD/year → 12 SGD/month), renew on Apr 15th, 2023",
-      "merchantID": "cRLvNWui87ojkrohxsV7",
+      "merchantID": "3a6211ff-a11b-4a97-ad14-9dce8992bfbe",
       "categoryID": "7-01",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "6AUcjE2inZKwujGTxD2N",
+    "id": "943ecc17-46ae-4458-b00d-1474bc2897ec",
     "rule": {
       "numberOfYears": 0,
       "weekdays": [],
@@ -67,7 +67,7 @@
         1
       ]
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "note": "Yearly plan (99 SGD/year but 3.3 SGD/month for first 2 years), renew on Oct 23, 2023",
@@ -75,13 +75,13 @@
       "tag": "smallBill",
       "type": "expense",
       "currencyCode": "SGD",
-      "merchantID": "U8fJfRKeiP82s1OECCHF",
+      "merchantID": "91a44a02-37f8-46d2-b764-5720e61b8d01",
       "categoryID": "7-01",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "DCG2ygnKh9RU4l5WeG6q",
+    "id": "ba7d870b-9fef-44c9-beec-d5dee191212c",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -94,7 +94,7 @@
         1
       ]
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "paymentBy": "ocbcBankTransfer",
@@ -103,12 +103,12 @@
       "currencyCode": "SGD",
       "note": "Rent (on every 26th monthly)",
       "categoryID": "1-01",
-      "merchantID": "2gQuOGeJBihbEg9w0QST",
+      "merchantID": "f1b6f86d-6565-427b-943d-19c9b17a862f",
       "amount": 1455
     }
   },
   {
-    "id": "LZ94BrnLhS3dnitdeqnw",
+    "id": "5cda0a1b-4b9e-4905-968a-dbbf99714dc5",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -128,14 +128,14 @@
       "tag": "debt",
       "type": "expense",
       "currencyCode": "SGD",
-      "merchantID": "CxmDnhPcpbxq9sICOh6J",
+      "merchantID": "547a0072-ad01-4c53-be56-f7528f0df33b",
       "categoryID": "8-01"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true
   },
   {
-    "id": "TO28PIFBhovu1fYvN02W",
+    "id": "f8a6c6d2-09f4-4584-99ab-4d168cae5508",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -148,12 +148,12 @@
       "numberOfMonths": 1,
       "cycle": "monthly"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": false,
     "transactionSettings": {
       "note": "NTD390 on 27th of the month",
       "amount": 20,
-      "merchantID": "OmeqixDURPJBHU31TlbZ",
+      "merchantID": "d1838d66-ad73-4861-935f-bbc9485092b3",
       "tag": "smallBill",
       "type": "expense",
       "currencyCode": "SGD",
@@ -162,7 +162,7 @@
     }
   },
   {
-    "id": "WKaPzAD5cy4gTtf9pyHb",
+    "id": "f5aa2ec7-79ec-4230-a2da-d68e19e17bf0",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -175,7 +175,7 @@
       "numberOfMonths": 1,
       "cycle": "monthly"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "note": "",
@@ -184,16 +184,16 @@
       "type": "expense",
       "currencyCode": "SGD",
       "categoryID": "3-04",
-      "merchantID": "JfK68pcztIKX8Ne8eO0X",
+      "merchantID": "b0f277f0-ef84-4aa7-b778-5752d0c14b48",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "WyqNwgFMd71HW6doCdtM",
+    "id": "0ed8aa85-b685-4d09-b592-a53905cf1654",
     "transactionSettings": {
       "note": "Investment (monthly)",
       "amount": 840,
-      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "merchantID": "638e0a4b-97b1-4376-8d57-a49a45d5aa7d",
       "paymentBy": "ocbcBankTransfer",
       "tag": "bigBill",
       "type": "saving",
@@ -212,13 +212,13 @@
       "numberOfMonths": 1,
       "cycle": "monthly"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true
   },
   {
-    "id": "cxPvIEctN4wJ47pKMYJt",
+    "id": "590b79ac-e382-43f6-babb-1e00c4553c4b",
     "isActive": true,
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -236,14 +236,14 @@
       "currencyCode": "SGD",
       "categoryID": "8-02",
       "tag": "smallBill",
-      "merchantID": "1n43OGUWaujqmneznE9j",
+      "merchantID": "59b4a5eb-826d-4d50-8ff3-1e094583a2a8",
       "amount": 20,
       "note": "100 credits for $485, 0.5 credit per class, $2.5 per VN class (take 8 classes per month)",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "lTaIlRJ8b0qG0qlLxy98",
+    "id": "c148ea5d-2e35-4b8c-b60f-52d043fcb6c3",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -256,7 +256,7 @@
       "numberOfDays": 0,
       "cycle": "monthly"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "note": "Conceptive Pills, renew every 6 months (168 days), next one is on Jan 17, 2023",
@@ -265,16 +265,16 @@
       "amount": 35,
       "currencyCode": "SGD",
       "categoryID": "11-03",
-      "merchantID": "jEbCrLEdQFgEJyyqY80e",
+      "merchantID": "664d2776-8d32-42ea-b306-83c911d7b962",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "mkAzGz14FGfKyyQrxpfS",
+    "id": "f28adeab-5a6a-409a-ab6e-e85cb1e3d929",
     "transactionSettings": {
       "note": "Saving plan",
       "amount": 1030,
-      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "merchantID": "638e0a4b-97b1-4376-8d57-a49a45d5aa7d",
       "paymentBy": "ocbcBankTransfer",
       "tag": "bigBill",
       "type": "saving",
@@ -293,11 +293,11 @@
       "numberOfMonths": 1,
       "cycle": "monthly"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true
   },
   {
-    "id": "n6GjxZ2hXLgELopZH9Ja",
+    "id": "f345082a-6f77-4bf0-b40f-0f54d2a593b8",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -318,13 +318,13 @@
       "type": "income",
       "currencyCode": "SGD",
       "categoryID": "0-01",
-      "merchantID": "WES6aubAdqDrhESQoXxT"
+      "merchantID": "04379ac3-0310-44db-bdef-892539f5ff05"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true
   },
   {
-    "id": "nDnl7c2FBYdLVeji9YN4",
+    "id": "7b9ae03a-2e74-4333-ac39-fa5ee8057b75",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -337,21 +337,21 @@
         1
       ]
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "tag": "bigBill",
       "type": "expense",
       "currencyCode": "SGD",
       "categoryID": "10-01",
-      "merchantID": "nQLGhlwZgdCGcGtpDZ62",
+      "merchantID": "638e0a4b-97b1-4376-8d57-a49a45d5aa7d",
       "paymentBy": "amazeCard",
       "note": "Change to annual payment (3373.83 per year), next payment on July 25, 2023",
       "amount": 281.2
     }
   },
   {
-    "id": "nVepZaI6OXZAGx5xSmeS",
+    "id": "f8d8c087-899a-4159-9d93-b3ff5c3132b2",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -364,7 +364,7 @@
         1
       ]
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": true,
     "transactionSettings": {
       "amount": 2.4,
@@ -372,17 +372,17 @@
       "type": "expense",
       "currencyCode": "SGD",
       "note": "Yearly plan (28 SGD/year → 2.4 SGD/month), next payment on Dec 28th, 2022",
-      "merchantID": "cMh2a7kuw5VIaLEYO95t",
+      "merchantID": "1cb80702-8643-45cb-9fb2-2c196d067919",
       "categoryID": "7-01",
       "paymentBy": "amazeCard"
     }
   },
   {
-    "id": "wojMIrnn7La0l9oQvZIR",
+    "id": "1bf12f94-8e95-4c98-a69b-68b809955b13",
     "transactionSettings": {
       "note": "250 yen per month (550 yen for anime)",
       "amount": 2.6,
-      "merchantID": "2eyMYYQVwOqLkqhFYblm",
+      "merchantID": "34b62b3b-83e5-4ba6-a495-9543609ce636",
       "paymentBy": "amazeCard",
       "tag": "smallBill",
       "type": "expense",
@@ -402,10 +402,10 @@
       "cycle": "monthly"
     },
     "isActive": true,
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2"
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f"
   },
   {
-    "id": "zhpqcL7bsTrIzxtNJM4S",
+    "id": "2e31c924-3514-4bb5-8552-859313061742",
     "rule": {
       "monthAndDay": [],
       "numberOfYears": 0,
@@ -426,9 +426,9 @@
       "currencyCode": "SGD",
       "note": "New York Times Crossword Game monthly subscription, every 26th",
       "categoryID": "12-03",
-      "merchantID": "cRLvNWui87ojkrohxsV7"
+      "merchantID": "3a6211ff-a11b-4a97-ad14-9dce8992bfbe"
     },
-    "userID": "1dUSs99CSRXqsTEiSzJ9VWpBc7p2",
+    "userID": "582b621d-579f-4ab6-a9e7-8614d07f997f",
     "isActive": false
   }
 ]

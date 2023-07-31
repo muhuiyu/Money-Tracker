@@ -52,11 +52,9 @@ extension CacheManager {
 extension CacheManager {
     // TODO: - Reconnect to FirePrice
     var userID: UUID {
-//        return "1dUSs99CSRXqsTEiSzJ9VWpBc7p2"
-        return UUID(uuidString: "fcc57b74-1e96-4cae-82b0-ee237e261e9a") ?? UUID()
+        return UUID(uuidString: "582b621d-579f-4ab6-a9e7-8614d07f997f") ?? UUID()
     }
     var mainAccountID: UUID {
-//        return "wMHO0Dkyr0BJiVP8Mb6C"
-        return UUID(uuidString: "fcc57b74-1e96-4cae-82b0-ee237e261e9a") ?? UUID()
+        return UUID(uuidString: "f7ace0b7-e908-47a8-856c-6f88d2d89e44") ?? UUID()
     }
 }

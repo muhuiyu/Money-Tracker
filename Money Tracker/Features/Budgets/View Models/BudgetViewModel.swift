@@ -9,9 +9,8 @@ import UIKit
 import RxSwift
 import RxRelay
 
-class BudgetViewModel {
-    private let disposeBag = DisposeBag()
-    lazy var transactionDataSource = TransactionDataSource.dataSource()
+class BudgetViewModel: BaseViewModel {
+    lazy var transactionDataSource = TransactionDataSource.dataSource(appCoordinator)
     
     // MARK: - Reactive properties
     var budgetID: BehaviorRelay<BudgetID> = BehaviorRelay(value: "")
@@ -31,7 +30,8 @@ class BudgetViewModel {
     var displayTotalAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayTotalAmountDouble: BehaviorRelay<Double> = BehaviorRelay(value: 0)
     
-    init() {
+    override init(appCoordinator: AppCoordinator? = nil) {
+        super.init(appCoordinator: appCoordinator)
         configureSignals()
     }
 }

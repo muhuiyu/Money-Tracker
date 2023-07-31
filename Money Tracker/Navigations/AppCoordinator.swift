@@ -1,8 +1,8 @@
 //
 //  AppCoordinator.swift
-//  Fastiee
+//  Money Tracker
 //
-//  Created by Mu Yu on 6/25/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 import UIKit
@@ -14,13 +14,12 @@ class AppCoordinator: Coordinator {
     
     var childCoordinators = [TabBarCategory: BaseCoordinator]()
     private(set) var mainTabBarController: MainTabBarController?
-    private(set) var loadingScreenController: LoadingScreenViewController?
     
-    let dataProvider: RealmDatabase
+    let dataProvider: Database
     private(set) var userManager = UserManager()
 //    private(set) var cacheManager = CacheManager()
     
-    init?(window: UIWindow?, dataProvider: RealmDatabase?) {
+    init?(window: UIWindow?, dataProvider: Database?) {
         guard let window = window, let dataProvider = dataProvider else { return nil }
         self.window = window
         self.dataProvider = dataProvider
@@ -29,18 +28,11 @@ class AppCoordinator: Coordinator {
 
     func start() {
         configureSignals()
-        configureLoadingScreen()
+        showLoadingScreen()
         configureCoordinators()
         setupMainTabBar()
-        
-        Task {
-            await configureDatabase()
-            DispatchQueue.main.async {
-                print("should show home")
-                self.showHome()
-            }
-        }
-        
+        configureDatabase()
+        showHome()
         window.makeKeyAndVisible()
     }
     
@@ -52,17 +44,13 @@ class AppCoordinator: Coordinator {
 
 // MARK: - Services and managers
 extension AppCoordinator {
-    private func configureDatabase() async {
+    private func configureDatabase() {
         dataProvider.setup()
     }
 }
 
 // MARK: - UI Setup
 extension AppCoordinator {
-    /// Sets loading screen as rootViewController and embeds in a navigationController
-    private func configureLoadingScreen() {
-        loadingScreenController = LoadingScreenViewController(appCoordinator: self)
-    }
     /// Initializes coordinators
     private func configureCoordinators() {
         // Tab coordinators have their own different navigationControllers
@@ -82,6 +70,10 @@ extension AppCoordinator {
 
 // MARK: - Generic Navigation
 extension AppCoordinator {
+    enum Destination {
+        case home
+        case loadingScreen
+    }
     private func changeRootViewController(to viewController: UIViewController?) {
         guard let viewController = viewController else { return }
         window.rootViewController = viewController
@@ -90,6 +82,7 @@ extension AppCoordinator {
         changeRootViewController(to: self.mainTabBarController)
     }
     func showLoadingScreen(forceReplace: Bool = false, animated: Bool = true) {
-        changeRootViewController(to: self.loadingScreenController)
+        let viewController = LoadingScreenViewController(appCoordinator: self)
+        changeRootViewController(to: viewController)
     }
 }

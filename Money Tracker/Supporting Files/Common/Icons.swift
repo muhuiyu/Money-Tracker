@@ -98,4 +98,6 @@ class Icons {
     static var textBookClosedFill: String { "text.book.closed.fill" }
     static var crossFill: String { "cross.fill" }
     static var heartFill: String { "heart.fill" }
+    static var chevronForward: String { "chevron.forward" }
+    static var chevronBackward: String { "chevron.backward" }
 }

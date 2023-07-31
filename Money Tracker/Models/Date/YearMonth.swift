@@ -1,51 +1,57 @@
 //
 //  YearMonth.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 12/29/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 import Foundation
 
-struct MonthAndYear: Comparable {
+struct YearMonth: Comparable {
     var year: Int
     var month: Int
 }
-extension MonthAndYear {
+extension YearMonth {
     init(date: Date) {
         self.year = date.year
         self.month = date.month
     }
 }
-extension MonthAndYear {
+extension YearMonth {
     var isCurrentMonth: Bool {
         return self.year == Date.today.year && self.month == Date.today.month
     }
+    static var now: YearMonth {
+        return YearMonth(date: Date())
+    }
 }
-extension MonthAndYear {
+extension YearMonth {
     func toDate(dayOfMonth: Int = 1) -> Date? {
         YearMonthDay(year: self.year, month: self.month, day: dayOfMonth).toDate
     }
     var toMonthAndYearString: String? {
         self.toDate()?.toMonthAndYearString
     }
-    var nextMonth: MonthAndYear {
+    var nextMonth: YearMonth {
         if month == 12 {
-            return MonthAndYear(year: self.year+1, month: 1)
+            return YearMonth(year: self.year+1, month: 1)
         } else {
-            return MonthAndYear(year: self.year, month: self.month+1)
+            return YearMonth(year: self.year, month: self.month+1)
         }
     }
-    var previousMonth: MonthAndYear {
+    var previousMonth: YearMonth {
         if month == 1 {
-            return MonthAndYear(year: self.year-1, month: 12)
+            return YearMonth(year: self.year-1, month: 12)
         } else {
-            return MonthAndYear(year: self.year, month: self.month-1)
+            return YearMonth(year: self.year, month: self.month-1)
         }
+    }
+    func getMonthString() -> String {
+        return Date.MonthInNumber(rawValue: self.month)?.name ?? ""
     }
 }
-extension MonthAndYear {
-    static func < (lhs: MonthAndYear, rhs: MonthAndYear) -> Bool {
+extension YearMonth {
+    static func < (lhs: YearMonth, rhs: YearMonth) -> Bool {
         if lhs.year != rhs.year { return lhs.year < rhs.year }
         return lhs.month < rhs.month
     }

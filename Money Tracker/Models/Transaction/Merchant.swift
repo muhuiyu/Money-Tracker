@@ -7,46 +7,30 @@
 
 import UIKit
 
-typealias MerchantID = String
+typealias MerchantID = UUID
 
 struct Merchant: Identifiable, Codable {
     let id: MerchantID
     let value: String
 }
-extension Merchant {
-    private struct MerchantData: Codable {
-        var value: String
-        
-        private enum CodingKeys: String, CodingKey {
-            case value
-        }
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            value = try container.decode(String.self, forKey: .value)
-        }
-        func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(value, forKey: .value)
-        }
+
+// MARK: - Persistable
+extension Merchant: Persistable {
+    public init(managedObject: MerchantObject) {
+        id = managedObject.id
+        value = managedObject.value
+    }
+    
+    public func managedObject() -> MerchantObject {
+        return MerchantObject(id: id, value: value)
     }
 }
 
 extension Merchant {
-    static func getAllMerchantIDs() -> [MerchantID] {
-//        return Database.shared.getAllMerchants().map { $0.id }
-        return []
+    static var fairPriceID: UUID {
+        return UUID(uuidString: "64b0b60b-7592-4b32-833b-5eee9aa2fe27") ?? UUID()
     }
-    static func getMerchantName(of id: MerchantID) -> String? {
-//        return Database.shared.getMerchantValue(of: id)
-        return nil
-    }
-}
-
-extension Merchant {
-    static var fairPriceID: String {
-        return "ukGw5BPcc8skSsY2hh6U"
-    }
-    static var smrtID: String {
-        return "htuFDjA7PvqjVe88ymz6"
+    static var smrtID: UUID {
+        return UUID(uuidString: "2b59d275-8de3-4482-a2d6-5b9018d7de08") ?? UUID()
     }
 }

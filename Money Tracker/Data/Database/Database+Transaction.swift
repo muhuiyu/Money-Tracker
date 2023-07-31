@@ -8,10 +8,24 @@
 import UIKit
 
 // MARK: - Interface
-//extension Database {
-//    func getTransaction(_ id: TransactionID) -> Transaction? {
-//        return cachedTransactions[id]
-//    }
+extension Database {
+    /// Returns all transactions
+    func getAllTransactions() -> [Transaction] {
+        let transactions = realm.objects(TransactionObject.self)
+            .map { Transaction(managedObject: $0) }
+        return Array(transactions)
+    }
+    
+    /// Returns transactions in given year and month
+    func getTransactions(year: Int, month: Int) -> [Transaction] {
+        let transactions = realm.objects(TransactionObject.self)
+            .filter({ transaction in
+                transaction.date?.year == year && transaction.date?.month == month
+            })
+            .map { Transaction(managedObject: $0) }
+        return Array(transactions)
+    }
+    
 //    func getMonthlyAverageExpense(of categoryIDs: [CategoryID] = []) -> Double {
 //        guard !cachedTransactions.isEmpty else { return 0 }
 //        var transactions = cachedTransactions.map { $0.value }
@@ -474,5 +488,137 @@ import UIKit
 //    private func updateCachedRecurringTransactions(_ newData: [RecurringTransaction]) {
 //        cachedRecurringTransactions.removeAll()
 //        newData.forEach { cachedRecurringTransactions[$0.id] = $0 }
+//    }
+}
+
+
+
+//class Database {
+//    // TODO: - Remove this
+//    static let shared = Database()
+//
+//    internal var cachedTransactions = [TransactionID: Transaction]()
+//    internal var cachedRecurringTransactions = [RecurringTransactionID: RecurringTransaction]()
+//    internal var cachedBudgets = [BudgetID: Budget]()
+//    internal var currencyDictionary = [CurrencyCode: Currency]()
+//
+//    internal var merchantList = [MerchantID: Merchant]()
+//    internal let transactionRef: CollectionReference = Firestore.firestore().collection(Collections.transactions)
+//    internal let recurringTransactionRef: CollectionReference = Firestore.firestore().collection(Collections.recurringTransactions)
+//    internal let budgetRef: CollectionReference = Firestore.firestore().collection(Collections.budgets)
+//    internal let merchantRef: CollectionReference = Firestore.firestore().collection(Collections.merchants)
+//    internal let notificationRef: CollectionReference = Firestore.firestore().collection(Collections.notifications)
+//
+//    struct Collections {
+//        static let transactions = "transactions"
+//        static let recurringTransactions = "recurringTransactions"
+//        static let budgets = "budgets"
+//        static let merchants = "merchants"
+//        static let notifications = "notifications"
+//    }
+//
+//    struct FieldNames {
+//        static let year = "year"
+//        static let month = "month"
+//        static let day = "day"
+//        static let userID = "userID"
+//        static let categoryID = "categoryID"
+//        static let amount = "amount"
+//        static let value = "value"
+//    }
+//
+//    enum FirebaseError: Error {
+//        case snapshotMissing
+//        case multipleDocumentUsingSameID
+//        case dataKeyMissing
+//        case entryInitFailure
+//        case userMissing
+//        case documentMissing
+//        case invalidDocumentID
+//        case invalidQuery
+//        case setDataFailure
+//    }
+//
+//}
+//// MARK: - Setup
+//extension Database {
+//    func setup() async {
+//        let result = await fetchMerchants()
+//        switch result {
+//        case .success:
+//            return
+//        case .failure(let error):
+//            ErrorHandler.shared.handle(error)
+//        }
+//
+//        updateCurrencyRate { result in
+//            switch result {
+//            case .success:
+//                return
+//            case .failure(let error):
+//                ErrorHandler.shared.handle(error)
+//            }
+//        }
+//
+////        addDataToFirebase()
+//    }
+//    private func addDataToFirebase() {
+//        print("going to add data")
+//
+////        for entry in transactionRawData {
+////            addData(of: entry) { result in
+////                switch result {
+////                case .success:
+////                    print("success")
+////                case .failure(let error):
+////                    ErrorHandler.shared.handle(error)
+////                }
+////            }
+////        }
+////        let recur = RecurringTransaction(id: "1bf12f94-8e95-4c98-a69b-68b809955b13",
+////                                         userID: UUID(uuidString: "582b621d-579f-4ab6-a9e7-8614d07f997f") ?? UUID(),
+////                                         transactionSettings: RecurringTransaction.RecurringTransactionSettings(merchantID: "34b62b3b-83e5-4ba6-a495-9543609ce636",
+////                                                                                                                currencyCode: "SGD",
+////                                                                                                                amount: 2.6,
+////                                                                                                                type: .expense,
+////                                                                                                                paymentBy: .amazeCard,
+////                                                                                                                note: "250 yen per month (550 yen for anime)",
+////                                                                                                                categoryID: "12-02",
+////                                                                                                                tag: .smallBill),
+////                                         rule: RecurringRule(everyNMonths: 1, on: [1]),
+////                                         isActive: true)
+////        do {
+////            _ = try recurringTransactionRef.document(recur.id).setData(from: recur, merge: true) { error in
+////                if let error = error {
+////                    print(error)
+////                }
+////            }
+////        } catch {
+////
+////        }
+//    }
+//}
+//
+//// MARK: - Update
+//extension Database {
+//    func addData(of budget: Budget, completion: @escaping (VoidResult) -> Void) {
+//        do {
+//            let documentRef = try budgetRef.addDocument(from: budget, completion: { error in
+//                if let error = error {
+//                    return completion(.failure(error))
+//                }
+//            })
+//            documentRef.setData(["id": documentRef.documentID], merge: true) { error in
+//                if let error = error {
+//                    return completion(.failure(error))
+//                }
+//                return completion(.success)
+//            }
+//        } catch {
+//            return completion(.failure(FirebaseError.entryInitFailure))
+//        }
+//    }
+//    func updateData(of budgets: [Budget]) {
+//        // TODO: - update data
 //    }
 //}

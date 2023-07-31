@@ -8,17 +8,34 @@
 import UIKit
 
 // MARK: - Interface
-//extension Database {
-//    /// Returns all merchants
-//    func getAllMerchants() -> [Merchant] {
-//        return Array(merchantList.values)
-//    }
+extension Database {
+    /// Returns all merchants
+    func getAllMerchants() -> [Merchant] {
+        let merchants = realm.objects(MerchantObject.self)
+            .map { Merchant(managedObject: $0) }
+        return Array(merchants)
+    }
+    
+    func getMerchantsMap() -> [MerchantID: Merchant] {
+        var map = [MerchantID: Merchant]()
+        getAllMerchants().forEach { map[$0.id] = $0 }
+        return map
+    }
+    
 //    /// Returns merchant string value of the given id
 //    func getMerchantValue(of id: MerchantID) -> String? {
 //        guard let merchant = merchantList[id] else { return nil }
 //        return merchant.value
 //    }
-//}
+//    func getAllMerchantIDs() -> [MerchantID] {
+//        return Database.shared.getAllMerchants().map { $0.id }
+//        return []
+//    }
+//    func getMerchantName(of id: MerchantID) -> String? {
+//        return Database.shared.getMerchantValue(of: id)
+//        return nil
+//    }
+}
 //
 //// MARK: -
 //extension Database {

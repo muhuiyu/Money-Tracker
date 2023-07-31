@@ -147,7 +147,6 @@
 		E422874B2A764A3D00E9CD5E /* Database+Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286BD2A764A3D00E9CD5E /* Database+Transaction.swift */; };
 		E422874C2A764A3D00E9CD5E /* Database+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286BE2A764A3D00E9CD5E /* Database+Account.swift */; };
 		E422874D2A764A3D00E9CD5E /* Database+Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */; };
-		E422874E2A764A3D00E9CD5E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286C02A764A3D00E9CD5E /* Database.swift */; };
 		E422874F2A764A3D00E9CD5E /* Database+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286C12A764A3D00E9CD5E /* Database+Currency.swift */; };
 		E42287522A764A6400E9CD5E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E42287512A764A6400E9CD5E /* SnapKit */; };
 		E42287552A764ABC00E9CD5E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E42287542A764ABC00E9CD5E /* Realm */; };
@@ -162,7 +161,7 @@
 		E422877C2A76A9C800E9CD5E /* PersistableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422876B2A76A9C800E9CD5E /* PersistableProtocol.swift */; };
 		E42287832A76A9C800E9CD5E /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287732A76A9C800E9CD5E /* UserObject.swift */; };
 		E42287862A76A9C800E9CD5E /* YearMonthDayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */; };
-		E422878B2A76A9C800E9CD5E /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422877B2A76A9C800E9CD5E /* RealmDatabase.swift */; };
+		E422878B2A76A9C800E9CD5E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422877B2A76A9C800E9CD5E /* Database.swift */; };
 		E422878E2A76AA0400E9CD5E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E422878D2A76AA0400E9CD5E /* Lottie */; };
 		E42287912A76AA7900E9CD5E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287902A76AA7900E9CD5E /* DataProvider.swift */; };
 		E42287942A76AA8400E9CD5E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287932A76AA8400E9CD5E /* loading.json */; };
@@ -174,6 +173,10 @@
 		E42287A12A76AEC100E9CD5E /* transactions_output.json in Resources */ = {isa = PBXBuildFile; fileRef = E422879B2A76AEC100E9CD5E /* transactions_output.json */; };
 		E42287A42A76B48D00E9CD5E /* TransactionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287A32A76B48D00E9CD5E /* TransactionObject.swift */; };
 		E42287A72A76B80900E9CD5E /* AccountObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287A62A76B80900E9CD5E /* AccountObject.swift */; };
+		E42287AC2A77413D00E9CD5E /* MonthControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287AB2A77413D00E9CD5E /* MonthControlHeaderView.swift */; };
+		E42287AE2A77445A00E9CD5E /* HomeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */; };
+		E42287B02A77542900E9CD5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287AF2A77542900E9CD5E /* User.swift */; };
+		E42287B22A776A8D00E9CD5E /* MerchantObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B12A776A8D00E9CD5E /* MerchantObject.swift */; };
 		E4A002F92A764963008B2D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002F82A764963008B2D1E /* AppDelegate.swift */; };
 		E4A002FB2A764963008B2D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002FA2A764963008B2D1E /* SceneDelegate.swift */; };
 		E4A003022A764964008B2D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A003012A764964008B2D1E /* Assets.xcassets */; };
@@ -321,12 +324,11 @@
 		E42286BD2A764A3D00E9CD5E /* Database+Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Transaction.swift"; sourceTree = "<group>"; };
 		E42286BE2A764A3D00E9CD5E /* Database+Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Account.swift"; sourceTree = "<group>"; };
 		E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Budget.swift"; sourceTree = "<group>"; };
-		E42286C02A764A3D00E9CD5E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E42286C12A764A3D00E9CD5E /* Database+Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Currency.swift"; sourceTree = "<group>"; };
 		E422876B2A76A9C800E9CD5E /* PersistableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableProtocol.swift; sourceTree = "<group>"; };
 		E42287732A76A9C800E9CD5E /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearMonthDayObject.swift; sourceTree = "<group>"; };
-		E422877B2A76A9C800E9CD5E /* RealmDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
+		E422877B2A76A9C800E9CD5E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E42287902A76AA7900E9CD5E /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		E42287932A76AA8400E9CD5E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		E42287962A76AEC000E9CD5E /* accounts_output.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = accounts_output.json; sourceTree = "<group>"; };
@@ -338,6 +340,10 @@
 		E42287A32A76B48D00E9CD5E /* TransactionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionObject.swift; sourceTree = "<group>"; };
 		E42287A62A76B80900E9CD5E /* AccountObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountObject.swift; sourceTree = "<group>"; };
 		E42287A82A7710CF00E9CD5E /* Money Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Money Tracker.entitlements"; sourceTree = "<group>"; };
+		E42287AB2A77413D00E9CD5E /* MonthControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthControlHeaderView.swift; sourceTree = "<group>"; };
+		E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryView.swift; sourceTree = "<group>"; };
+		E42287AF2A77542900E9CD5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E42287B12A776A8D00E9CD5E /* MerchantObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantObject.swift; sourceTree = "<group>"; };
 		E4A002F52A764963008B2D1E /* Money Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A002F82A764963008B2D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A002FA2A764963008B2D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 				E42286AF2A764A3D00E9CD5E /* Budget */,
 				E42286112A764A3B00E9CD5E /* Currency.swift */,
 				E42286122A764A3B00E9CD5E /* Date */,
+				E42287AF2A77542900E9CD5E /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -584,7 +591,6 @@
 			children = (
 				E422860B2A764A3B00E9CD5E /* Common */,
 				E42286602A764A3D00E9CD5E /* Pocket */,
-				E42286692A764A3D00E9CD5E /* Home */,
 				E422866F2A764A3D00E9CD5E /* Analysis */,
 				E422867B2A764A3D00E9CD5E /* Transactions */,
 				E42286A32A764A3D00E9CD5E /* Me */,
@@ -622,30 +628,16 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E42286692A764A3D00E9CD5E /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				E422866A2A764A3D00E9CD5E /* View Models */,
-				E422866C2A764A3D00E9CD5E /* Views */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		E422866A2A764A3D00E9CD5E /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				E422866B2A764A3D00E9CD5E /* HomeViewModel.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
 		E422866C2A764A3D00E9CD5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E422866D2A764A3D00E9CD5E /* HomeHeaderView.swift */,
 				E422866E2A764A3D00E9CD5E /* RecurringTransactionCell.swift */,
+				E42287AB2A77413D00E9CD5E /* MonthControlHeaderView.swift */,
+				E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */,
 			);
-			path = Views;
+			name = Views;
+			path = ../Home/Views;
 			sourceTree = "<group>";
 		};
 		E422866F2A764A3D00E9CD5E /* Analysis */ = {
@@ -683,6 +675,7 @@
 		E422867B2A764A3D00E9CD5E /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				E422866C2A764A3D00E9CD5E /* Views */,
 				E422867C2A764A3D00E9CD5E /* View Models */,
 				E42286812A764A3D00E9CD5E /* Data Source */,
 				E42286922A764A3D00E9CD5E /* Controllers */,
@@ -695,6 +688,7 @@
 		E422867C2A764A3D00E9CD5E /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E422866B2A764A3D00E9CD5E /* HomeViewModel.swift */,
 				E422867D2A764A3D00E9CD5E /* AnalysisSummaryCellViewModel.swift */,
 				E422867E2A764A3D00E9CD5E /* TransactionViewModel.swift */,
 				E422867F2A764A3D00E9CD5E /* TransactionCellViewModel.swift */,
@@ -840,6 +834,7 @@
 				E42287732A76A9C800E9CD5E /* UserObject.swift */,
 				E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */,
 				E42287A62A76B80900E9CD5E /* AccountObject.swift */,
+				E42287B12A776A8D00E9CD5E /* MerchantObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -898,10 +893,9 @@
 		E42287A52A76B7D100E9CD5E /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				E422877B2A76A9C800E9CD5E /* RealmDatabase.swift */,
-				E42286C02A764A3D00E9CD5E /* Database.swift */,
-				E42286BC2A764A3D00E9CD5E /* Database+Merchant.swift */,
+				E422877B2A76A9C800E9CD5E /* Database.swift */,
 				E42286BD2A764A3D00E9CD5E /* Database+Transaction.swift */,
+				E42286BC2A764A3D00E9CD5E /* Database+Merchant.swift */,
 				E42286BE2A764A3D00E9CD5E /* Database+Account.swift */,
 				E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */,
 				E42286C12A764A3D00E9CD5E /* Database+Currency.swift */,
@@ -1079,6 +1073,7 @@
 				E42286DA2A764A3D00E9CD5E /* JsonParser.swift in Sources */,
 				E42287332A764A3D00E9CD5E /* TransactionDateCell.swift in Sources */,
 				E42286EE2A764A3D00E9CD5E /* GlobalSettings.swift in Sources */,
+				E42287B02A77542900E9CD5E /* User.swift in Sources */,
 				E42286FB2A764A3D00E9CD5E /* String+Extensions.swift in Sources */,
 				E42286FF2A764A3D00E9CD5E /* UIStack+RemoveAll.swift in Sources */,
 				E42286ED2A764A3D00E9CD5E /* CurrencyConverter.swift in Sources */,
@@ -1139,6 +1134,7 @@
 				E42287182A764A3D00E9CD5E /* AnalysisPocketCell.swift in Sources */,
 				E422870A2A764A3D00E9CD5E /* PendingTransactionListViewController.swift in Sources */,
 				E42287292A764A3D00E9CD5E /* Category.swift in Sources */,
+				E42287AE2A77445A00E9CD5E /* HomeSummaryView.swift in Sources */,
 				E42287082A764A3D00E9CD5E /* PocketViewModel.swift in Sources */,
 				E42286FE2A764A3D00E9CD5E /* Decimal+formatter.swift in Sources */,
 				E42286CD2A764A3D00E9CD5E /* PickerViewController.swift in Sources */,
@@ -1154,10 +1150,12 @@
 				E42286DD2A764A3D00E9CD5E /* MeCoordinator.swift in Sources */,
 				E42286E72A764A3D00E9CD5E /* SpinnerView.swift in Sources */,
 				E42286CB2A764A3D00E9CD5E /* Base.swift in Sources */,
+				E42287B22A776A8D00E9CD5E /* MerchantObject.swift in Sources */,
 				E42286EF2A764A3D00E9CD5E /* Constants.swift in Sources */,
 				E42286F72A764A3D00E9CD5E /* UIViewController+Extensions.swift in Sources */,
 				E422870F2A764A3D00E9CD5E /* HomeHeaderView.swift in Sources */,
 				E42286D32A764A3D00E9CD5E /* TitleSubtitleAmountCell.swift in Sources */,
+				E42287AC2A77413D00E9CD5E /* MonthControlHeaderView.swift in Sources */,
 				E42287472A764A3D00E9CD5E /* BudgetStatusCell.swift in Sources */,
 				E42287302A764A3D00E9CD5E /* TransactionFieldOptionListViewController.swift in Sources */,
 				E422870D2A764A3D00E9CD5E /* PocketViewController.swift in Sources */,
@@ -1191,9 +1189,8 @@
 				E42287192A764A3D00E9CD5E /* AnalysisMainCategoryPreviewCell.swift in Sources */,
 				E422871F2A764A3D00E9CD5E /* TransactionDataSource.swift in Sources */,
 				E422872E2A764A3D00E9CD5E /* EditTransactionViewController.swift in Sources */,
-				E422878B2A76A9C800E9CD5E /* RealmDatabase.swift in Sources */,
+				E422878B2A76A9C800E9CD5E /* Database.swift in Sources */,
 				E42286CE2A764A3D00E9CD5E /* LoadingScreenViewController.swift in Sources */,
-				E422874E2A764A3D00E9CD5E /* Database.swift in Sources */,
 				E42287232A764A3D00E9CD5E /* TransactionTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,6 +26,8 @@ class TransactionCellViewModel {
     var displayDateString: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
     
+    var merchantList: [MerchantID: Merchant] = [:]
+    
     init() {
         transaction
             .asObservable()
@@ -33,7 +35,7 @@ class TransactionCellViewModel {
                 if let value = value {
                     self.displayIcon.accept(value.icon)
                     self.displayDateString.accept(value.dateStringInLocalDateFormat)
-                    if let merchantName = Merchant.getMerchantName(of: value.merchantID) {
+                    if let merchantName = self.merchantList[value.merchantID]?.value {
                         self.displayMerchantString.accept(merchantName)
                     }
                     if let categoryName = Category.getCategoryName(of: value.categoryID) {

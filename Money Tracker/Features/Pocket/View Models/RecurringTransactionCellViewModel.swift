@@ -30,9 +30,9 @@ class RecurringTransactionCellViewModel {
                     self.displayRecurringRuleString.accept(value.displayRecuringRuleString)
                     self.displayAmountString.accept(value.transactionSettings.signedAmount.toCurrencyString())
                     
-                    if let merchantName = Merchant.getMerchantName(of: value.transactionSettings.merchantID) {
-                        self.displayMerchantString.accept(merchantName)
-                    }
+//                    if let merchantName = Merchant.getMerchantName(of: value.transactionSettings.merchantID) {
+//                        self.displayMerchantString.accept(merchantName)
+//                    }
                     if let categoryName = Category.getCategoryName(of: value.transactionSettings.categoryID) {
                         self.displayCategoryString.accept(categoryName)
                     }

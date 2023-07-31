@@ -7,21 +7,21 @@
 
 import UIKit
 
-typealias UserID = UUID
-
 class UserManager {
-    private var userID: UserID = UUID()
-    private var userName: String = ""
-    private var userProfileImageUrlString: String?
+    private var user: User?
     
     init() {
         
     }
 }
 extension UserManager {
+    var id: UserID? { user?.id }
+    var name: String? { user?.displayName }
+    
+    func setData(_ user: User) {
+        self.user = user
+    }
     func clearData() {
-        userID = UUID()
-        userName = ""
-        userProfileImageUrlString = nil
+        self.user?.clearData()
     }
 }

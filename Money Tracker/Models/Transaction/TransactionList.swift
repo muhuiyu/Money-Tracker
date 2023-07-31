@@ -16,21 +16,21 @@ typealias TransactionGroup = OrderedDictionary<String, [Transaction]>
 typealias TransactionPrefixSum = [(String, Double)]
 
 extension TransactionList {
-    var totalSignedAmount: Double {
-        return self.reduce(0, { $0 + $1.signedAmount })
-    }
-    var totalAmount: Double {
-        return self.reduce(0, { $0 + $1.amount })
-    }
-    mutating func remove(id: TransactionID) {
-        guard let index = self.firstIndex(where: { $0.id == id }) else { return }
-        self.remove(at: index)
-    }
-    func sorted() -> TransactionList {
-        return self.sorted(by: {
-            YearMonthDay(year: $0.year, month: $0.month, day: $0.day) > YearMonthDay(year: $1.year, month: $1.month, day: $1.day)
-        })
-    }
+//    var totalSignedAmount: Double {
+//        return self.reduce(0, { $0 + $1.signedAmount })
+//    }
+//    var totalAmount: Double {
+//        return self.reduce(0, { $0 + $1.amount })
+//    }
+//    mutating func remove(id: TransactionID) {
+//        guard let index = self.firstIndex(where: { $0.id == id }) else { return }
+//        self.remove(at: index)
+//    }
+//    func sorted() -> TransactionList {
+//        return self.sorted(by: {
+//            YearMonthDay(year: $0.year, month: $0.month, day: $0.day) > YearMonthDay(year: $1.year, month: $1.month, day: $1.day)
+//        })
+//    }
 //    func accumulate() -> TransactionPrefixSum {
 //        guard !self.isEmpty else { return [] }
 //
@@ -49,24 +49,24 @@ extension TransactionList {
     func accumulateInDays(in month: Date.MonthInNumber,
                           of year: Int,
                           shouldRoundOffToInt: Bool = false) -> [Double] {
-        let numberOfDaysInMonth = Date.getNumberOfDays(in: month, of: year)
+        let numberOfDaysInMonth = Date.getNumberOfDays(year: year, month: month.rawValue)
         guard !self.isEmpty else {
             return [Double](repeating: 0, count: numberOfDaysInMonth)
         }
         var sum: Double = .zero
         var cumulativeSum = [Double]()
-        for day in 1...numberOfDaysInMonth {
-            let dailyTotal = self
-                .filter { $0.day == day && $0.month == month.rawValue && $0.year == year }
-                .filter { $0.type == .expense }
-                .reduce(0) { $0 - $1.signedAmount }
-            sum += dailyTotal
-            if shouldRoundOffToInt {
-                cumulativeSum.append(sum.rounded())
-            } else {
-                cumulativeSum.append(sum.roundedToTwoDigits())
-            }
-        }
+//        for day in 1...numberOfDaysInMonth {
+//            let dailyTotal = self
+//                .filter { $0.day == day && $0.month == month.rawValue && $0.year == year }
+//                .filter { $0.type == .expense }
+//                .reduce(0) { $0 - $1.signedAmount }
+//            sum += dailyTotal
+//            if shouldRoundOffToInt {
+//                cumulativeSum.append(sum.rounded())
+//            } else {
+//                cumulativeSum.append(sum.roundedToTwoDigits())
+//            }
+//        }
         return cumulativeSum
     }
 }

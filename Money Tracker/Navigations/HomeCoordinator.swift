@@ -34,7 +34,7 @@ extension HomeCoordinator {
         case .viewMonthlyAnalysis:
             let viewController = AnalysisViewController(appCoordinator: self.parentCoordinator,
                                                         coordinator: self)
-            viewController.viewModel.monthAndYear = MonthAndYear(date: Date.today)
+            viewController.viewModel.monthAndYear = YearMonth(date: Date.today)
             return viewController
         case .viewMonthlyAnalysisCategoryDetail(let transactions):
             let viewController = AnalysisCategoryDetailViewController(appCoordinator: self.parentCoordinator,
