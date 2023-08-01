@@ -9,6 +9,7 @@ import UIKit
 
 class HomeCoordinator: BaseCoordinator {
     enum Destination {
+        case search
         case viewNotifications
         case viewTransactionList
         case viewTransactionDetail(TransactionID)
@@ -25,6 +26,8 @@ class HomeCoordinator: BaseCoordinator {
 extension HomeCoordinator {
     private func makeViewController(for destination: Destination) -> ViewController? {
         switch destination {
+        case .search:
+            return SearchViewController(appCoordinator: self.parentCoordinator, coordinator: self, viewModel: SearchViewModel(appCoordinator: self.parentCoordinator))
         case .viewNotifications:
             // TODO: -
             return BaseViewController(appCoordinator: self.parentCoordinator)
@@ -81,6 +84,10 @@ extension HomeCoordinator {
 
 // MARK: - Navigation
 extension HomeCoordinator: TransactionCoordinator {
+    func showSearch() {
+        guard let viewController = makeViewController(for: .search) else { return }
+        self.navigate(to: viewController, presentModally: false)
+    }
     func showNotifications() {
         guard let viewController = makeViewController(for: .viewNotifications) else { return }
         let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: false)

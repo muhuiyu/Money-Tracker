@@ -1,8 +1,8 @@
 //
 //  PocketViewController.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 8/3/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class PocketViewController: BaseViewController {
     private let segmentedControl = UISegmentedControl(items: ["Scheduled", "Recurring"])
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let pendingTransactionListViewController = PendingTransactionListViewController()
-    private let recurringTransactionListViewController = RecurringTransactionListViewController()
+//    private let recurringTransactionListViewController = RecurringTransactionListViewController()
     
     private let tableView = UITableView()
     var pocketViewModel = PocketViewModel()

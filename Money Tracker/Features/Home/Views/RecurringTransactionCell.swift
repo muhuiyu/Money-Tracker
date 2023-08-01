@@ -38,7 +38,7 @@ extension RecurringTransactionCell {
         contentView.addSubview(iconView)
         
         merchantLabel.textColor = UIColor.label
-        merchantLabel.font = UIFont.bodyHeavy
+        merchantLabel.font = .bodyBold
         merchantLabel.text = "default"
         detailStack.addArrangedSubview(merchantLabel)
         
@@ -110,6 +110,15 @@ extension RecurringTransactionCell {
             .asObservable()
             .subscribe { value in
                 self.signedAmountLabel.text = value
+                let transactionType = self.viewModel.recurringTransaction.value?.type
+                switch transactionType {
+                case .expense:
+                    self.signedAmountLabel.textColor = .systemRed
+                case .income:
+                    self.signedAmountLabel.textColor = .systemGreen
+                default:
+                    self.signedAmountLabel.textColor = .systemGray
+                }
             }
             .disposed(by: disposeBag)
 

@@ -34,7 +34,7 @@ extension TransactionListHeaderView {
         
         moreButtonLabel.textColor = UIColor.Brand.primary
         moreButtonLabel.textAlignment = .right
-        moreButtonLabel.font = UIFont.bodyHeavy
+        moreButtonLabel.font = .bodyBold
         moreButtonLabel.text = Localized.TransactionList.seeAll
         moreButtonLabel.isUserInteractionEnabled = true
         addSubview(moreButtonLabel)

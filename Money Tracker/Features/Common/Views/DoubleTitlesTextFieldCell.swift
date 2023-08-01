@@ -9,7 +9,9 @@ import UIKit
 import RxSwift
 
 /// UITableViewCell with title, subtitle, textField and optional icon
-open class DoubleTitlesTextFieldCell: UITableViewCell {
+open class DoubleTitlesTextFieldCell: UITableViewCell, BaseCell {
+    static var reuseID: String = NSStringFromClass(DoubleTitlesTextFieldCell.self)
+    
     internal let disposeBag = DisposeBag()
     
     internal let iconView = UIImageView()
@@ -37,7 +39,7 @@ open class DoubleTitlesTextFieldCell: UITableViewCell {
         contentView.addSubview(iconView)
         
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.bodyHeavy
+        titleLabel.font = .bodyBold
         titleLabel.textColor = .label
         stackView.addArrangedSubview(titleLabel)
         

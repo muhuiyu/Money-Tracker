@@ -50,7 +50,7 @@ extension BudgetStatusCell {
     private func configureViews() {
         titleLabel.textColor = .label
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.bodyHeavy
+        titleLabel.font = .bodyBold
         titleLabel.text = "default"
         contentView.addSubview(titleLabel)
         

@@ -1,16 +1,16 @@
 //
 //  BudgetEditCell.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 7/4/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 import UIKit
 import RxSwift
 
-class BudgetEditCell: DoubleTitlesTextFieldCell, BaseCell {
-    static let reuseID = NSStringFromClass(BudgetEditCell.self)
-    
+class BudgetEditCell: DoubleTitlesTextFieldCell {
+//    static let reuseID = NSStringFromClass(BudgetEditCell.self)
+
     var changeBudgetAmountHandler: (() -> Void)?
     
     var budget: Budget? {

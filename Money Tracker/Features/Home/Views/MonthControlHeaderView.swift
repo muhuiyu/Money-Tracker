@@ -56,11 +56,11 @@ extension MonthControlHeaderView {
     }
     private func configureConstraints() {
         previousButton.snp.remakeConstraints { make in
-            make.leading.equalTo(layoutMarginsGuide)
+            make.leading.equalTo(layoutMarginsGuide).inset(Constants.Spacing.large)
             make.centerY.equalTo(monthLabel)
         }
         nextButton.snp.remakeConstraints { make in
-            make.trailing.equalTo(layoutMarginsGuide)
+            make.trailing.equalTo(layoutMarginsGuide).inset(Constants.Spacing.large)
             make.centerY.equalTo(monthLabel)
         }
         monthLabel.snp.remakeConstraints { make in

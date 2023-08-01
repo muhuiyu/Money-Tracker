@@ -5,7 +5,7 @@
 //  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
-import Foundation
+import UIKit
 
 typealias MainCategoryID = String
 
@@ -30,6 +30,42 @@ extension MainCategory {
     }
     static func getAllIDs() -> [CategoryID] {
         return Array(all.keys)
+    }
+    static func getColor(of id: String) -> UIColor {
+        switch id {
+        case "1":   // Property
+            return .systemBlue
+        case "2":   // Food
+            return .systemGreen
+        case "3":   // Utilities
+            return .systemOrange
+        case "4":   // Transportation
+            return .systemPurple
+        case "5":   // Daily Incidentals
+            return .systemYellow
+        case "6":   // Gifts
+            return .systemCyan
+        case "7":   // Subscription
+            return .systemTeal
+        case "8":   // Education
+            return .systemMint
+        case "9":   // Travel
+            return .systemBrown
+        case "10":  // Insurance
+            return .systemIndigo
+        case "11":  // Health
+            return .systemRed
+        case "12":  // Entertainment
+            return .systemBlue
+        case "13":  // PersonalCare
+            return .systemOrange
+        case "14":  // Charity
+            return .systemYellow
+        case "15":  // Investment
+            return .systemTeal
+        default:
+            return .black
+        }
     }
 }
 // MARK: - Coder

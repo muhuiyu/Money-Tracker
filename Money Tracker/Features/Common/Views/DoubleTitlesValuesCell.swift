@@ -9,7 +9,9 @@ import UIKit
 import RxSwift
 
 /// UITableViewCell with title, subtitle, value, subvalue and optional icon
-open class DoubleTitlesValuesCell: UITableViewCell {
+open class DoubleTitlesValuesCell: UITableViewCell, BaseCell {
+    static var reuseID: String = NSStringFromClass(DoubleTitlesValuesCell.self)
+    
     internal let disposeBag = DisposeBag()
     
     internal let iconView = UIImageView()
@@ -37,7 +39,7 @@ open class DoubleTitlesValuesCell: UITableViewCell {
         contentView.addSubview(iconView)
 
         titleLabel.textColor = .label
-        titleLabel.font = UIFont.bodyHeavy
+        titleLabel.font = .bodyBold
         titleLabel.text = "default"
         titleStack.addArrangedSubview(titleLabel)
 

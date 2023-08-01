@@ -1,16 +1,16 @@
 //
 //  BudgetCell.swift
-//  Why am I so poor
+//  Money Tracker
 //
-//  Created by Mu Yu on 7/3/22.
+//  Created by Grace, Mu-Hui Yu on 7/30/23.
 //
 
 
 import UIKit
 import RxSwift
 
-class BudgetCell: DoubleTitlesValuesCell, BaseCell {
-    static let reuseID: String = NSStringFromClass(BudgetCell.self)
+class BudgetCell: DoubleTitlesValuesCell {
+//    static let reuseID: String = NSStringFromClass(BudgetCell.self)
     private var viewModel: BudgetViewModel
     
     init(appCoordinator: AppCoordinator? = nil, budget: Budget) {
@@ -35,7 +35,12 @@ class BudgetCell: DoubleTitlesValuesCell, BaseCell {
     
     
     private func configureData() {
+        let tintColor = MainCategory.getColor(of: viewModel.budget.value?.mainCategoryID ?? "")
+        iconView.backgroundColor = tintColor.withAlphaComponent(0.2)
+        iconView.layer.cornerRadius = 8
         iconView.image = viewModel.displayIcon
+        iconView.tintColor = tintColor
+        
         titleLabel.text = viewModel.displayCategoryString
         subtitleLabel.textColor = viewModel.getStatus() == .over ? .red : .secondaryLabel
         subtitleLabel.text = viewModel.displayDailyAmountString

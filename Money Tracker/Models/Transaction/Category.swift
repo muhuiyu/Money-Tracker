@@ -5,7 +5,7 @@
 //  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
-import Foundation
+import UIKit
 
 typealias CategoryID = String
 
@@ -14,7 +14,7 @@ struct Category: Codable {
     let id: String
     let name: String
     let iconName: String
-    var mainCategoryID: String?
+    var mainCategoryID: MainCategoryID?
     var monthlyBudget: Double = 0
 }
 // MARK: - Interface
@@ -24,6 +24,10 @@ extension Category {
     }
     static func getCategoryIconName(of id: CategoryID) -> String? {
         return all[id]?.iconName
+    }
+    static func getCategoryIconColor(of id: CategoryID) -> UIColor {
+        guard let mainCategoryID = all[id]?.mainCategoryID else { return .systemBlue }
+        return MainCategory.getColor(of: mainCategoryID)
     }
     static func getCategoryName(of id: CategoryID, isLocalized: Bool = false) -> String? {
         // TODO: - Add localized

@@ -12,8 +12,6 @@ import RxRelay
 
 class HomeViewModel: BaseViewModel {
 
-    lazy var transactionDataSource = TransactionDataSource.dataSource(appCoordinator)
-
     // MARK: - Reactive Properties
     private var transactions: BehaviorRelay<TransactionList> = BehaviorRelay(value: [])
     var displayTransactions: BehaviorRelay<[TransactionSection]> = BehaviorRelay(value: [])

@@ -58,6 +58,8 @@ extension AppCoordinator {
                                                    parentCoordinator: self)
         childCoordinators[.budget] = BudgetCoordinator(navigationController: UINavigationController(),
                                                        parentCoordinator: self)
+        childCoordinators[.analysis] = AnalysisCoordinator(navigationController: UINavigationController(),
+                                                           parentCoordinator: self)
         childCoordinators[.me] = MeCoordinator(navigationController: UINavigationController(),
                                                parentCoordinator: self)
     }

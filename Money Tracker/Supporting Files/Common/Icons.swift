@@ -15,6 +15,7 @@ class Icons {
     static var dollarSignArrowCirclePath: String { "dollarsign.arrow.circlepath" }
     static var plus: String { "plus" }
     static var eyeglasses: String { "eyeglasses" }
+    static var globe: String { "globe" }
     static var sparkle: String { "sparkle" }
     static var sparkles: String { "sparkles" }
     static var cursorarrowRays: String { "cursorarrow.rays" }
@@ -100,6 +101,12 @@ class Icons {
     static var heartFill: String { "heart.fill" }
     static var chevronForward: String { "chevron.forward" }
     static var chevronBackward: String { "chevron.backward" }
+    static var chevronUp: String { "chevron.up" }
+    static var chevronDown: String { "chevron.down" }
     static var chartBar: String { "chart.bar" }
     static var chartBarFill: String { "chart.bar.fill" }
+    static var magnifyingglass: String { "magnifyingglass" }
+    static var squareGrid2x2: String { "square.grid.2x2" }
+    static var textAlignleft: String { "text.alignleft" }
+    static var textAlignright: String { "text.alignright" }
 }

@@ -63,11 +63,17 @@ struct Constants {
         static let iconPadding: CGFloat = 4
     }
     struct Spacing {
+        /// 36
         static let enormous: CGFloat = 36
+        /// 24
         static let large: CGFloat = 24
+        /// 16
         static let medium: CGFloat = 16
+        /// 8
         static let small: CGFloat = 8
+        /// 4
         static let trivial: CGFloat = 4
+        /// 2
         static let slight: CGFloat = 2
     }
     struct ProgressBar {

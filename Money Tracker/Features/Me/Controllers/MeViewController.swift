@@ -6,8 +6,24 @@
 //
 
 import UIKit
+import RxSwift
 
 class MeViewController: Base.MVVMViewController<MeViewModel> {
+    
+    private let tableView = UITableView()
+    private lazy var cells: [[UITableViewCell]] = [
+        [
+            recurringTransactionsCell
+        ],
+        [
+            mainCurrencyCell,
+            walletsCell,
+        ]
+    ]
+    
+    private let mainCurrencyCell = UITableViewCell()
+    private let recurringTransactionsCell = UITableViewCell()
+    private let walletsCell = UITableViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +34,9 @@ class MeViewController: Base.MVVMViewController<MeViewModel> {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.hidesBottomBarWhenPushed = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.hidesBottomBarWhenPushed = false
     }
 }
 // MARK: - Handlers
@@ -41,9 +55,16 @@ extension MeViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(didTapSettings))
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
+        
+        configureCells()
     }
     private func configureConstraints() {
-        
+        tableView.snp.remakeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     private func configureGestures() {
         
@@ -51,5 +72,62 @@ extension MeViewController {
     private func configureBindings() {
         
     }
+    private func configureCells() {
+        configureRecurringTransaction()
+        configureMainCurrencyCell()
+        configureWalletsCell()
+    }
+    private func configureRecurringTransaction() {
+        var content = recurringTransactionsCell.defaultContentConfiguration()
+        content.text = "Recurring transactions"
+        recurringTransactionsCell.accessoryType = .disclosureIndicator
+        recurringTransactionsCell.contentConfiguration = content
+    }
+    private func configureMainCurrencyCell() {
+        var content = mainCurrencyCell.defaultContentConfiguration()
+        content.text = "Main currency"
+        mainCurrencyCell.accessoryType = .disclosureIndicator
+        mainCurrencyCell.contentConfiguration = content
+    }
+    private func configureWalletsCell() {
+        var content = walletsCell.defaultContentConfiguration()
+        content.text = "Wallets"
+        walletsCell.accessoryType = .disclosureIndicator
+        walletsCell.contentConfiguration = content
+    }
 }
 
+// MARK: - DataSource and Delegate
+extension MeViewController: UITableViewDataSource, UITableViewDelegate {
+    enum Section {
+        
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return cells.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cells[section].count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return cells[indexPath.section][indexPath.row]
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let coordinator = coordinator as? MeCoordinator else { return }
+        // 0, 0: recurring
+        // 1, 0: main currency
+        // 1, 1: wallets
+        
+        // TODO: - Change to
+        if indexPath.section == 0 && indexPath.row == 0 {
+            coordinator.showRecurringTransactions()
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            coordinator.showMainCurrency()
+        } else {
+            coordinator.showWallets()
+        }
+    }
+}

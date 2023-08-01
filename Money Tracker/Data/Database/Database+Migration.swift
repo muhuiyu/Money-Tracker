@@ -16,6 +16,14 @@ extension Database {
         }
     }
     
+    internal func addAllRecurringTransactions() {
+        RecurringTransaction.testEntries.forEach { item in
+            try? realm.write {
+                let _ = realm.create(RecurringTransactionObject.self, value: item.managedObject())
+            }
+        }
+    }
+    
     internal func addAllBudgets() {
         if let data = readBudgetsFromJSONFile() {
             print("budget generated", data.count)
@@ -29,9 +37,8 @@ extension Database {
     
     internal func addAllTransactions() {
         if let data = readTransactionsFromJSONFile() {
-            print("data generated", data.count)
             data.map { item in
-                return Transaction(id: item.id, userID: item.userID, currencyCode: item.currencyCode, date: YearMonthDay(year: item.year, month: item.month, day: item.day) , merchantID: item.merchantID, amount: item.amount, type: item.type, categoryID: item.categoryID, tag: item.tag, recurringID: item.recurringID, sourceAccountID: item.sourceAccountID, targetAccountID: item.targetAccountID)
+                return Transaction(id: item.id, userID: item.userID, currencyCode: item.currencyCode, date: YearMonthDay(year: item.year, month: item.month, day: item.day) , merchantID: item.merchantID, amount: item.amount, type: item.type, note: item.note, categoryID: item.categoryID, tag: item.tag, recurringID: item.recurringID, sourceAccountID: item.sourceAccountID, targetAccountID: item.targetAccountID)
             }
             .forEach { item in
                 try? realm.write {
@@ -116,7 +123,7 @@ struct TransactionRawData: Identifiable, Codable {
     var merchantID: MerchantID
     var amount: Double
     let type: TransactionType
-    var note: String = ""
+    var note: String
     var categoryID: CategoryID
     var tag: TransactionTag
     

@@ -69,6 +69,7 @@ extension Database {
 //        addAllBudgets()
 //        addAllMerchants()
 //        addAllTransactions()
+//        addAllRecurringTransactions()
         
 //        syncBackup()
     }

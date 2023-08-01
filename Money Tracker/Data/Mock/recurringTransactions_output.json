@@ -312,7 +312,7 @@
     },
     "transactionSettings": {
       "note": "",
-      "amount": 7000,
+      "amount": 7200,
       "paymentBy": "ocbcBankTransfer",
       "tag": "income",
       "type": "income",

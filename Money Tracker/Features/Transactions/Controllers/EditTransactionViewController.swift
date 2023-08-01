@@ -12,12 +12,13 @@ import Vision
 class EditTransactionViewController: Base.MVVMViewController<TransactionViewModel> {
     
     // MARK: - TableView
-    private let tableView = UITableView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var footerBottomConstraint: NSLayoutConstraint? = nil
     private lazy var cells: [[UITableViewCell]] = [
         [
+            typeCell,
             amountCell,
-            fxRateCell,
+//            fxRateCell,
         ],
         [
             dateCell,
@@ -33,6 +34,7 @@ class EditTransactionViewController: Base.MVVMViewController<TransactionViewMode
         ]
     ]
     
+    private let typeCell = TransactionTypeCell()
     private let amountCell = TransactionAmountCell()
     private let fxRateCell = TransactionTextCell()
     private let dateCell = TransactionDateCell()
@@ -185,6 +187,9 @@ extension EditTransactionViewController {
         view.addSubview(tableView)
     }
     private func configureCells() {
+        typeCell.didChangeValueHandler = { [weak self] type in
+            self?.didRequestToUpdate(.type, to: type)
+        }
         amountCell.didChangeValueHandler = { [weak self] in
             self?.didRequestToUpdate(.amount, to: self?.amountCell.value ?? "0")
         }
@@ -202,15 +207,19 @@ extension EditTransactionViewController {
                 self?.didRequestToUpdateDate(to: date)
             }
         }
+        merchantCell.icon = UIImage(systemName: Icons.person)
         merchantCell.title = Localized.TransactionDetail.merchant
         merchantCell.value = Localized.TransactionDetail.addMerchant
         merchantCell.valueIcon = viewModel.displayMerchantCellIcon
+        merchantCell.valueIconColor = .systemCyan
         merchantCell.tapHandler = { [weak self] in
             self?.didRequestToEdit(.merchantID)
         }
+        categoryCell.icon = UIImage(systemName: Icons.squareGrid2x2)
         categoryCell.title = Localized.TransactionDetail.category
         categoryCell.value = Localized.TransactionDetail.addCategory
         categoryCell.valueIcon = viewModel.displayCategoryCellIcon
+        categoryCell.valueIconColor = viewModel.displayIconColor
         categoryCell.tapHandler = { [weak self] in
             self?.didRequestToEdit(.categoryID)
         }
@@ -218,6 +227,7 @@ extension EditTransactionViewController {
         recurringRuleCell.tapHandler = { [weak self] in
             self?.didRequestToViewRecurringRule()
         }
+        tagCell.icon = UIImage(systemName: Icons.tag)
         tagCell.title = Localized.TransactionDetail.tag
         tagCell.value = Localized.TransactionDetail.addTag
         tagCell.valueIcon = viewModel.displayTagCellIcon
@@ -254,12 +264,15 @@ extension EditTransactionViewController {
             .disposed(by: disposeBag)
     }
     private func configureData() {
+        typeCell.type = viewModel.transaction.value?.type ?? .expense
         categoryCell.valueIcon = viewModel.displayIcon
         dateCell.date = viewModel.displayDateValue
         merchantCell.value = viewModel.displayMerchantString
+        amountCell.type = viewModel.transaction.value?.type ?? .expense
         amountCell.value = viewModel.displayAmountValue
         amountCell.currencyCode = viewModel.displayCurrencyCodeString
         categoryCell.value = viewModel.displayCategoryString
+        categoryCell.valueIconColor = viewModel.displayIconColor
         tagCell.value = viewModel.displayTagString
         noteCell.value = viewModel.displayNoteString
         

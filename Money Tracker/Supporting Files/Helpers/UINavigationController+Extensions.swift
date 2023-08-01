@@ -52,11 +52,11 @@ extension UINavigationItem {
         } else {
             item = UIBarButtonItem(title: title, style: isBold ? .done : .plain, target: target, action: action)
 //            item.setTitleTextAttributes([
-//                NSAttributedString.Key.font: isBold ? UIFont.bodyHeavy : UIFont.body,
+//                NSAttributedString.Key.font: isBold ? .bodyBold : UIFont.body,
 //                NSAttributedString.Key.foregroundColor: UIColor.brand.primary,
 //            ], for: .normal)
 //            item.setTitleTextAttributes([
-//                NSAttributedString.Key.font: isBold ? UIFont.bodyHeavy : UIFont.body,
+//                NSAttributedString.Key.font: isBold ? .bodyBold : UIFont.body,
 //                NSAttributedString.Key.foregroundColor: UIColor.tertiaryLabel
 //            ], for: .disabled)
         }

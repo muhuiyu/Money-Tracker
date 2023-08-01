@@ -22,7 +22,11 @@ class TransactionPreviewCell: TitleSubtitleAmountCell, BaseCell {
     }
     
     private func configureData() {
+        let tintColor = Category.getCategoryIconColor(of: viewModel.transaction.value?.categoryID ?? "")
+        iconView.backgroundColor = tintColor.withAlphaComponent(0.2)
+        iconView.layer.cornerRadius = 8
         iconView.image = viewModel.displayIcon
+        iconView.tintColor = tintColor
         titleLabel.text = viewModel.displayMerchantString
         signedAmountLabel.text = viewModel.displayAmountString
         

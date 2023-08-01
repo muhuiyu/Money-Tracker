@@ -12,9 +12,11 @@ import UIKit
 class TransactionDetailCell: UITableViewCell {
     static let reuseID = NSStringFromClass(TransactionDetailCell.self)
     
+    private let iconView = UIImageView()
+    
     private let titleLabel = UILabel()
     private let valueStack = UIStackView()
-    private let iconView = UIImageView()
+    private let valueIconView = UIImageView()
     private let valueLabel = UILabel()
     
     var title: String? {
@@ -22,14 +24,25 @@ class TransactionDetailCell: UITableViewCell {
             titleLabel.text = title
         }
     }
+    var valueIconColor: UIColor? {
+        didSet {
+            valueIconView.backgroundColor = valueIconColor?.withAlphaComponent(0.2)
+            valueIconView.tintColor = valueIconColor
+        }
+    }
     var valueIcon: UIImage? {
         didSet {
-            iconView.image = valueIcon
+            valueIconView.image = valueIcon
         }
     }
     var value: String? {
         didSet {
             valueLabel.text = value
+        }
+    }
+    var icon: UIImage? {
+        didSet {
+            iconView.image = icon
         }
     }
 
@@ -57,20 +70,25 @@ extension TransactionDetailCell {
 // MARK: - View Config
 extension TransactionDetailCell {
     private func configureViews() {
+        iconView.tintColor = .label
+        iconView.contentMode = .scaleAspectFit
+        contentView.addSubview(iconView)
+        
         titleLabel.textAlignment = .left
         titleLabel.textColor = .label
         titleLabel.font = UIFont.body
         titleLabel.text = "default"
         contentView.addSubview(titleLabel)
         
-        iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = UIColor.Brand.primary
-        valueStack.addArrangedSubview(iconView)
+        valueIconView.layer.cornerRadius = 8
+        valueIconView.contentMode = .scaleAspectFit
+        valueIconView.tintColor = .label
+        valueStack.addArrangedSubview(valueIconView)
         
         valueLabel.isUserInteractionEnabled = true
-        valueLabel.textColor = UIColor.Brand.primary
+        valueLabel.textColor = .label
         valueLabel.textAlignment = .right
-        valueLabel.font = UIFont.bodyHeavy
+        valueLabel.font = .bodyBold
         valueLabel.text = "default"
         valueStack.addArrangedSubview(valueLabel)
         
@@ -81,9 +99,16 @@ extension TransactionDetailCell {
     }
     private func configureConstraints() {
         titleLabel.snp.remakeConstraints { make in
-            make.top.leading.bottom.equalTo(contentView.layoutMarginsGuide)
+            make.top.bottom.equalTo(contentView.layoutMarginsGuide)
+            make.leading.equalTo(iconView.snp.trailing).offset(Constants.Spacing.small)
+            make.centerY.equalToSuperview()
         }
         iconView.snp.remakeConstraints { make in
+            make.leading.equalTo(contentView.layoutMarginsGuide)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(Constants.IconButtonSize.trivial)
+        }
+        valueIconView.snp.remakeConstraints { make in
             make.size.equalTo(Constants.IconButtonSize.trivial)
         }
         valueStack.snp.remakeConstraints { make in

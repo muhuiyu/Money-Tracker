@@ -32,7 +32,7 @@ open class TitleSubtitleAmountCell: UITableViewCell {
         contentView.addSubview(iconView)
         
         titleLabel.textColor = UIColor.label
-        titleLabel.font = UIFont.bodyHeavy
+        titleLabel.font = .bodyBold
         titleLabel.text = "default"
         detailStack.addArrangedSubview(titleLabel)
         
@@ -50,6 +50,8 @@ open class TitleSubtitleAmountCell: UITableViewCell {
         signedAmountLabel.font = UIFont.h3
         signedAmountLabel.text = "default"
         contentView.addSubview(signedAmountLabel)
+        
+        contentView.backgroundColor = UIColor.systemBackground
     }
     internal func configureConstraints() {
         iconView.snp.remakeConstraints { make in

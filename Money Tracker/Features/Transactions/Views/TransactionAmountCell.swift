@@ -19,6 +19,24 @@ class TransactionAmountCell: UITableViewCell {
         }
     }
     
+    var type: TransactionType? {
+        didSet {
+            if let type = type {
+                switch type {
+                case .income:
+                    symbolLabel.textColor = .systemGreen
+                    textField.textColor = .systemGreen
+                case .expense:
+                    symbolLabel.textColor = .systemRed
+                    textField.textColor = .systemRed
+                case .transfer:
+                    symbolLabel.textColor = .systemGray
+                    textField.textColor = .systemGray
+                }
+            }
+        }
+    }
+    
     var value: Double {
         get { return Double(textField.text ?? "") ?? 0 }
         set { textField.text = newValue.toStringTwoDigits() }
@@ -53,11 +71,11 @@ extension TransactionAmountCell {
 // MARK: - View Config
 extension TransactionAmountCell {
     private func configureViews() {
-        symbolLabel.font = UIFont.h3
+        symbolLabel.font = UIFont.h2
         symbolLabel.text = "$"
         contentView.addSubview(symbolLabel)
         
-        textField.font = UIFont.h3
+        textField.font = UIFont.h2
         textField.textAlignment = .left
         textField.placeholder = "Enter amount"
         textField.returnKeyType = .done

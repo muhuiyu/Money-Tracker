@@ -172,6 +172,35 @@ extension Date {
         guard let month = MonthInNumber(rawValue: month) else { return nil }
         return month.name
     }
+    
+    enum Weekday: Int {
+        case monday = 1
+        case tuesday
+        case wednesday
+        case thursday
+        case friday
+        case saturday
+        case sunday
+        
+        var name: String {
+            switch self {
+            case .monday:
+                return "Monday"
+            case .tuesday:
+                return "Tuesday"
+            case .wednesday:
+                return "Wednesday"
+            case .thursday:
+                return "Thursday"
+            case .friday:
+                return "Friday"
+            case .saturday:
+                return "Saturday"
+            case .sunday:
+                return "Sunday"
+            }
+        }
+    }
 }
 
 // MARK: - Determine

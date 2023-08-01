@@ -10,8 +10,10 @@ import UIKit
 class TransactionTextViewCell: UITableViewCell {
     static let reuseID = NSStringFromClass(TransactionTextViewCell.self)
     
+    private let iconView = UIImageView(image: UIImage(systemName: Icons.textAlignleft))
     private let placeholderLabel = UILabel()
     private let textView = UITextView()
+    
     var value: String? {
         get { return textView.text }
         set {
@@ -45,6 +47,9 @@ extension TransactionTextViewCell {
 // MARK: - View Config
 extension TransactionTextViewCell {
     private func configureViews() {
+        iconView.tintColor = .label
+        contentView.addSubview(iconView)
+        
         placeholderLabel.textColor = .tertiaryLabel
         placeholderLabel.textAlignment = .left
         placeholderLabel.font = UIFont.body
@@ -61,13 +66,19 @@ extension TransactionTextViewCell {
         contentView.addSubview(textView)
     }
     private func configureConstraints() {
+        iconView.snp.remakeConstraints { make in
+            make.top.equalTo(contentView.layoutMarginsGuide).inset(Constants.Spacing.small)
+            make.leading.equalTo(contentView.layoutMarginsGuide)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(Constants.IconButtonSize.trivial)
+        }
         textView.snp.remakeConstraints { make in
             make.height.equalTo(100)
+            make.leading.equalTo(iconView.snp.trailing).offset(Constants.Spacing.small)
             make.top.trailing.bottom.equalTo(contentView.layoutMarginsGuide)
-            make.leading.equalTo(contentView.layoutMarginsGuide)
         }
         placeholderLabel.snp.remakeConstraints { make in
-            make.leading.equalTo(contentView.layoutMarginsGuide)
+            make.leading.equalTo(iconView.snp.trailing).offset(Constants.Spacing.small + 4)
             make.top.equalTo(contentView.layoutMarginsGuide).inset(Constants.Spacing.small)
         }
     }

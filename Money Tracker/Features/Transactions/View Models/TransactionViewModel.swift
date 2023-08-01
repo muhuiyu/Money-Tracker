@@ -41,6 +41,12 @@ extension TransactionViewModel {
     var displayIcon: UIImage? {
         return transaction.value?.icon
     }
+    var displayIconColor: UIColor? {
+        if let id = transaction.value?.mainCategoryID {
+            return MainCategory.getColor(of: id)
+        }
+        return nil
+    }
     var displayDateValue: YearMonthDay {
         return transaction.value?.date ?? YearMonthDay.today
     }
@@ -77,9 +83,12 @@ extension TransactionViewModel {
         return transaction.value?.tag.name
     }
     var displayRecurringRuleValue: String? {
-        // TODO:
-//        RecurringTransaction.getRecurringRuleString(value.recurringID)
-        return transaction.value?.recurringID?.uuidString
+        guard
+            let recurringID = transaction.value?.recurringID,
+            let item = appCoordinator?.dataProvider.getRecurringTransaction(recurringID)
+        else { return nil }
+        
+        return item.rule.getRuleString()
     }
     var displayNoteString: String? {
         return transaction.value?.note
@@ -122,6 +131,9 @@ extension TransactionViewModel {
         guard var transactionData = transaction.value else { return }
 
         switch field {
+        case .type:
+            guard let value = value as? TransactionType else { return }
+            transactionData.type = value
         case .amount:
             guard
                 let value = value as? Double,

@@ -14,8 +14,8 @@ struct Transaction: TransactionSettings, Identifiable, Codable {
     var date: YearMonthDay
     var merchantID: MerchantID
     var amount: Double
-    let type: TransactionType
-    var note: String = ""
+    var type: TransactionType
+    var note: String
     var categoryID: CategoryID
     var tag: TransactionTag
     
@@ -39,6 +39,7 @@ struct Transaction: TransactionSettings, Identifiable, Codable {
         case categoryID
         case note
         case tag
+        case type
         
         static var stringFields: [EditableField] {
             return [.userID, .currencyCode, .merchantID, .amount, .categoryID, .note, .tag]
@@ -66,14 +67,14 @@ extension Transaction {
     init(from recurringTransaction: RecurringTransaction) {
         id = UUID()
         userID = recurringTransaction.userID
-        currencyCode = recurringTransaction.transactionSettings.currencyCode
-        amount = recurringTransaction.transactionSettings.amount
-        date = recurringTransaction.nextTransactionDate.toYearMonthDay
-        merchantID = recurringTransaction.transactionSettings.merchantID
-        type = recurringTransaction.transactionSettings.type
-        note = recurringTransaction.transactionSettings.note
-        categoryID = recurringTransaction.transactionSettings.categoryID
-        tag = recurringTransaction.transactionSettings.tag
+        currencyCode = recurringTransaction.currencyCode
+        amount = recurringTransaction.amount
+        date = recurringTransaction.nextTransactionDate
+        merchantID = recurringTransaction.merchantID
+        type = recurringTransaction.type
+        note = recurringTransaction.note
+        categoryID = recurringTransaction.categoryID
+        tag = recurringTransaction.tag
         recurringID = recurringTransaction.id
         sourceAccountID = CacheManager.shared.mainAccountID
         targetAccountID = UUID()
@@ -369,54 +370,11 @@ enum TransactionAccount {
 //199392d2-ffad-417d-8d14-8ad8a4fa30da
 //07e7b870-7b36-474e-aa3d-8c32578e2c02
 //4f85c8a4-4cdb-4e83-b385-78d729b619dd
-//3062dc56-0e44-4853-ac15-0cc91fff0b44
-//f9665c6d-f9f1-4350-8c9b-e99d90027c47
-//d1453457-3440-4bb1-bf0b-d9af2ef021d8
-//927e7252-5c0f-45e1-a8c6-316a210a42bc
-//c02a39db-92b6-410d-ae4c-fab609e7789b
-//94947fa5-f385-49f6-b721-1b97276636b2
-//9c4ebb33-0de5-4076-9248-27243ac80d21
-//951dde71-ddee-48e9-a845-0fa146f5e77f
-//ec5cf271-de37-4d20-9647-7917a26e0f13
-//be66dc10-e56c-46f8-bfc8-5f98e343184e
-//b468c1b3-ac8a-4980-b158-e7bd190edd25
-//f9c9d84d-7fb7-440c-975d-0676eb09c72d
-//6aaeaf03-4db1-4b04-b916-47d0ad731eb0
-//b481133a-84e7-486c-a255-314ad82c26fc
-//91d78885-16ef-487a-83ba-89c8ce72b87e
-//d1a29fc2-4440-4373-bbf7-632911743ba2
-//bc76603d-692a-4542-96be-5db301c34214
-//57ed8ad3-e53f-407c-9fa3-3ffc276f5906
-//bb4ba695-ebeb-4b74-97d1-ae976cc78e09
-//f04e6589-a510-4632-a48e-3e937b022fa3
-//3e59eb4d-6857-49e5-997a-6f328763ccd1
-//69b660d3-22a1-4312-b81a-3afcc05a611b
-//2dae7057-5e4c-4da0-937a-82124f1db8ba
-//ab1ca940-db14-431b-81be-db3d6c60e0da
-//0de2bcfb-fe06-4c67-9803-afff82a4504d
-//6260422d-a515-40e5-a1a9-16fb3cf077c9
-//8baf5e3c-7593-4ff7-aee6-0f28b97844c0
-//008245a3-e27b-42b1-a46b-02e67a2c7214
-//e80da3ea-af1d-493a-a519-019df71aa0a4
-//731e74b7-322b-4cde-9f5d-5b76f3439b49
-//3342d944-bb6e-41d0-b807-c29fa86026b0
-//de79492a-935e-400b-a6e0-a506985968b7
-//613c4dca-97cf-456f-b791-60f4eb5740e1
-//5bbfb85a-75c1-4fc0-8b91-8d9e2fef557c
-//7af1d11e-a3db-4769-acb0-5f75e8242387
-//71b71372-c1c1-4db0-a7d5-3b6a0156ba34
-//dda518ab-3df0-4924-b75a-adeca7add06b
-//e4ca1fe1-853d-486e-99f8-aade880c3532
-//26424480-15c2-4396-b437-c3e2cb5f7a04
-//7154b708-4e8d-4131-99e1-6d86dccc40d3
-//b6a3ba0c-e112-4e71-bd3c-89d79061ee5d
-//4eef826c-7353-40d3-8e63-e90fa6b8e15f
-//b2c75aaf-b23b-488e-9949-a6e43b5bbabb
-//d9e05b88-721b-4538-bca7-917e8b09e136
-//b11420b0-4a58-4ade-ba4a-66e370092c87
-//e0596a8f-1c63-4b16-b569-93f3bd88833a
-//21cc3e13-fe4f-41aa-a29f-cc0d54ea450b
-//ae83068b-012e-4cfb-abbc-2dec1892f8d0
+//
+//
+//
+//
+//
 //
 //
 //

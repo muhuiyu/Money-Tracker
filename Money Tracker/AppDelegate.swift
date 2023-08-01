@@ -10,11 +10,40 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    enum ApplicationShortcutItemType: String {
+        case add = "QuickAction.Add"
+        case search     = "QuickAction.Search"
+    }
 
+    enum ApplicationShortcutItemTitle: String {
+        case add        = "Add"
+        case search     = "Search"
+    }
 
+    var launchedShortcutItem: UIApplicationShortcutItem?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+                
+        // If the app is launched by Quick Action, then take the relevant action
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            
+            launchedShortcutItem = shortcutItem
+            
+            // Since, the app launch is triggered by QuicAction, block "performActionForShortcutItem:completionHandler" method from being called.
+            return false
+        }
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        guard let actionType = ApplicationShortcutItemType(rawValue: shortcutItem.type) else { return }
+        
+        switch actionType {
+        case .search:
+            print("Handle search action")
+        case .add:
+            print("Handle add action")
+        }
     }
 
     // MARK: UISceneSession Lifecycle
@@ -33,4 +62,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

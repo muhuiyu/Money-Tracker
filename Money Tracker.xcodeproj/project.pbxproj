@@ -132,8 +132,6 @@
 		E422873C2A764A3D00E9CD5E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286A72A764A3D00E9CD5E /* MeViewController.swift */; };
 		E422873D2A764A3D00E9CD5E /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286AA2A764A3D00E9CD5E /* BudgetViewModel.swift */; };
 		E422873E2A764A3D00E9CD5E /* BudgetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286AB2A764A3D00E9CD5E /* BudgetListViewModel.swift */; };
-		E422873F2A764A3D00E9CD5E /* BudgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286AD2A764A3D00E9CD5E /* BudgetDataSource.swift */; };
-		E42287402A764A3D00E9CD5E /* BudgetSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286AE2A764A3D00E9CD5E /* BudgetSection.swift */; };
 		E42287412A764A3D00E9CD5E /* BudgetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B02A764A3D00E9CD5E /* BudgetList.swift */; };
 		E42287422A764A3D00E9CD5E /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B12A764A3D00E9CD5E /* Budget.swift */; };
 		E42287432A764A3D00E9CD5E /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286B32A764A3D00E9CD5E /* BudgetDetailViewController.swift */; };
@@ -148,21 +146,10 @@
 		E422874C2A764A3D00E9CD5E /* Database+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286BE2A764A3D00E9CD5E /* Database+Account.swift */; };
 		E422874D2A764A3D00E9CD5E /* Database+Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */; };
 		E422874F2A764A3D00E9CD5E /* Database+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42286C12A764A3D00E9CD5E /* Database+Currency.swift */; };
-		E42287522A764A6400E9CD5E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E42287512A764A6400E9CD5E /* SnapKit */; };
-		E42287552A764ABC00E9CD5E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E42287542A764ABC00E9CD5E /* Realm */; };
-		E42287572A764ABC00E9CD5E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E42287562A764ABC00E9CD5E /* RealmSwift */; };
-		E422875A2A764ADF00E9CD5E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E42287592A764ADF00E9CD5E /* RxCocoa */; };
-		E422875C2A764ADF00E9CD5E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E422875B2A764ADF00E9CD5E /* RxRelay */; };
-		E422875E2A764ADF00E9CD5E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E422875D2A764ADF00E9CD5E /* RxSwift */; };
-		E42287612A76A7FB00E9CD5E /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = E42287602A76A7FB00E9CD5E /* DGCharts */; };
-		E42287642A76A80C00E9CD5E /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = E42287632A76A80C00E9CD5E /* Collections */; };
-		E42287662A76A80C00E9CD5E /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = E42287652A76A80C00E9CD5E /* OrderedCollections */; };
-		E42287692A76A82100E9CD5E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E42287682A76A82100E9CD5E /* RxDataSources */; };
 		E422877C2A76A9C800E9CD5E /* PersistableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422876B2A76A9C800E9CD5E /* PersistableProtocol.swift */; };
 		E42287832A76A9C800E9CD5E /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287732A76A9C800E9CD5E /* UserObject.swift */; };
 		E42287862A76A9C800E9CD5E /* YearMonthDayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287762A76A9C800E9CD5E /* YearMonthDayObject.swift */; };
 		E422878B2A76A9C800E9CD5E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422877B2A76A9C800E9CD5E /* Database.swift */; };
-		E422878E2A76AA0400E9CD5E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E422878D2A76AA0400E9CD5E /* Lottie */; };
 		E42287942A76AA8400E9CD5E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287932A76AA8400E9CD5E /* loading.json */; };
 		E422879C2A76AEC100E9CD5E /* accounts_output.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287962A76AEC000E9CD5E /* accounts_output.json */; };
 		E422879D2A76AEC100E9CD5E /* budgets_output.json in Resources */ = {isa = PBXBuildFile; fileRef = E42287972A76AEC000E9CD5E /* budgets_output.json */; };
@@ -181,6 +168,30 @@
 		E42287B82A777B5D00E9CD5E /* Database+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B72A777B5D00E9CD5E /* Database+Migration.swift */; };
 		E42287BA2A77C1B200E9CD5E /* TransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */; };
 		E42287BE2A77D23C00E9CD5E /* EditBudgetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */; };
+		E42287C02A77FA3500E9CD5E /* AnalysisCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287BF2A77FA3500E9CD5E /* AnalysisCoordinator.swift */; };
+		E42287C22A7859DA00E9CD5E /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287C12A7859DA00E9CD5E /* WalletsViewController.swift */; };
+		E42287C42A785A7200E9CD5E /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287C32A785A7200E9CD5E /* WalletsViewModel.swift */; };
+		E42287C62A785C0700E9CD5E /* RecurringTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287C52A785C0700E9CD5E /* RecurringTransactionsViewController.swift */; };
+		E42287C82A785D3500E9CD5E /* RecurringTransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287C72A785D3500E9CD5E /* RecurringTransactionsViewModel.swift */; };
+		E42287CA2A785F6600E9CD5E /* RecurringTransactionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287C92A785F6600E9CD5E /* RecurringTransactionObject.swift */; };
+		E42287CC2A78650400E9CD5E /* Database+RecurringTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287CB2A78650400E9CD5E /* Database+RecurringTransaction.swift */; };
+		E42287CE2A787F2800E9CD5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287CD2A787F2800E9CD5E /* SearchViewController.swift */; };
+		E42287D02A787F3100E9CD5E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287CF2A787F3100E9CD5E /* SearchViewModel.swift */; };
+		E42287D22A7977C300E9CD5E /* HomeQuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287D12A7977C300E9CD5E /* HomeQuickAction.swift */; };
+		E42287D52A797B6200E9CD5E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E42287D42A797B6200E9CD5E /* SnapKit */; };
+		E42287D82A797B8300E9CD5E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E42287D72A797B8300E9CD5E /* Realm */; };
+		E42287DA2A797B8300E9CD5E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E42287D92A797B8300E9CD5E /* RealmSwift */; };
+		E42287DD2A797BC500E9CD5E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E42287DC2A797BC500E9CD5E /* RxCocoa */; };
+		E42287DF2A797BC500E9CD5E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E42287DE2A797BC500E9CD5E /* RxRelay */; };
+		E42287E12A797BC500E9CD5E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E42287E02A797BC500E9CD5E /* RxSwift */; };
+		E42287E42A797C0F00E9CD5E /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = E42287E32A797C0F00E9CD5E /* Collections */; };
+		E42287E62A797C0F00E9CD5E /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = E42287E52A797C0F00E9CD5E /* OrderedCollections */; };
+		E42287E92A797C2200E9CD5E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E42287E82A797C2200E9CD5E /* Lottie */; };
+		E42287EC2A797C4000E9CD5E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E42287EB2A797C4000E9CD5E /* RxDataSources */; };
+		E42287EE2A7980E500E9CD5E /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287ED2A7980E500E9CD5E /* AppNavigationBar.swift */; };
+		E42287F02A7986E800E9CD5E /* ListStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287EF2A7986E800E9CD5E /* ListStyleTableViewCell.swift */; };
+		E42287F22A79876600E9CD5E /* ListStyleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287F12A79876600E9CD5E /* ListStyleTableViewHeader.swift */; };
+		E42287F42A798F8600E9CD5E /* TransactionTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42287F32A798F8600E9CD5E /* TransactionTypeCell.swift */; };
 		E4A002F92A764963008B2D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002F82A764963008B2D1E /* AppDelegate.swift */; };
 		E4A002FB2A764963008B2D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A002FA2A764963008B2D1E /* SceneDelegate.swift */; };
 		E4A003022A764964008B2D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A003012A764964008B2D1E /* Assets.xcassets */; };
@@ -313,8 +324,6 @@
 		E42286A72A764A3D00E9CD5E /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		E42286AA2A764A3D00E9CD5E /* BudgetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
 		E42286AB2A764A3D00E9CD5E /* BudgetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetListViewModel.swift; sourceTree = "<group>"; };
-		E42286AD2A764A3D00E9CD5E /* BudgetDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDataSource.swift; sourceTree = "<group>"; };
-		E42286AE2A764A3D00E9CD5E /* BudgetSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetSection.swift; sourceTree = "<group>"; };
 		E42286B02A764A3D00E9CD5E /* BudgetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetList.swift; sourceTree = "<group>"; };
 		E42286B12A764A3D00E9CD5E /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		E42286B32A764A3D00E9CD5E /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +361,20 @@
 		E42287B72A777B5D00E9CD5E /* Database+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Migration.swift"; sourceTree = "<group>"; };
 		E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCoordinator.swift; sourceTree = "<group>"; };
 		E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetListViewModel.swift; sourceTree = "<group>"; };
+		E42287BF2A77FA3500E9CD5E /* AnalysisCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCoordinator.swift; sourceTree = "<group>"; };
+		E42287C12A7859DA00E9CD5E /* WalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewController.swift; sourceTree = "<group>"; };
+		E42287C32A785A7200E9CD5E /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		E42287C52A785C0700E9CD5E /* RecurringTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringTransactionsViewController.swift; sourceTree = "<group>"; };
+		E42287C72A785D3500E9CD5E /* RecurringTransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringTransactionsViewModel.swift; sourceTree = "<group>"; };
+		E42287C92A785F6600E9CD5E /* RecurringTransactionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringTransactionObject.swift; sourceTree = "<group>"; };
+		E42287CB2A78650400E9CD5E /* Database+RecurringTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+RecurringTransaction.swift"; sourceTree = "<group>"; };
+		E42287CD2A787F2800E9CD5E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E42287CF2A787F3100E9CD5E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E42287D12A7977C300E9CD5E /* HomeQuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeQuickAction.swift; sourceTree = "<group>"; };
+		E42287ED2A7980E500E9CD5E /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
+		E42287EF2A7986E800E9CD5E /* ListStyleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleTableViewCell.swift; sourceTree = "<group>"; };
+		E42287F12A79876600E9CD5E /* ListStyleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleTableViewHeader.swift; sourceTree = "<group>"; };
+		E42287F32A798F8600E9CD5E /* TransactionTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTypeCell.swift; sourceTree = "<group>"; };
 		E4A002F52A764963008B2D1E /* Money Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A002F82A764963008B2D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A002FA2A764963008B2D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -365,17 +388,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E422875E2A764ADF00E9CD5E /* RxSwift in Frameworks */,
-				E422875C2A764ADF00E9CD5E /* RxRelay in Frameworks */,
-				E42287642A76A80C00E9CD5E /* Collections in Frameworks */,
-				E42287692A76A82100E9CD5E /* RxDataSources in Frameworks */,
-				E42287572A764ABC00E9CD5E /* RealmSwift in Frameworks */,
-				E42287552A764ABC00E9CD5E /* Realm in Frameworks */,
-				E422878E2A76AA0400E9CD5E /* Lottie in Frameworks */,
-				E42287662A76A80C00E9CD5E /* OrderedCollections in Frameworks */,
-				E422875A2A764ADF00E9CD5E /* RxCocoa in Frameworks */,
-				E42287612A76A7FB00E9CD5E /* DGCharts in Frameworks */,
-				E42287522A764A6400E9CD5E /* SnapKit in Frameworks */,
+				E42287E42A797C0F00E9CD5E /* Collections in Frameworks */,
+				E42287E12A797BC500E9CD5E /* RxSwift in Frameworks */,
+				E42287E92A797C2200E9CD5E /* Lottie in Frameworks */,
+				E42287EC2A797C4000E9CD5E /* RxDataSources in Frameworks */,
+				E42287DF2A797BC500E9CD5E /* RxRelay in Frameworks */,
+				E42287DA2A797B8300E9CD5E /* RealmSwift in Frameworks */,
+				E42287D82A797B8300E9CD5E /* Realm in Frameworks */,
+				E42287DD2A797BC500E9CD5E /* RxCocoa in Frameworks */,
+				E42287E62A797C0F00E9CD5E /* OrderedCollections in Frameworks */,
+				E42287D52A797B6200E9CD5E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +444,7 @@
 				E42286112A764A3B00E9CD5E /* Currency.swift */,
 				E42286122A764A3B00E9CD5E /* Date */,
 				E42287AF2A77542900E9CD5E /* User.swift */,
+				E42287D12A7977C300E9CD5E /* HomeQuickAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +481,8 @@
 				E42286222A764A3B00E9CD5E /* DetailHeaderView.swift */,
 				E42286232A764A3B00E9CD5E /* IconTextButton.swift */,
 				E42286242A764A3B00E9CD5E /* InfoTextButton.swift */,
+				E42287EF2A7986E800E9CD5E /* ListStyleTableViewCell.swift */,
+				E42287F12A79876600E9CD5E /* ListStyleTableViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +506,7 @@
 				E422862D2A764A3C00E9CD5E /* BaseCoordinator.swift */,
 				E422862E2A764A3C00E9CD5E /* Coordinator.swift */,
 				E42287B92A77C1B200E9CD5E /* TransactionCoordinator.swift */,
+				E42287BF2A77FA3500E9CD5E /* AnalysisCoordinator.swift */,
 			);
 			path = Navigations;
 			sourceTree = "<group>";
@@ -644,6 +670,7 @@
 				E422866E2A764A3D00E9CD5E /* RecurringTransactionCell.swift */,
 				E42287AB2A77413D00E9CD5E /* MonthControlHeaderView.swift */,
 				E42287AD2A77445A00E9CD5E /* HomeSummaryView.swift */,
+				E42287ED2A7980E500E9CD5E /* AppNavigationBar.swift */,
 			);
 			name = Views;
 			path = ../Home/Views;
@@ -702,6 +729,7 @@
 				E422867E2A764A3D00E9CD5E /* TransactionViewModel.swift */,
 				E422867F2A764A3D00E9CD5E /* TransactionCellViewModel.swift */,
 				E42286802A764A3D00E9CD5E /* TransactionListViewModel.swift */,
+				E42287CF2A787F3100E9CD5E /* SearchViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -724,6 +752,7 @@
 				E42286942A764A3D00E9CD5E /* EditTransactionViewController.swift */,
 				E42286952A764A3D00E9CD5E /* TransactionListViewController.swift */,
 				E42286962A764A3D00E9CD5E /* TransactionFieldOptionListViewController.swift */,
+				E42287CD2A787F2800E9CD5E /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -740,6 +769,7 @@
 				E422869E2A764A3D00E9CD5E /* TransactionToggleCell.swift */,
 				E422869F2A764A3D00E9CD5E /* TransactionPreviewCell.swift */,
 				E42286A02A764A3D00E9CD5E /* TransactionDetailCell.swift */,
+				E42287F32A798F8600E9CD5E /* TransactionTypeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -765,6 +795,8 @@
 			isa = PBXGroup;
 			children = (
 				E42286A52A764A3D00E9CD5E /* MeViewModel.swift */,
+				E42287C32A785A7200E9CD5E /* WalletsViewModel.swift */,
+				E42287C72A785D3500E9CD5E /* RecurringTransactionsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -773,6 +805,8 @@
 			isa = PBXGroup;
 			children = (
 				E42286A72A764A3D00E9CD5E /* MeViewController.swift */,
+				E42287C12A7859DA00E9CD5E /* WalletsViewController.swift */,
+				E42287C52A785C0700E9CD5E /* RecurringTransactionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -781,7 +815,6 @@
 			isa = PBXGroup;
 			children = (
 				E42286A92A764A3D00E9CD5E /* View Models */,
-				E42286AC2A764A3D00E9CD5E /* Data Source */,
 				E42286B22A764A3D00E9CD5E /* Controllers */,
 				E42286B62A764A3D00E9CD5E /* Views */,
 			);
@@ -796,15 +829,6 @@
 				E42287BD2A77D23C00E9CD5E /* EditBudgetListViewModel.swift */,
 			);
 			path = "View Models";
-			sourceTree = "<group>";
-		};
-		E42286AC2A764A3D00E9CD5E /* Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				E42286AD2A764A3D00E9CD5E /* BudgetDataSource.swift */,
-				E42286AE2A764A3D00E9CD5E /* BudgetSection.swift */,
-			);
-			path = "Data Source";
 			sourceTree = "<group>";
 		};
 		E42286AF2A764A3D00E9CD5E /* Budget */ = {
@@ -847,6 +871,7 @@
 				E42287A62A76B80900E9CD5E /* AccountObject.swift */,
 				E42287B12A776A8D00E9CD5E /* MerchantObject.swift */,
 				E42287B32A7777D600E9CD5E /* BudgetObject.swift */,
+				E42287C92A785F6600E9CD5E /* RecurringTransactionObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -906,6 +931,7 @@
 			children = (
 				E422877B2A76A9C800E9CD5E /* Database.swift */,
 				E42286BD2A764A3D00E9CD5E /* Database+Transaction.swift */,
+				E42287CB2A78650400E9CD5E /* Database+RecurringTransaction.swift */,
 				E42286BC2A764A3D00E9CD5E /* Database+Merchant.swift */,
 				E42286BE2A764A3D00E9CD5E /* Database+Account.swift */,
 				E42286BF2A764A3D00E9CD5E /* Database+Budget.swift */,
@@ -968,17 +994,16 @@
 			);
 			name = "Money Tracker";
 			packageProductDependencies = (
-				E42287512A764A6400E9CD5E /* SnapKit */,
-				E42287542A764ABC00E9CD5E /* Realm */,
-				E42287562A764ABC00E9CD5E /* RealmSwift */,
-				E42287592A764ADF00E9CD5E /* RxCocoa */,
-				E422875B2A764ADF00E9CD5E /* RxRelay */,
-				E422875D2A764ADF00E9CD5E /* RxSwift */,
-				E42287602A76A7FB00E9CD5E /* DGCharts */,
-				E42287632A76A80C00E9CD5E /* Collections */,
-				E42287652A76A80C00E9CD5E /* OrderedCollections */,
-				E42287682A76A82100E9CD5E /* RxDataSources */,
-				E422878D2A76AA0400E9CD5E /* Lottie */,
+				E42287D42A797B6200E9CD5E /* SnapKit */,
+				E42287D72A797B8300E9CD5E /* Realm */,
+				E42287D92A797B8300E9CD5E /* RealmSwift */,
+				E42287DC2A797BC500E9CD5E /* RxCocoa */,
+				E42287DE2A797BC500E9CD5E /* RxRelay */,
+				E42287E02A797BC500E9CD5E /* RxSwift */,
+				E42287E32A797C0F00E9CD5E /* Collections */,
+				E42287E52A797C0F00E9CD5E /* OrderedCollections */,
+				E42287E82A797C2200E9CD5E /* Lottie */,
+				E42287EB2A797C4000E9CD5E /* RxDataSources */,
 			);
 			productName = "Money Tracker";
 			productReference = E4A002F52A764963008B2D1E /* Money Tracker.app */;
@@ -1009,13 +1034,12 @@
 			);
 			mainGroup = E4A002EC2A764963008B2D1E;
 			packageReferences = (
-				E42287502A764A6400E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */,
-				E42287532A764ABC00E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */,
-				E42287582A764ADE00E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */,
-				E422875F2A76A7FB00E9CD5E /* XCRemoteSwiftPackageReference "Charts" */,
-				E42287622A76A80C00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */,
-				E42287672A76A82100E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				E422878C2A76AA0400E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				E42287D32A797B6100E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E42287D62A797B8300E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */,
+				E42287DB2A797BC500E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E42287E22A797C0F00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */,
+				E42287E72A797C2200E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				E42287EA2A797C4000E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = E4A002F62A764963008B2D1E /* Products */;
 			projectDirPath = "";
@@ -1093,11 +1117,11 @@
 				E422871E2A764A3D00E9CD5E /* TransactionSection.swift in Sources */,
 				E422877C2A76A9C800E9CD5E /* PersistableProtocol.swift in Sources */,
 				E422870E2A764A3D00E9CD5E /* HomeViewModel.swift in Sources */,
+				E42287F42A798F8600E9CD5E /* TransactionTypeCell.swift in Sources */,
 				E42287052A764A3D00E9CD5E /* UILabel+Extensions.swift in Sources */,
 				E42287032A764A3D00E9CD5E /* URL+Extensions.swift in Sources */,
 				E42287102A764A3D00E9CD5E /* RecurringTransactionCell.swift in Sources */,
 				E42287832A76A9C800E9CD5E /* UserObject.swift in Sources */,
-				E422873F2A764A3D00E9CD5E /* BudgetDataSource.swift in Sources */,
 				E42286E12A764A3D00E9CD5E /* IconButton.swift in Sources */,
 				E422874C2A764A3D00E9CD5E /* Database+Account.swift in Sources */,
 				E422874D2A764A3D00E9CD5E /* Database+Budget.swift in Sources */,
@@ -1109,27 +1133,30 @@
 				E422872D2A764A3D00E9CD5E /* HomeViewController.swift in Sources */,
 				E42287062A764A3D00E9CD5E /* Date+Extensions.swift in Sources */,
 				E42287432A764A3D00E9CD5E /* BudgetDetailViewController.swift in Sources */,
+				E42287C02A77FA3500E9CD5E /* AnalysisCoordinator.swift in Sources */,
 				E42287B42A7777D600E9CD5E /* BudgetObject.swift in Sources */,
 				E42287B62A77794800E9CD5E /* BudgetState.swift in Sources */,
 				E42286D22A764A3D00E9CD5E /* DoubleTitlesTextFieldCell.swift in Sources */,
 				E422870B2A764A3D00E9CD5E /* EditRecurringTransactionViewController.swift in Sources */,
 				E42287012A764A3D00E9CD5E /* Calendar+Extensions.swift in Sources */,
 				E42286D62A764A3D00E9CD5E /* DetailHeaderView.swift in Sources */,
+				E42287CE2A787F2800E9CD5E /* SearchViewController.swift in Sources */,
 				E42286D42A764A3D00E9CD5E /* TitleValueCell.swift in Sources */,
 				E42286D52A764A3D00E9CD5E /* DoubleTitlesValuesCell.swift in Sources */,
 				E42286C62A764A3D00E9CD5E /* Base+ViewModels.swift in Sources */,
 				E42287862A76A9C800E9CD5E /* YearMonthDayObject.swift in Sources */,
 				E422873D2A764A3D00E9CD5E /* BudgetViewModel.swift in Sources */,
 				E42286DF2A764A3D00E9CD5E /* BaseCoordinator.swift in Sources */,
+				E42287C82A785D3500E9CD5E /* RecurringTransactionsViewModel.swift in Sources */,
 				E42287392A764A3D00E9CD5E /* TransactionDetailCell.swift in Sources */,
 				E422871D2A764A3D00E9CD5E /* TransactionListViewModel.swift in Sources */,
 				E42287092A764A3D00E9CD5E /* RecurringTransactionCellViewModel.swift in Sources */,
 				E42287222A764A3D00E9CD5E /* TransactionSettings.swift in Sources */,
 				E42287BE2A77D23C00E9CD5E /* EditBudgetListViewModel.swift in Sources */,
+				E42287F02A7986E800E9CD5E /* ListStyleTableViewCell.swift in Sources */,
 				E422873B2A764A3D00E9CD5E /* MeViewModel.swift in Sources */,
 				E42287262A764A3D00E9CD5E /* MainCategory.swift in Sources */,
 				E42287242A764A3D00E9CD5E /* RecurringTransaction.swift in Sources */,
-				E42287402A764A3D00E9CD5E /* BudgetSection.swift in Sources */,
 				E4A002FB2A764963008B2D1E /* SceneDelegate.swift in Sources */,
 				E42286D92A764A3D00E9CD5E /* Base+Service.swift in Sources */,
 				E42287422A764A3D00E9CD5E /* Budget.swift in Sources */,
@@ -1145,7 +1172,9 @@
 				E422871A2A764A3D00E9CD5E /* AnalysisSummaryCellViewModel.swift in Sources */,
 				E42286FA2A764A3D00E9CD5E /* DateFormatter+Extensions.swift in Sources */,
 				E42286D82A764A3D00E9CD5E /* InfoTextButton.swift in Sources */,
+				E42287C42A785A7200E9CD5E /* WalletsViewModel.swift in Sources */,
 				E42286C72A764A3D00E9CD5E /* LoadingScreenViewModel.swift in Sources */,
+				E42287F22A79876600E9CD5E /* ListStyleTableViewHeader.swift in Sources */,
 				E42286F92A764A3D00E9CD5E /* UIView+Extensions.swift in Sources */,
 				E42287182A764A3D00E9CD5E /* AnalysisPocketCell.swift in Sources */,
 				E422870A2A764A3D00E9CD5E /* PendingTransactionListViewController.swift in Sources */,
@@ -1159,6 +1188,7 @@
 				E42287252A764A3D00E9CD5E /* TransactionType.swift in Sources */,
 				E42286CF2A764A3D00E9CD5E /* MVVMViewController.swift in Sources */,
 				E422871C2A764A3D00E9CD5E /* TransactionCellViewModel.swift in Sources */,
+				E42287CA2A785F6600E9CD5E /* RecurringTransactionObject.swift in Sources */,
 				E42286FD2A764A3D00E9CD5E /* UIColor+Extensions.swift in Sources */,
 				E42286D72A764A3D00E9CD5E /* IconTextButton.swift in Sources */,
 				E42287382A764A3D00E9CD5E /* TransactionPreviewCell.swift in Sources */,
@@ -1174,13 +1204,17 @@
 				E42287AC2A77413D00E9CD5E /* MonthControlHeaderView.swift in Sources */,
 				E42287472A764A3D00E9CD5E /* BudgetStatusCell.swift in Sources */,
 				E42287302A764A3D00E9CD5E /* TransactionFieldOptionListViewController.swift in Sources */,
+				E42287CC2A78650400E9CD5E /* Database+RecurringTransaction.swift in Sources */,
 				E422870D2A764A3D00E9CD5E /* PocketViewController.swift in Sources */,
+				E42287D22A7977C300E9CD5E /* HomeQuickAction.swift in Sources */,
 				E42286D12A764A3D00E9CD5E /* UnderlinedTextField.swift in Sources */,
 				E42286EB2A764A3D00E9CD5E /* ErrorHandler.swift in Sources */,
 				E42286D02A764A3D00E9CD5E /* MainTabBarController.swift in Sources */,
 				E42287482A764A3D00E9CD5E /* BudgetCell.swift in Sources */,
 				E42287212A764A3D00E9CD5E /* RecurringTransactionDataSource.swift in Sources */,
 				E42287462A764A3D00E9CD5E /* BudgetEditCell.swift in Sources */,
+				E42287D02A787F3100E9CD5E /* SearchViewModel.swift in Sources */,
+				E42287C62A785C0700E9CD5E /* RecurringTransactionsViewController.swift in Sources */,
 				E42286F82A764A3D00E9CD5E /* UIImageView+loadImageUsingURL.swift in Sources */,
 				E42286C92A764A3D00E9CD5E /* YearMonth.swift in Sources */,
 				E42287A42A76B48D00E9CD5E /* TransactionObject.swift in Sources */,
@@ -1199,8 +1233,10 @@
 				E42286F52A764A3D00E9CD5E /* Enum.swift in Sources */,
 				E422874F2A764A3D00E9CD5E /* Database+Currency.swift in Sources */,
 				E42286DC2A764A3D00E9CD5E /* BudgetCoordinator.swift in Sources */,
+				E42287EE2A7980E500E9CD5E /* AppNavigationBar.swift in Sources */,
 				E42287072A764A3D00E9CD5E /* Double+Extensions.swift in Sources */,
 				E42286C52A764A3D00E9CD5E /* AnalysisViewModel.swift in Sources */,
+				E42287C22A7859DA00E9CD5E /* WalletsViewController.swift in Sources */,
 				E42287202A764A3D00E9CD5E /* RecurringTransactionSection.swift in Sources */,
 				E42287192A764A3D00E9CD5E /* AnalysisMainCategoryPreviewCell.swift in Sources */,
 				E422871F2A764A3D00E9CD5E /* TransactionDataSource.swift in Sources */,
@@ -1421,7 +1457,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E42287502A764A6400E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		E42287D32A797B6100E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -1429,7 +1465,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		E42287532A764ABC00E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		E42287D62A797B8300E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
@@ -1437,7 +1473,7 @@
 				kind = branch;
 			};
 		};
-		E42287582A764ADE00E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		E42287DB2A797BC500E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -1445,15 +1481,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		E422875F2A76A7FB00E9CD5E /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		E42287622A76A80C00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+		E42287E22A797C0F00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
@@ -1461,15 +1489,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E42287672A76A82100E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		E422878C2A76AA0400E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		E42287E72A797C2200E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -1477,63 +1497,66 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		E42287EA2A797C4000E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E42287512A764A6400E9CD5E /* SnapKit */ = {
+		E42287D42A797B6200E9CD5E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287502A764A6400E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = E42287D32A797B6100E9CD5E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		E42287542A764ABC00E9CD5E /* Realm */ = {
+		E42287D72A797B8300E9CD5E /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287532A764ABC00E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = E42287D62A797B8300E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		E42287562A764ABC00E9CD5E /* RealmSwift */ = {
+		E42287D92A797B8300E9CD5E /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287532A764ABC00E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = E42287D62A797B8300E9CD5E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		E42287592A764ADF00E9CD5E /* RxCocoa */ = {
+		E42287DC2A797BC500E9CD5E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287582A764ADE00E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = E42287DB2A797BC500E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		E422875B2A764ADF00E9CD5E /* RxRelay */ = {
+		E42287DE2A797BC500E9CD5E /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287582A764ADE00E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = E42287DB2A797BC500E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		E422875D2A764ADF00E9CD5E /* RxSwift */ = {
+		E42287E02A797BC500E9CD5E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287582A764ADE00E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = E42287DB2A797BC500E9CD5E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		E42287602A76A7FB00E9CD5E /* DGCharts */ = {
+		E42287E32A797C0F00E9CD5E /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E422875F2A76A7FB00E9CD5E /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		E42287632A76A80C00E9CD5E /* Collections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E42287622A76A80C00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = E42287E22A797C0F00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = Collections;
 		};
-		E42287652A76A80C00E9CD5E /* OrderedCollections */ = {
+		E42287E52A797C0F00E9CD5E /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287622A76A80C00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = E42287E22A797C0F00E9CD5E /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
 		};
-		E42287682A76A82100E9CD5E /* RxDataSources */ = {
+		E42287E82A797C2200E9CD5E /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E42287672A76A82100E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */;
-			productName = RxDataSources;
-		};
-		E422878D2A76AA0400E9CD5E /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E422878C2A76AA0400E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = E42287E72A797C2200E9CD5E /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		E42287EB2A797C4000E9CD5E /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E42287EA2A797C4000E9CD5E /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

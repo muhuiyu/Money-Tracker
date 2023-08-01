@@ -11,6 +11,7 @@ import UIKit
 class TransactionDateCell: UITableViewCell {
     static let reuseID = NSStringFromClass(TransactionDateCell.self)
     
+    private let iconView = UIImageView(image: UIImage(systemName: Icons.calender))
     private let titleLabel = UILabel()
     private let valueStack = UIStackView()
     private let datePicker = UIDatePicker()
@@ -55,8 +56,11 @@ extension TransactionDateCell {
 // MARK: - View Config
 extension TransactionDateCell {
     private func configureViews() {
+        iconView.tintColor = .secondaryLabel
+        contentView.addSubview(iconView)
+        
         titleLabel.textAlignment = .left
-        titleLabel.textColor = .label
+        titleLabel.textColor = .secondaryLabel
         titleLabel.font = UIFont.body
         contentView.addSubview(titleLabel)
         
@@ -68,11 +72,17 @@ extension TransactionDateCell {
         contentView.addSubview(datePicker)
     }
     private func configureConstraints() {
+        iconView.snp.remakeConstraints { make in
+            make.leading.equalTo(contentView.layoutMarginsGuide)
+            make.size.equalTo(Constants.IconButtonSize.trivial)
+            make.centerY.equalToSuperview()
+        }
         titleLabel.snp.remakeConstraints { make in
-            make.top.leading.bottom.equalTo(contentView.layoutMarginsGuide)
-    }
+            make.leading.equalTo(iconView.snp.trailing).offset(Constants.Spacing.small)
+            make.centerY.equalToSuperview()
+        }
         datePicker.snp.remakeConstraints { make in
-            make.top.bottom.equalTo(titleLabel)
+            make.top.bottom.equalTo(contentView.layoutMarginsGuide)
             make.trailing.equalTo(contentView.layoutMarginsGuide)
             make.leading.equalTo(titleLabel.snp.trailing).offset(Constants.Spacing.small)
         }

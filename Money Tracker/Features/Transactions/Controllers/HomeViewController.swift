@@ -11,11 +11,12 @@ import RxSwift
 class HomeViewController: Base.MVVMViewController<HomeViewModel> {
     
     // MARK: - View
+    private let appNavigationBar = AppNavigationBar()
     private let headerView = UIView()
     private let balanceView = HomeHeaderView()
     private let monthControlView = MonthControlHeaderView()
     private let homeSummaryView = HomeSummaryView()
-    private let tableView = UITableView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let refreshControl = UIRefreshControl()
         
     override func viewDidLoad() {
@@ -28,11 +29,21 @@ class HomeViewController: Base.MVVMViewController<HomeViewModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.reloadTransactions()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 
 // MARK: - TapHandlers
 extension HomeViewController {
+    @objc
+    func didTapSearch(_ sender: UIBarButtonItem) {
+        guard let coordinator = coordinator as? HomeCoordinator else { return }
+        coordinator.showSearch()
+    }
     @objc
     func didTapOnNotification(_ sender: UIBarButtonItem) {
         guard let coordinator = coordinator as? HomeCoordinator else { return }
@@ -67,16 +78,18 @@ extension HomeViewController {
     private func configureViews() {
         guard let coordinator = coordinator as? HomeCoordinator else { return }
 
+        view.addSubview(appNavigationBar)
+        
         title = viewModel.displayTitle
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: Icons.plus),
                             style: .plain,
                             target: self,
                             action: #selector(didTapAddTransaction)),
-            UIBarButtonItem(image: UIImage(systemName: Icons.bellbadgeFill),
+            UIBarButtonItem(image: UIImage(systemName: Icons.magnifyingglass),
                             style: .plain,
                             target: self,
-                            action: #selector(didTapOnNotification(_ :)))
+                            action: #selector(didTapSearch(_ :)))
         ]
         
         view.backgroundColor = .systemBackground
@@ -101,14 +114,21 @@ extension HomeViewController {
         refreshControl.addTarget(self,
                                  action: #selector(didPullToRefresh(_:)),
                                  for: .valueChanged)
+        
         tableView.refreshControl = refreshControl
+        tableView.backgroundColor = UIColor.systemGroupedBackground
+        tableView.register(ListStyleTableViewCell.self, forCellReuseIdentifier: ListStyleTableViewCell.reuseID)
         tableView.register(TransactionPreviewCell.self, forCellReuseIdentifier: TransactionPreviewCell.reuseID)
+        tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
     }
     private func configureConstraints() {
+        appNavigationBar.snp.remakeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
         monthControlView.snp.remakeConstraints { make in
-            make.top.equalTo(view.layoutMarginsGuide).inset(Constants.Spacing.medium)
+            make.top.equalTo(appNavigationBar.snp.bottom).offset(Constants.Spacing.large)
             make.leading.trailing.equalToSuperview()
         }
         homeSummaryView.snp.remakeConstraints { make in
@@ -117,7 +137,8 @@ extension HomeViewController {
             make.bottom.equalToSuperview()
         }
         headerView.snp.remakeConstraints { make in
-            make.top.leading.trailing.equalTo(view.layoutMarginsGuide)
+            make.top.equalTo(view.layoutMarginsGuide)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         tableView.snp.remakeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
@@ -125,8 +146,6 @@ extension HomeViewController {
         }
     }
     private func configureBindings() {
-        guard let coordinator = coordinator as? HomeCoordinator else { return }
-        
         viewModel.income
             .asObservable()
             .bind(to: homeSummaryView.income)
@@ -139,35 +158,16 @@ extension HomeViewController {
 
         viewModel.displayTransactions
             .asObservable()
-            .bind(to: tableView.rx.items(dataSource: viewModel.transactionDataSource))
+            .subscribe { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
             .disposed(by: disposeBag)
         
         viewModel.currentYearMonth
             .bind(to: monthControlView.yearMonth)
             .disposed(by: disposeBag)
-
-        Observable
-            .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Transaction.self))
-            .subscribe { indexPath, item in
-                coordinator.showTransactionDetail(item.id)
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            }
-            .disposed(by: disposeBag)
-
-//        viewModel.displayMonthlyBalanceString
-//            .asObservable()
-//            .subscribe { value in
-//                self.balanceView.amountString = value
-//            }
-//            .disposed(by: disposeBag)
-//
-//        viewModel.displayNumberOfAccountsString
-//            .asObservable()
-//            .subscribe { value in
-//                self.balanceView.subtitleString = value
-//            }
-//            .disposed(by: disposeBag)
-
     }
 
     private func handleError(of result: VoidResult) {
@@ -180,8 +180,43 @@ extension HomeViewController {
         }
     }
 }
+// MARK: - DataSource
+extension HomeViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.displayTransactions.value.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.displayTransactions.value[section].items.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionPreviewCell.reuseID, for: indexPath) as? TransactionPreviewCell else {
+            return UITableViewCell()
+        }
+        if let dataProvider = appCoordinator?.dataProvider {
+            cell.viewModel.merchantList = dataProvider.getMerchantsMap()
+        }
+        cell.viewModel.subtitleAttribute = .category
+        cell.viewModel.transaction.accept(viewModel.getTransaction(at: indexPath))
+        return cell
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = ListStyleTableViewHeader()
+        view.text = viewModel.displayTransactions.value[section].header
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32.0
+    }
+}
 // MARK: - Delegate
 extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        guard let coordinator = coordinator as? HomeCoordinator, let transaction = viewModel.getTransaction(at: indexPath) else { return }
+        coordinator.showTransactionDetail(transaction.id)
+    }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let coordinator = coordinator as? HomeCoordinator else { return nil }
 
@@ -211,22 +246,3 @@ extension HomeViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [action])
     }
 }
-
-//private func didTapPocket() {
-//        guard let coordinator = coordinator as? HomeCoordinator else { return }
-//        coordinator.showPocket()
-//}
-//private func didTapBalanceView() {
-//        guard let coordinator = coordinator as? HomeCoordinator else { return }
-//        coordinator.showMonthlyAnalysis()
-//}
-//        balanceView.addTransactionTapHandler = { [weak self] in
-//            self?.didTapAddTransaction()
-//        }
-//        balanceView.pocketTaphandler = { [weak self] in
-//            self?.didTapPocket()
-//        }
-//        balanceView.analysisViewTapHandler = { [weak self] in
-//            self?.didTapBalanceView()
-//        }
-//        headerView.addSubview(balanceView)

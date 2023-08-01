@@ -21,19 +21,21 @@ class RecurringTransactionCellViewModel {
     var displayRecurringRuleString: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
     
+    var merchantList: [MerchantID: Merchant] = [:]
+    
     init() {
         recurringTransaction
             .asObservable()
             .subscribe(onNext: { value in
                 if let value = value {
-                    self.displayIcon.accept(value.transactionSettings.icon)
+                    self.displayIcon.accept(value.icon)
                     self.displayRecurringRuleString.accept(value.displayRecuringRuleString)
-                    self.displayAmountString.accept(value.transactionSettings.signedAmount.toCurrencyString())
+                    self.displayAmountString.accept(value.signedAmount.toCurrencyString())
                     
-//                    if let merchantName = Merchant.getMerchantName(of: value.transactionSettings.merchantID) {
-//                        self.displayMerchantString.accept(merchantName)
-//                    }
-                    if let categoryName = Category.getCategoryName(of: value.transactionSettings.categoryID) {
+                    if let merchantName = self.merchantList[value.merchantID]?.value {
+                        self.displayMerchantString.accept(merchantName)
+                    }
+                    if let categoryName = Category.getCategoryName(of: value.categoryID) {
                         self.displayCategoryString.accept(categoryName)
                     }
                 }

@@ -20,7 +20,7 @@ open class TitleValueCell: UITableViewCell, BaseCell {
         didSet {
             if let _ = tapHandler {
                 valueLabel.textColor = UIColor.Brand.primary
-                valueLabel.font = UIFont.bodyHeavy
+                valueLabel.font = .bodyBold
                 valueLabel.isUserInteractionEnabled = true
             }
         }

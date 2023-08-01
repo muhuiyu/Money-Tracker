@@ -33,6 +33,9 @@ extension YearMonthDay {
     var firstDayOfMonth: YearMonthDay {
         return YearMonthDay(year: year, month: month, day: 1)
     }
+    func getDateInThisWeek(on weekday: Int) -> YearMonthDay {
+        return self.toDate?.getDateInThisWeek(on: weekday).toYearMonthDay ?? .today
+    }
 }
 extension YearMonthDay {
     static var today: YearMonthDay {

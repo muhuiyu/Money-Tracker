@@ -19,6 +19,8 @@ class HomeSummaryView: UIView {
     
     private let topSeparator = UIView()
     private let bottomSeparator = UIView()
+    private let leadingSeparator = UIView()
+    private let trailingSeparator = UIView()
     private let leftSeparator = UIView()
     private let rightSeparator = UIView()
     
@@ -42,19 +44,24 @@ extension HomeSummaryView {
     private func configureViews() {
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
+        stackView.contentMode = .scaleAspectFit
         addSubview(stackView)
         
+        leadingSeparator.backgroundColor = .white
+        stackView.addArrangedSubview(leadingSeparator)
         stackView.addArrangedSubview(incomeStack)
-        leftSeparator.backgroundColor = .systemGray
+        leftSeparator.backgroundColor = .systemGray.withAlphaComponent(0.2)
         stackView.addArrangedSubview(leftSeparator)
         stackView.addArrangedSubview(expenseStack)
-        rightSeparator.backgroundColor = .systemGray
+        rightSeparator.backgroundColor = .systemGray.withAlphaComponent(0.2)
         stackView.addArrangedSubview(rightSeparator)
         stackView.addArrangedSubview(balanceStack)
+        trailingSeparator.backgroundColor = .white
+        stackView.addArrangedSubview(trailingSeparator)
         
-        topSeparator.backgroundColor = .systemGray
+        topSeparator.backgroundColor = .systemGray.withAlphaComponent(0.2)
         addSubview(topSeparator)
-        bottomSeparator.backgroundColor = .systemGray
+        bottomSeparator.backgroundColor = .systemGray.withAlphaComponent(0.2)
         addSubview(bottomSeparator)
     }
     private func configureConstraints() {
@@ -69,13 +76,13 @@ extension HomeSummaryView {
             make.bottom.equalTo(bottomSeparator.snp.top)
         }
         incomeStack.snp.remakeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(90)
         }
         expenseStack.snp.remakeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(90)
         }
         balanceStack.snp.remakeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(90)
         }
         bottomSeparator.snp.remakeConstraints { make in
             make.bottom.equalToSuperview()
@@ -86,6 +93,12 @@ extension HomeSummaryView {
             make.width.equalTo(1)
         }
         rightSeparator.snp.remakeConstraints { make in
+            make.width.equalTo(1)
+        }
+        leadingSeparator.snp.remakeConstraints { make in
+            make.width.equalTo(1)
+        }
+        trailingSeparator.snp.remakeConstraints { make in
             make.width.equalTo(1)
         }
     }
@@ -160,13 +173,13 @@ class HomeSummaryStackView: UIView {
         addSubview(valueLabel)
         
         titleLabel.snp.remakeConstraints { make in
-            make.top.equalToSuperview().inset(Constants.Spacing.slight)
+            make.top.equalToSuperview().inset(Constants.Spacing.trivial)
             make.centerX.equalToSuperview()
             make.leading.trailing.lessThanOrEqualToSuperview()
         }
         valueLabel.snp.remakeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(Constants.Spacing.slight)
-            make.bottom.equalToSuperview().inset(Constants.Spacing.slight)
+            make.bottom.equalToSuperview().inset(Constants.Spacing.trivial)
             make.centerX.equalToSuperview()
             make.leading.trailing.lessThanOrEqualToSuperview()
         }
