@@ -92,6 +92,14 @@ extension TransactionDetailCell {
         valueLabel.text = "default"
         valueStack.addArrangedSubview(valueLabel)
         
+        let nextIcon = UIImageView(image: UIImage(systemName: Icons.chevronForward))
+        nextIcon.contentMode = .scaleAspectFit
+        nextIcon.tintColor = .secondaryLabel
+        nextIcon.snp.remakeConstraints { make in
+            make.size.equalTo(16)
+        }
+        valueStack.addArrangedSubview(nextIcon)
+        
         valueStack.axis = .horizontal
         valueStack.alignment = .center
         valueStack.spacing = Constants.Spacing.small

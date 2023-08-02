@@ -56,11 +56,11 @@ extension TransactionDateCell {
 // MARK: - View Config
 extension TransactionDateCell {
     private func configureViews() {
-        iconView.tintColor = .secondaryLabel
+        iconView.tintColor = .label
         contentView.addSubview(iconView)
         
         titleLabel.textAlignment = .left
-        titleLabel.textColor = .secondaryLabel
+        titleLabel.textColor = .label
         titleLabel.font = UIFont.body
         contentView.addSubview(titleLabel)
         

@@ -35,6 +35,7 @@ extension EditBudgetListViewController {
     @objc
     private func didTapSave() {
         viewModel.updateBudgets()
+        NotificationCenter.default.post(name: NSNotification.Name.reloadBudgets, object: nil)
         coordinator?.dismissCurrentModal()
     }
 }

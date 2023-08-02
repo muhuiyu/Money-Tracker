@@ -111,14 +111,7 @@ extension RecurringTransactionCell {
             .subscribe { value in
                 self.signedAmountLabel.text = value
                 let transactionType = self.viewModel.recurringTransaction.value?.type
-                switch transactionType {
-                case .expense:
-                    self.signedAmountLabel.textColor = .systemRed
-                case .income:
-                    self.signedAmountLabel.textColor = .systemGreen
-                default:
-                    self.signedAmountLabel.textColor = .systemGray
-                }
+                self.signedAmountLabel.textColor = transactionType?.color
             }
             .disposed(by: disposeBag)
 

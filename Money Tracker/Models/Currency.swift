@@ -17,6 +17,8 @@ extension CurrencyCode {
         let locale = NSLocale(localeIdentifier: self)
         return locale.displayName(forKey: .currencySymbol, value: self)
     }
+    
+    static var list: [CurrencyCode] = [ "SGD", "USD", "JPY", "EUR", "GBP", "NTD" ]
 }
 
 

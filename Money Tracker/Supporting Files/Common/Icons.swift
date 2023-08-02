@@ -100,7 +100,11 @@ class Icons {
     static var crossFill: String { "cross.fill" }
     static var heartFill: String { "heart.fill" }
     static var chevronForward: String { "chevron.forward" }
+    static var chevronForwardCircle: String { "chevron.forward.circle" }
+    static var chevronForwardCircleFill: String { "chevron.forward.circle.fill" }
     static var chevronBackward: String { "chevron.backward" }
+    static var chevronBackwardCircle: String { "chevron.backward.circle" }
+    static var chevronBackwardCircleFill: String { "chevron.backward.circle.fill" }
     static var chevronUp: String { "chevron.up" }
     static var chevronDown: String { "chevron.down" }
     static var chartBar: String { "chart.bar" }

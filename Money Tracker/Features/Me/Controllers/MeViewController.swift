@@ -10,7 +10,7 @@ import RxSwift
 
 class MeViewController: Base.MVVMViewController<MeViewModel> {
     
-    private let tableView = UITableView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private lazy var cells: [[UITableViewCell]] = [
         [
             recurringTransactionsCell
@@ -18,12 +18,16 @@ class MeViewController: Base.MVVMViewController<MeViewModel> {
         [
             mainCurrencyCell,
             walletsCell,
+        ],
+        [
+            exportCell
         ]
     ]
     
     private let mainCurrencyCell = UITableViewCell()
     private let recurringTransactionsCell = UITableViewCell()
     private let walletsCell = UITableViewCell()
+    private let exportCell = UITableViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +80,7 @@ extension MeViewController {
         configureRecurringTransaction()
         configureMainCurrencyCell()
         configureWalletsCell()
+        configureExportCell()
     }
     private func configureRecurringTransaction() {
         var content = recurringTransactionsCell.defaultContentConfiguration()
@@ -94,6 +99,12 @@ extension MeViewController {
         content.text = "Wallets"
         walletsCell.accessoryType = .disclosureIndicator
         walletsCell.contentConfiguration = content
+    }
+    private func configureExportCell() {
+        var content = exportCell.defaultContentConfiguration()
+        content.text = "Export"
+        exportCell.accessoryType = .disclosureIndicator
+        exportCell.contentConfiguration = content
     }
 }
 

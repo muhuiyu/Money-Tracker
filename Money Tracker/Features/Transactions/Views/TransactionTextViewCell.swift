@@ -69,7 +69,6 @@ extension TransactionTextViewCell {
         iconView.snp.remakeConstraints { make in
             make.top.equalTo(contentView.layoutMarginsGuide).inset(Constants.Spacing.small)
             make.leading.equalTo(contentView.layoutMarginsGuide)
-            make.centerY.equalToSuperview()
             make.size.equalTo(Constants.IconButtonSize.trivial)
         }
         textView.snp.remakeConstraints { make in

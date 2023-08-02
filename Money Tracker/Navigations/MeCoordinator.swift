@@ -14,6 +14,7 @@ class MeCoordinator: BaseCoordinator {
         case recurringTransactionDetails(RecurringTransactionID)
         case mainCurrency
         case wallets
+        case export
     }
 }
 
@@ -31,6 +32,8 @@ extension MeCoordinator {
             return BaseViewController()
         case .wallets:
             return WalletsViewController(appCoordinator: self.parentCoordinator, coordinator: self, viewModel: WalletsViewModel(appCoordinator: self.parentCoordinator))
+        case .export:
+            return ExportViewController(appCoordinator: self.parentCoordinator, coordinator: self)
         }
     }
 }
@@ -51,6 +54,10 @@ extension MeCoordinator {
     }
     func showWallets() {
         guard let viewController = makeViewController(for: .wallets) else { return }
+        self.navigate(to: viewController, presentModally: false)
+    }
+    func showExport() {
+        guard let viewController = makeViewController(for: .export) else { return }
         self.navigate(to: viewController, presentModally: false)
     }
 }

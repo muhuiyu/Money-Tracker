@@ -190,11 +190,8 @@ extension EditTransactionViewController {
         typeCell.didChangeValueHandler = { [weak self] type in
             self?.didRequestToUpdate(.type, to: type)
         }
-        amountCell.didChangeValueHandler = { [weak self] in
-            self?.didRequestToUpdate(.amount, to: self?.amountCell.value ?? "0")
-        }
         amountCell.didTapInCellHandler = { [weak self] in
-            self?.keyboardTrigger = IndexPath(row: 0, section: 0)
+            self?.presentCalculator()
         }
         fxRateCell.value = "default"
         fxRateCell.numberOfLines = 0
@@ -247,7 +244,6 @@ extension EditTransactionViewController {
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             footerBottomConstraint = make.bottom
                 .equalTo(view.safeAreaLayoutGuide)
-                .inset(Constants.Spacing.medium)
                 .constraint.layoutConstraints.first
         }
     }
@@ -281,6 +277,20 @@ extension EditTransactionViewController {
             
         recurringRuleCell.value = viewModel.displayRecurringRuleValue
         recurringRuleCell.isHidden = viewModel.displayRecurringRuleValue?.isEmpty ?? true
+    }
+    
+    private func presentCalculator() {
+        guard let transaction = viewModel.transaction.value else { return }
+        let viewController = CalculatorViewController()
+        viewController.value = transaction.amount
+        viewController.type = transaction.type
+        viewController.didTapDoneHandler = { [weak self] value in
+            self?.didRequestToUpdate(.amount, to: value)
+        }
+        viewController.didChangeCurrencyCode = { [weak self] value in
+            self?.didRequestToUpdate(.currencyCode, to: value)
+        }
+        present(viewController, animated: true)
     }
 }
 // MARK: - Data Source

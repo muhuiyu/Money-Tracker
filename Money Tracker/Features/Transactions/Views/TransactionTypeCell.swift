@@ -36,13 +36,13 @@ class TransactionTypeCell: UITableViewCell, BaseCell {
 // MARK: - View Config
 extension TransactionTypeCell {
     private func configureViews() {
-        segmentControl.addTarget(self, action: #selector(didChangeSegmentIndex(_:)), for: .editingChanged)
+        segmentControl.addTarget(self, action: #selector(didChangeSegmentIndex(_:)), for: .valueChanged)
         contentView.addSubview(segmentControl)
     }
     private func configureConstraints() {
         segmentControl.snp.remakeConstraints { make in
             make.top.equalTo(contentView.layoutMarginsGuide)
-            make.leading.trailing.equalTo(contentView)
+            make.leading.trailing.equalTo(contentView.layoutMarginsGuide)
             make.centerX.equalToSuperview()
         }
     }

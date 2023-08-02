@@ -118,10 +118,7 @@ extension TransactionViewModel {
         }
     }
     func updateTransactionDate(to date: YearMonthDay) {
-        guard
-            var transactionData = transaction.value,
-            let dataProvider = appCoordinator?.dataProvider
-        else { return }
+        guard var transactionData = transaction.value else { return }
         
         transactionData.date = date
         self.transaction.accept(transactionData)
@@ -155,6 +152,9 @@ extension TransactionViewModel {
         case .note:
             guard let note = value as? String else { return }
             transactionData.note = note
+        case .currencyCode:
+            guard let value = value as? CurrencyCode else { return }
+            transactionData.currencyCode = value
         default:
             return
         }

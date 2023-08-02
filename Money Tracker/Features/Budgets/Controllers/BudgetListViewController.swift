@@ -21,6 +21,7 @@ class BudgetListViewController: Base.MVVMViewController<BudgetListViewModel> {
             self.configureConstraints()
             self.configureBindings()
         }
+        configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +79,15 @@ extension BudgetListViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    private func configureNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.reloadBudgets, object: nil)
+    }
+    @objc
+    private func reloadData() {
+        viewModel.reloadBudgets { _ in
+            
+        }
     }
 }
 // MARK: - DataSource

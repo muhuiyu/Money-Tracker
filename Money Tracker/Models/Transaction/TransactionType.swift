@@ -5,7 +5,7 @@
 //  Created by Grace, Mu-Hui Yu on 7/31/23.
 //
 
-import Foundation
+import UIKit
 
 typealias TransactionTypeString = String
 
@@ -33,6 +33,17 @@ enum TransactionType: String, Codable, CaseIterable {
             return 1
         case .transfer:
             return 2
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .income:
+            return .systemGreen
+        case .expense:
+            return .systemRed
+        case .transfer:
+            return .systemGray
         }
     }
 }
