@@ -29,6 +29,20 @@ extension UINavigationController {
         navigationBar.backItem?.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
         navigationBar.items?.first?.title = ""  // what is this?
     }
+    
+    /// Finds the view controller instance from the app's navigation stack
+    /// - Parameters:
+    ///     - class: Class type of the view controller
+    /// - Returns: The view controller object of the specified type, returns `nil` if no such view controller is found
+    func findViewController<T: UIViewController>(_ class: T.Type) -> T? {
+        let viewControllers = self.viewControllers.reversed()
+        for viewController in viewControllers {
+            if viewController is T {
+                return viewController as? T
+            }
+        }
+        return nil
+    }
 }
 
 extension UINavigationItem {

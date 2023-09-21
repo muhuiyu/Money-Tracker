@@ -11,7 +11,7 @@ import RxSwift
 class RecurringTransactionsViewController: Base.MVVMViewController<RecurringTransactionsViewModel> {
 
     private let estimatedSpendLabel = UILabel()
-    private let tableView = UITableView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
 
     override func viewDidLoad() {
         super.viewDidLoad()

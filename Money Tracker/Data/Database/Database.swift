@@ -70,7 +70,7 @@ extension Database {
 //        addAllMerchants()
 //        addAllTransactions()
 //        addAllRecurringTransactions()
-        
+//
 //        syncBackup()
     }
 }

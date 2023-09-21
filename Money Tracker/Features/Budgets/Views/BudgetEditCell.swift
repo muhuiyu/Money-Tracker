@@ -30,31 +30,12 @@ class BudgetEditCell: DoubleTitlesTextFieldCell {
         textField.returnKeyType = .done
     }
     
-    override func configureBindings() {
-//        viewModel.budget
-//            .asObservable()
-//            .subscribe { [weak self] value in
-//                self?.configureData()
-//            }
-//            .disposed(by: disposeBag)
-        
-//        viewModel.displayMonthlyAverageString
-//            .asObservable()
-//            .subscribe { value in
-//                self.subtitleLabel.text = value
-//            }
-//            .disposed(by: disposeBag)
-//
-//        viewModel.displayTotalAmountDouble
-//            .asObservable()
-//            .subscribe { value in
-//                self.textField.text = value.formatted()
-//            }
-//            .disposed(by: disposeBag)
-    }
-    
     private func configureData() {
+        let tintColor = MainCategory.getColor(of: budget?.mainCategoryID ?? "")
+        iconView.backgroundColor = tintColor.withAlphaComponent(0.2)
+        iconView.layer.cornerRadius = 8
         iconView.image = budget?.icon
+        iconView.tintColor = tintColor
         titleLabel.text = MainCategory.getName(of: budget?.mainCategoryID ?? "")
         textField.keyboardType = .decimalPad
     }

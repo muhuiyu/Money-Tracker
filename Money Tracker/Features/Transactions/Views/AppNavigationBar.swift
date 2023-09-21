@@ -8,11 +8,34 @@
 import UIKit
 
 class AppNavigationBar: UIView {
+
+    enum ContentType {
+        case wallets
+        case title(String)
+    }
     
+    // MARK: - Views
+    private let leftStackView = UIStackView()
     private let walletButton = WalletButton()
+    private let titleLabel = UILabel()
     private let searchButton = IconButton(icon: UIImage(systemName: Icons.magnifyingglass))
     
-    override init(frame: CGRect) {
+    private let contentType: ContentType
+    
+    var tapWalletsHandler: (() -> Void)? {
+        didSet {
+            walletButton.tapHandler = tapWalletsHandler
+        }
+    }
+    
+    var tapSearchHandler: (() -> Void)? {
+        didSet {
+            searchButton.tapHandler = tapSearchHandler
+        }
+    }
+    
+    init(contentType: ContentType) {
+        self.contentType = contentType
         super.init(frame: .zero)
         configureViews()
         configureConstraints()
@@ -23,14 +46,26 @@ class AppNavigationBar: UIView {
     }
     
     private func configureViews() {
-        walletButton.walletName = "All Wallets"
-        addSubview(walletButton)
+        switch contentType {
+        case .wallets:
+            walletButton.walletName = "All Wallets"
+            leftStackView.addArrangedSubview(walletButton)
+        case .title(let title):
+            titleLabel.font = .h3
+            titleLabel.text = title
+            titleLabel.textAlignment = .left
+            titleLabel.textColor = .label
+            leftStackView.addArrangedSubview(titleLabel)
+        }
+        
+        leftStackView.axis = .vertical
+        addSubview(leftStackView)
         searchButton.tintColor = .label
         addSubview(searchButton)
     }
     
     private func configureConstraints() {
-        walletButton.snp.remakeConstraints { make in
+        leftStackView.snp.remakeConstraints { make in
             make.top.bottom.equalTo(layoutMarginsGuide)
             make.leading.equalToSuperview().inset(Constants.Spacing.medium)
             make.centerY.equalToSuperview()
@@ -63,6 +98,7 @@ class WalletButton: UIView {
         super.init(frame: frame)
         configureViews()
         configureConstraints()
+        configureGestures()
     }
     
     required init?(coder: NSCoder) {

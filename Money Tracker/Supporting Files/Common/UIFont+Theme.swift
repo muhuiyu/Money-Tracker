@@ -28,4 +28,18 @@ extension UIFont {
     static let placeholder = UIFont(name: "avenir-roman", size: 16)
     static let buttonText = UIFont(name: "avenir-heavy", size: 16)
     static let sectionHeader = UIFont(name: "avenir-medium", size: 14)
+    
+//    static let h1 = UIFont.preferredFont(forTextStyle: .largeTitle)
+//    static let h2 = UIFont.preferredFont(forTextStyle: .title1)
+//    static let h3 = UIFont.preferredFont(forTextStyle: .title2)
+//    static let h4 = UIFont.preferredFont(forTextStyle: .title3)
+//    static let body = UIFont.preferredFont(forTextStyle: .body)
+//    static let bodyBold = UIFont.preferredFont(forTextStyle: .headline)
+//    static let small = UIFont.preferredFont(forTextStyle: .callout)
+//    static let smallBold = UIFont.boldSystemFont(ofSize: 14)
+//    static let desc = UIFont.preferredFont(forTextStyle: .footnote)
+//    static let smallDesc = UIFont.preferredFont(forTextStyle: .caption1)
+//    static let placeholder = UIFont.body
+//    static let buttonText = UIFont.bodyBold
+//    static let sectionHeader = UIFont.smallBold
 }

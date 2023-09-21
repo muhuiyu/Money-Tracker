@@ -60,9 +60,7 @@ extension Transaction {
         note = ""
         categoryID = Category.groceries.id     // default
         tag = .dailyLiving
-        recurringID = UUID()
         sourceAccountID = CacheManager.shared.mainAccountID
-        targetAccountID = UUID()
     }
     init(from recurringTransaction: RecurringTransaction) {
         id = UUID()
@@ -77,7 +75,19 @@ extension Transaction {
         tag = recurringTransaction.tag
         recurringID = recurringTransaction.id
         sourceAccountID = CacheManager.shared.mainAccountID
-        targetAccountID = UUID()
+    }
+    init(from item: TransactionSettings) {
+        id = UUID()
+        userID = CacheManager.shared.userID
+        currencyCode = item.currencyCode
+        amount = item.amount
+        date = YearMonthDay.today
+        merchantID = item.merchantID
+        type = item.type
+        note = item.note
+        categoryID = item.categoryID
+        tag = item.tag
+        sourceAccountID = CacheManager.shared.mainAccountID
     }
     static var defaultTransportTransaction: Transaction {
         return Transaction(id: UUID(),

@@ -54,9 +54,11 @@ extension BaseCoordinator {
 
 // MARK: - Dismiss
 extension BaseCoordinator {
-    func dismissCurrentModal() {
+    func dismissCurrentModal(completion: (() -> Void)? = nil) {
         if let presentedViewController = navigationController.presentedViewController {
-            presentedViewController.dismiss(animated: true)
+            presentedViewController.dismiss(animated: true) {
+                completion?()
+            }
         } else {
             navigationController.popViewController(animated: true)
         }

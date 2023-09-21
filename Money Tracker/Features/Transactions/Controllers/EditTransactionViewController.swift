@@ -72,20 +72,19 @@ class EditTransactionViewController: Base.MVVMViewController<TransactionViewMode
 extension EditTransactionViewController {
     @objc
     private func didTapClose() {
-        guard let coordinator = coordinator as? HomeCoordinator else { return }
-        coordinator.presentAlert(option: BaseCoordinator.AlertControllerOption(title: "Leave without saving it?",
-                                                                               message: "All changes will be discarded.",
-                                                                               preferredStyle: .alert),
-                                      actions: [
-                                        BaseCoordinator.AlertActionOption(title: "Leave",
-                                                                          style: .destructive,
-                                                                          handler: { _ in
-                                                                              coordinator.dismissCurrentModal()
-                                                                          }),
-                                        BaseCoordinator.AlertActionOption(title: "Stay",
-                                                                          style: .cancel,
-                                                                          handler: nil)
-                                      ])
+        coordinator?.presentAlert(option: BaseCoordinator.AlertControllerOption(title: "Leave without saving it?",
+                                                                                message: "All changes will be discarded.",
+                                                                                preferredStyle: .alert),
+                                  actions: [
+                                    BaseCoordinator.AlertActionOption(title: "Leave",
+                                                                      style: .destructive,
+                                                                      handler: { _ in
+                                                                          self.coordinator?.dismissCurrentModal()
+                                                                      }),
+                                    BaseCoordinator.AlertActionOption(title: "Stay",
+                                                                      style: .cancel,
+                                                                      handler: nil)
+                                  ])
     }
     @objc
     private func didTapAdd() {

@@ -11,7 +11,10 @@ import RxRelay
 import RxDataSources
 
 class BudgetListViewController: Base.MVVMViewController<BudgetListViewModel> {
-    private let tableView = UITableView()
+    
+    // MARK: - Views
+    private let appNavigationBar = AppNavigationBar(contentType: .title("Budget"))
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -26,9 +29,15 @@ class BudgetListViewController: Base.MVVMViewController<BudgetListViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         viewModel.reloadBudgets { _ in
             
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 // MARK: - Actions
@@ -49,10 +58,7 @@ extension BudgetListViewController {
 // MARK: - View Config
 extension BudgetListViewController {
     private func configureViews() {
-        title = viewModel.displayTitle
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
-                                                            target: self,
-                                                            action: #selector(didTapEditBudgets))
+        view.addSubview(appNavigationBar)
 
         refreshControl.addTarget(self,
                                  action: #selector(didPullToRefresh(_:)),
@@ -66,8 +72,12 @@ extension BudgetListViewController {
         view.addSubview(tableView)
     }
     private func configureConstraints() {
+        appNavigationBar.snp.remakeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
         tableView.snp.remakeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(appNavigationBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     private func configureBindings() {
@@ -92,6 +102,10 @@ extension BudgetListViewController {
 }
 // MARK: - DataSource
 extension BudgetListViewController: UITableViewDataSource {
+    enum Section: Int {
+        case currentMonth = 0
+        case categories = 1
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.cells.value.count
     }
@@ -101,35 +115,42 @@ extension BudgetListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return viewModel.cells.value[indexPath.section][indexPath.row]
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.sectionTitles[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = ListStyleTableViewHeader()
+        view.text = viewModel.sectionTitles[section]
+        
+        if section == Section.categories.rawValue {
+            let editButton = UIButton()
+            editButton.setTitle("Edit", for: .normal)
+            editButton.setTitleColor(.systemBlue, for: .normal)
+            editButton.addTarget(self, action: #selector(didTapEditBudgets), for: .touchUpInside)
+            view.rightView = editButton
+        }
+        return view
     }
 }
 // MARK: - Delegate
 extension BudgetListViewController: UITableViewDelegate {
-    enum Section: Int, CaseIterable {
-        case header = 0
-        case list
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer {
             self.tableView.deselectRow(at: indexPath, animated: true)
         }
 
-        guard let coordinator = coordinator as? BudgetCoordinator else { return }
+        guard
+            let coordinator = coordinator as? BudgetCoordinator,
+            let section = Section(rawValue: indexPath.section)
+        else { return }
 
-        switch indexPath.section {
-        case Section.header.rawValue:
+        switch section {
+        case .currentMonth:
             // Upcoming payments section
             if indexPath.row == 1 {
                 coordinator.showPocket()
             }
             return
-        case Section.list.rawValue:
+        case .categories:
             guard let itemID = viewModel.getBudgetItemID(at: indexPath) else { return }
             coordinator.showBudgetDetail(itemID)
-        default:
-            return
         }
     }
 }

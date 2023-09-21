@@ -15,6 +15,8 @@ class BudgetCoordinator: BaseCoordinator {
         case viewRecurringTransactionDetail(RecurringTransactionID)
         case viewTransactionDetail(TransactionID)
         case selectFromOptionList(Transaction.EditableField, TransactionViewModel)
+        case chooseWallets
+        case search
     }
 }
 
@@ -56,12 +58,16 @@ extension BudgetCoordinator {
         case .viewRecurringTransactionDetail:
             // TODO: - Add details
             return BaseViewController()
+        case .chooseWallets:
+            return BaseViewController()
+        case .search:
+            return SearchViewController(appCoordinator: self.parentCoordinator, coordinator: self, viewModel: SearchViewModel(appCoordinator: self.parentCoordinator))
         }
     }
 }
 
 // MARK: - Navigation
-extension BudgetCoordinator: TransactionCoordinator {
+extension BudgetCoordinator: TransactionCoordinator, NavigationBarCoordinator {
     func showEditBudgets() {
         guard let viewController = makeViewController(for: .editBudgets) else { return }
         let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: true)
@@ -87,6 +93,15 @@ extension BudgetCoordinator: TransactionCoordinator {
     }
     func showRecurringTransactionDetail(_ id: RecurringTransactionID) {
         guard let viewController = makeViewController(for: .viewRecurringTransactionDetail(id)) else { return }
+        self.navigate(to: viewController, presentModally: false)
+    }
+    func showChooseWallet() {
+        guard let viewController = makeViewController(for: .chooseWallets) else { return }
+        let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: true)
+        self.navigate(to: viewController, presentModally: true, options: options)
+    }
+    func showSearch() {
+        guard let viewController = makeViewController(for: .search) else { return }
         self.navigate(to: viewController, presentModally: false)
     }
 }

@@ -14,7 +14,8 @@ class RecurringTransactionCell: UITableViewCell {
     private let iconView = UIImageView()
     private let detailStack = UIStackView()
     private let merchantLabel = UILabel()
-    private let recurringRuleCell = UILabel()
+    private let recurringRuleLabel = UILabel()
+    private let nextDateLabel = UILabel()
     private let signedAmountLabel = UILabel()
     
     private let disposeBag = DisposeBag()
@@ -37,15 +38,20 @@ extension RecurringTransactionCell {
         iconView.contentMode = .scaleAspectFit
         contentView.addSubview(iconView)
         
-        merchantLabel.textColor = UIColor.label
+        merchantLabel.textColor = .label
         merchantLabel.font = .bodyBold
         merchantLabel.text = "default"
         detailStack.addArrangedSubview(merchantLabel)
         
-        recurringRuleCell.textColor = UIColor.secondaryLabel
-        recurringRuleCell.font = UIFont.small
-        recurringRuleCell.text = "default"
-        detailStack.addArrangedSubview(recurringRuleCell)
+        recurringRuleLabel.textColor = .secondaryLabel
+        recurringRuleLabel.font = .small
+        recurringRuleLabel.text = "default"
+        detailStack.addArrangedSubview(recurringRuleLabel)
+        
+        nextDateLabel.textColor = .secondaryLabel
+        nextDateLabel.font = .small
+        nextDateLabel.text = "default"
+        detailStack.addArrangedSubview(nextDateLabel)
                 
         detailStack.alignment = .leading
         detailStack.axis = .vertical
@@ -77,43 +83,21 @@ extension RecurringTransactionCell {
     private func configureGestures() {
         
     }
+    private func configureData() {
+        iconView.image = viewModel.displayIcon
+        merchantLabel.text = viewModel.displayMerchantString
+        recurringRuleLabel.text = viewModel.displayRecurringRuleString
+        nextDateLabel.text = viewModel.displayNextDateString
+        signedAmountLabel.text = viewModel.displayAmountString
+        signedAmountLabel.textColor = viewModel.recurringTransaction.value?.type.color
+    }
     private func configureBindings() {
-        viewModel.displayIcon
+        viewModel.recurringTransaction
             .asObservable()
-            .subscribe { image in
-                self.iconView.image = image
+            .subscribe { [weak self] _ in
+                self?.configureData()
             }
             .disposed(by: disposeBag)
-
-        viewModel.displayMerchantString
-            .asObservable()
-            .subscribe { value in
-                self.merchantLabel.text = value
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.displayRecurringRuleString
-            .asObservable()
-            .subscribe { value in
-                self.recurringRuleCell.text = value
-            }
-            .disposed(by: disposeBag)
-        
-//        viewModel.displayCategoryString
-//            .asObservable()
-//            .subscribe { value in
-//
-//            }
-//            .disposed(by: disposeBag)
-        
-        viewModel.displayAmountString
-            .asObservable()
-            .subscribe { value in
-                self.signedAmountLabel.text = value
-                let transactionType = self.viewModel.recurringTransaction.value?.type
-                self.signedAmountLabel.textColor = transactionType?.color
-            }
-            .disposed(by: disposeBag)
-
     }
 }
+

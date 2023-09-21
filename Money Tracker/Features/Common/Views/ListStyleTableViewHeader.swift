@@ -10,6 +10,7 @@ import UIKit
 class ListStyleTableViewHeader: UIView {
     
     private let label = UILabel()
+    private let rightViewContainer = UIView()
     
     var text: String? {
         didSet {
@@ -17,18 +18,37 @@ class ListStyleTableViewHeader: UIView {
         }
     }
     
+    var rightView: UIView? {
+        didSet {
+            if let rightView = rightView {
+                rightViewContainer.addSubview(rightView)
+                rightView.snp.remakeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         backgroundColor = UIColor.systemGroupedBackground
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.font = .small
+        label.textColor = .secondaryLabel
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
+        addSubview(rightViewContainer)
         
         label.snp.remakeConstraints { make in
             make.leading.equalTo(layoutMarginsGuide).inset(Constants.Spacing.small)
             make.centerY.equalToSuperview()
+        }
+        rightViewContainer.snp.remakeConstraints { make in
+            make.trailing.equalTo(layoutMarginsGuide).inset(Constants.Spacing.small)
+            make.top.bottom.equalTo(layoutMarginsGuide)
+            make.centerY.equalToSuperview()
+            make.height.greaterThanOrEqualTo(32)
         }
     }
     

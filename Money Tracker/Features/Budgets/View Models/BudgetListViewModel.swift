@@ -68,7 +68,7 @@ extension BudgetListViewModel {
         let summaryCell = BudgetSummaryCell()
         summaryCell.remainingAmountString = self.getRemainingAmount().toCurrencyString()
         summaryCell.totalAmountString = "/ " + self.budgets.value.totalBudgetAmount.toCurrencyString()
-        summaryCell.statusString = Localized.Budget.safeToSpend
+        summaryCell.statusString = self.getRemainingAmount() > 0 ? Localized.Budget.safeToSpend : Localized.Budget.overspent
         let pendingExpenseCell = TitleValueCell()
         pendingExpenseCell.titleLabel.text = Localized.Budget.upcomingPayments
         pendingExpenseCell.valueLabel.text = amountOfScheduledPayment.toCurrencyString()

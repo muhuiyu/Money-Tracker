@@ -137,8 +137,10 @@ extension MeViewController: UITableViewDataSource, UITableViewDelegate {
             coordinator.showRecurringTransactions()
         } else if indexPath.section == 1 && indexPath.row == 0 {
             coordinator.showMainCurrency()
-        } else {
+        } else if indexPath.section == 1 && indexPath.row == 1 {
             coordinator.showWallets()
+        } else if indexPath.section == 2 && indexPath.row == 0 {
+            coordinator.showExport()
         }
     }
 }

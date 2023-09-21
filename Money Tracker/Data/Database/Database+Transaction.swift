@@ -94,6 +94,11 @@ extension Database {
 //                object.note.contains(searchQuery.low)
 //            }
     }
+    
+    func getAllShortcutTransactions() -> [ShortcutTransaction] {
+        return realm.objects(ShortcutTransactionObject.self)
+            .map { ShortcutTransaction(managedObject: $0) }
+    }
 }
 
 // MARK: - Update data

@@ -63,6 +63,8 @@ class Icons {
     static var takeoutbagAndCupAndStraw: String { "takeoutbag.and.cup.and.straw" }
     static var takeoutbagAndCupAndStrawFill: String { "takeoutbag.and.cup.and.straw.fill" }
     static var boltFill: String { "bolt.fill" }
+    static var boltCircle: String { "bolt.circle" }
+    static var boltCircleFill: String { "bolt.circle.fill" }
     static var wifi: String { "wifi" }
     static var dropFill: String { "drop.fill" }
     static var iphoneHomeButton: String { "iphone.homebutton" }

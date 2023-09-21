@@ -11,13 +11,13 @@ import RxSwift
 class HomeViewController: Base.MVVMViewController<HomeViewModel> {
     
     // MARK: - View
-    private let appNavigationBar = AppNavigationBar()
+    private let appNavigationBar = AppNavigationBar(contentType: .wallets)
     private let headerView = UIView()
-    private let balanceView = HomeHeaderView()
     private let monthControlView = MonthControlHeaderView()
     private let homeSummaryView = HomeSummaryView()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let refreshControl = UIRefreshControl()
+    private let quickAddButton = HomeQuickAddButton()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +39,13 @@ class HomeViewController: Base.MVVMViewController<HomeViewModel> {
 
 // MARK: - TapHandlers
 extension HomeViewController {
-    @objc
-    func didTapSearch(_ sender: UIBarButtonItem) {
+    func didTapSearch() {
         guard let coordinator = coordinator as? HomeCoordinator else { return }
         coordinator.showSearch()
+    }
+    func didTapWallets() {
+        guard let coordinator = coordinator as? HomeCoordinator else { return }
+        coordinator.showChooseWallet()
     }
     @objc
     func didTapOnNotification(_ sender: UIBarButtonItem) {
@@ -72,26 +75,22 @@ extension HomeViewController {
                                         BaseCoordinator.AlertActionOption(title: "Cancel", style: .cancel, handler: nil)
                                       ])
     }
+    private func didTapQuickAdd() {
+        guard let coordinator = coordinator as? HomeCoordinator else { return }
+        coordinator.showQuickAdd(from: self)
+    }
 }
 // MARK: - View Config
 extension HomeViewController {
     private func configureViews() {
-        guard let coordinator = coordinator as? HomeCoordinator else { return }
-
+        // NavigationBar
+        appNavigationBar.tapWalletsHandler = { [weak self] in
+            self?.didTapWallets()
+        }
+        appNavigationBar.tapSearchHandler = { [weak self] in
+            self?.didTapSearch()
+        }
         view.addSubview(appNavigationBar)
-        
-        title = viewModel.displayTitle
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: Icons.plus),
-                            style: .plain,
-                            target: self,
-                            action: #selector(didTapAddTransaction)),
-            UIBarButtonItem(image: UIImage(systemName: Icons.magnifyingglass),
-                            style: .plain,
-                            target: self,
-                            action: #selector(didTapSearch(_ :)))
-        ]
-        
         view.backgroundColor = .systemBackground
 
         monthControlView.previousButtonTapHandler = { [weak self] in
@@ -115,6 +114,12 @@ extension HomeViewController {
                                  action: #selector(didPullToRefresh(_:)),
                                  for: .valueChanged)
         
+        // Set up tableView
+        let headerView = UIView()
+        headerView.snp.remakeConstraints { make in
+            make.height.equalTo(12)
+        }
+        tableView.tableHeaderView = headerView
         tableView.refreshControl = refreshControl
         tableView.backgroundColor = UIColor.systemGroupedBackground
         tableView.register(ListStyleTableViewCell.self, forCellReuseIdentifier: ListStyleTableViewCell.reuseID)
@@ -122,14 +127,18 @@ extension HomeViewController {
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
+        
+        quickAddButton.tapHandler = { [weak self] in
+            self?.didTapQuickAdd()
+        }
+        view.addSubview(quickAddButton)
     }
     private func configureConstraints() {
         appNavigationBar.snp.remakeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         monthControlView.snp.remakeConstraints { make in
-            make.top.equalTo(appNavigationBar.snp.bottom).offset(Constants.Spacing.large)
-            make.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
         }
         homeSummaryView.snp.remakeConstraints { make in
             make.top.equalTo(monthControlView.snp.bottom).offset(Constants.Spacing.medium)
@@ -137,12 +146,15 @@ extension HomeViewController {
             make.bottom.equalToSuperview()
         }
         headerView.snp.remakeConstraints { make in
-            make.top.equalTo(view.layoutMarginsGuide)
+            make.top.equalTo(appNavigationBar.snp.bottom).offset(Constants.Spacing.large)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         tableView.snp.remakeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        quickAddButton.snp.remakeConstraints { make in
+            make.trailing.bottom.equalTo(view.layoutMarginsGuide).inset(Constants.Spacing.medium)
         }
     }
     private func configureBindings() {
@@ -244,5 +256,16 @@ extension HomeViewController: UITableViewDelegate {
             self.tableView.isEditing = false
         }
         return UISwipeActionsConfiguration(actions: [action])
+    }
+}
+
+// MARK: - Delegate
+extension HomeViewController: QuickAddViewControllerDelegate {
+    func quickAddViewControllerDidSelect(_ item: TransactionSettings) {
+        let transaction = Transaction(from: item)
+        guard let coordinator = coordinator as? HomeCoordinator else { return }
+        coordinator.dismissCurrentModal {
+            coordinator.showAddTransaction(copyFrom: transaction)
+        }
     }
 }

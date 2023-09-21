@@ -15,31 +15,31 @@ class RecurringTransactionCellViewModel {
     // MARK: - Reactive properties
     var recurringTransaction: BehaviorRelay<RecurringTransaction?> = BehaviorRelay(value: nil)
     
-    var displayIcon: BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
-    var displayMerchantString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayCategoryString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayRecurringRuleString: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayAmountString: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var displayIcon: UIImage? {
+        return recurringTransaction.value?.icon
+    }
+    var displayMerchantString: String? {
+        if let merchantID = recurringTransaction.value?.merchantID, let merchantName = self.merchantList[merchantID] {
+            return merchantName.value
+        }
+        return nil
+    }
+    var displayCategoryString: String? {
+        if let categoryID = recurringTransaction.value?.categoryID, let categoryName = Category.getCategoryName(of: categoryID) {
+            return categoryName
+        }
+        return nil
+    }
+    var displayRecurringRuleString: String? {
+        return recurringTransaction.value?.rule.getRuleString()
+    }
+    var displayNextDateString: String? {
+        return "Next on " +  (recurringTransaction.value?.nextTransactionDate.toDate?.formatted() ?? "")
+    }
+    var displayAmountString: String? {
+        return recurringTransaction.value?.signedAmount.toCurrencyString()
+    }
     
     var merchantList: [MerchantID: Merchant] = [:]
     
-    init() {
-        recurringTransaction
-            .asObservable()
-            .subscribe(onNext: { value in
-                if let value = value {
-                    self.displayIcon.accept(value.icon)
-                    self.displayRecurringRuleString.accept(value.displayRecuringRuleString)
-                    self.displayAmountString.accept(value.signedAmount.toCurrencyString())
-                    
-                    if let merchantName = self.merchantList[value.merchantID]?.value {
-                        self.displayMerchantString.accept(merchantName)
-                    }
-                    if let categoryName = Category.getCategoryName(of: value.categoryID) {
-                        self.displayCategoryString.accept(categoryName)
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
-    }
 }

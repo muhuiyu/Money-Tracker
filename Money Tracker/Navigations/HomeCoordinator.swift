@@ -19,6 +19,8 @@ class HomeCoordinator: BaseCoordinator {
         case viewMonthlyAnalysisCategoryDetail(TransactionList)
         case viewPocket
         case viewRecurringTransactionDetail(RecurringTransactionID)
+        case chooseWallets
+        case viewQuickAddList(HomeViewController)
     }
 }
 
@@ -64,7 +66,7 @@ extension HomeCoordinator {
                                                                coordinator: self,
                                                                viewModel: TransactionViewModel(appCoordinator: self.parentCoordinator),
                                                                mode: .add)
-            if var transaction = transaction {
+            if let transaction = transaction {
                 viewController.viewModel.transaction.accept(transaction)
             } else {
                 viewController.viewModel.transaction.accept(Transaction())
@@ -77,17 +79,21 @@ extension HomeCoordinator {
         case .viewRecurringTransactionDetail:
             // TODO: - Add details
             return BaseViewController()
+        case .chooseWallets:
+            return BaseViewController()
+        case .viewQuickAddList(let origin):
+            let viewController = QuickAddViewController(appCoordinator: self.parentCoordinator,
+                                                        coordinator: self,
+                                                        viewModel: QuickAddViewModel(appCoordinator: self.parentCoordinator))
+            viewController.delegate = origin
+            return viewController
         }
     }
 
 }
 
 // MARK: - Navigation
-extension HomeCoordinator: TransactionCoordinator {
-    func showSearch() {
-        guard let viewController = makeViewController(for: .search) else { return }
-        self.navigate(to: viewController, presentModally: false)
-    }
+extension HomeCoordinator: TransactionCoordinator, NavigationBarCoordinator {
     func showNotifications() {
         guard let viewController = makeViewController(for: .viewNotifications) else { return }
         let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: false)
@@ -131,5 +137,19 @@ extension HomeCoordinator: TransactionCoordinator {
     func showRecurringTransactionDetail(_ id: RecurringTransactionID) {
         guard let viewController = makeViewController(for: .viewRecurringTransactionDetail(id)) else { return }
         self.navigate(to: viewController, presentModally: false)
+    }
+    func showChooseWallet() {
+        guard let viewController = makeViewController(for: .chooseWallets) else { return }
+        let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: true)
+        self.navigate(to: viewController, presentModally: true, options: options)
+    }
+    func showSearch() {
+        guard let viewController = makeViewController(for: .search) else { return }
+        self.navigate(to: viewController, presentModally: false)
+    }
+    func showQuickAdd(from origin: HomeViewController) {
+        guard let viewController = makeViewController(for: .viewQuickAddList(origin)) else { return }
+        let options = ModalOptions(isEmbedInNavigationController: true, isModalInPresentation: false)
+        self.navigate(to: viewController, presentModally: true, options: options)
     }
 }
