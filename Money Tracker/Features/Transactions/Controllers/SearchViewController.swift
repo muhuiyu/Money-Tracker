@@ -118,7 +118,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionPreviewCell.reuseID, for: indexPath) as? TransactionPreviewCell else { return UITableViewCell() }
-        
         cell.viewModel.transaction.accept(viewModel.result.value[indexPath.row])
         return cell
     }

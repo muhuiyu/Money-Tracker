@@ -88,11 +88,15 @@ extension Database {
     }
     
     func getTransactions(for searchQuery: String) -> [Transaction] {
-        return []
-//        var transactions = realm.objects(TransactionObject.self)
+        return getAllTransactions()
+//        return realm.objects(TransactionObject.self)
 //            .filter { object in
-//                object.note.contains(searchQuery.low)
+//                guard let merchant = self.getMerchant(for: object.id), let category = Category.getCategory(of: object.categoryID) else { return false }
+//                return object.note.localizedCaseInsensitiveContains(searchQuery)
+//                        || merchant.value.localizedCaseInsensitiveContains(searchQuery)
+//                        || category.name.localizedStandardContains(searchQuery)
 //            }
+//            .map({ Transaction(managedObject: $0) })
     }
     
     func getAllShortcutTransactions() -> [ShortcutTransaction] {

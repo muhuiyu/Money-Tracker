@@ -29,6 +29,10 @@ class SearchViewModel: BaseViewModel {
 
 extension SearchViewModel {
     private func getSearchResult() {
+        if searchQuery.value.isEmpty {
+            result.accept([])
+            return
+        }
         guard let dataProvider = appCoordinator?.dataProvider else { return }
         result.accept(dataProvider.getTransactions(for: searchQuery.value))
     }

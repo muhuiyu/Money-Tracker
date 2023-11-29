@@ -54,10 +54,17 @@ extension BudgetListViewController {
         guard let coordinator = coordinator as? BudgetCoordinator else { return }
         coordinator.showEditBudgets()
     }
+    func didTapSearch() {
+        guard let coordinator = coordinator as? BudgetCoordinator else { return }
+        coordinator.showSearch()
+    }
 }
 // MARK: - View Config
 extension BudgetListViewController {
     private func configureViews() {
+        appNavigationBar.tapSearchHandler = { [weak self] in
+            self?.didTapSearch()
+        }
         view.addSubview(appNavigationBar)
 
         refreshControl.addTarget(self,

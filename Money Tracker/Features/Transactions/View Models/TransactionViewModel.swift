@@ -215,8 +215,7 @@ extension TransactionViewModel {
         }
     }
     func getMerchantName(of idString: String) -> String? {
-        guard let uuid = UUID(uuidString: idString) else { return nil }
-        let merchantsMap = appCoordinator?.dataProvider.getMerchantsMap()
-        return merchantsMap?[uuid]?.value
+        guard let id = UUID(uuidString: idString), let merchant = appCoordinator?.dataProvider.getMerchant(for: id) else { return nil }
+        return merchant.value
     }
 }
